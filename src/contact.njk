@@ -3,20 +3,19 @@ layout: base.njk
 title: Contact
 permalink: /contact/
 ---
-<div class="page-head">
-  <div class="eyebrow">Contact</div>
-  <h1>Visit and contact</h1>
-  <p class="lede">CFP is located in the Physics and Astronomy building (FC3) of the Faculty of Sciences, on the Campo Alegre campus.</p>
-</div>
-<div class="minor-areas" style="max-width:760px">
-  <div class="minor">
-    <h3>Address</h3>
-    <p><address style="font-style:normal">{% for l in site.address %}{{ l }}<br>{% endfor %}</address></p>
-    <p><a href="https://www.openstreetmap.org/search?query=Rua%20do%20Campo%20Alegre%20687%20Porto" target="_blank" rel="noopener">Open in map</a></p>
-  </div>
-  <div class="minor">
-    <h3>Email</h3>
-    {% if site.email %}<p><span class="mono">{{ site.email }}</span><button class="copy" type="button" data-copy="{{ site.email }}">Copy</button></p>
-    {% else %}<p>To contact a member directly, use the email on their <a href="/people/">profile</a>.</p>{% endif %}
+{% from "macros.njk" import pageBand %}
+{{ pageBand("Contact", "Visit <em>and</em> contact", "CFP is located in the Physics and Astronomy building (FC3) of the Faculty of Sciences, on the Campo Alegre campus in Porto.") }}
+<div class="wrap">
+  <div class="card-grid" style="max-width:780px">
+    <div class="card">
+      <div class="eyebrow">Address</div>
+      <address style="font-style:normal;font-size:17px">{% for l in site.address %}{{ l }}<br>{% endfor %}</address>
+      <a class="more" href="https://www.openstreetmap.org/search?query=Rua%20do%20Campo%20Alegre%20687%20Porto" target="_blank" rel="noopener">Open in map</a>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Email</div>
+      {% if site.email %}<p style="margin:0"><span class="mono">{{ site.email }}</span><button class="copy" type="button" data-copy="{{ site.email }}">Copy</button></p>
+      {% else %}<p style="margin:0">To contact a member directly, use the email on their <a href="/people/">profile</a>.</p>{% endif %}
+    </div>
   </div>
 </div>

@@ -7,35 +7,34 @@ pagination:
 permalink: "/research/{{ a.id }}/"
 eleventyComputed:
   title: "{{ a.name }}"
+  description: "{{ a.summary }}"
 ---
-{% from "macros.njk" import personCard, pubItem %}
+{% from "macros.njk" import personCard, pubItem, pageBand %}
 {% set members = people | inArea(a.id) %}
-<div class="page-head" data-c="{{ a.color }}">
-  <div class="eyebrow"><a href="/research/">Research</a> · {{ a.short }}</div>
-  <h1>{{ a.name }}</h1>
-  <p class="lede">{{ a.summary }}</p>
+<div data-c="{{ a.color }}">
+{{ pageBand('<a href="/research/">Research</a> · ' + a.short, a.name, a.summary, a.id) }}
+<div class="wrap">
+  <section class="section">
+    <div class="prose">{% for para in a.description | paragraphs %}<p>{{ para }}</p>{% endfor %}</div>
+    {% if a.topics.length %}
+    <div class="topics-grid">{% for t in a.topics %}<div><h3>{{ t.name }}</h3><p>{{ t.text }}</p></div>{% endfor %}</div>
+    {% endif %}
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">People</div><h2 style="margin-top:8px">Who works on this</h2></div></div>
+    {% for c in categories %}{% set list = members | inCategory(c.id) %}{% if list.length %}
+    <div><div class="eyebrow" style="margin-bottom:12px">{{ c.label }}</div>
+    <div class="people-grid">{% for p in list %}{{ personCard(p) }}{% endfor %}</div></div>
+    {% endif %}{% endfor %}
+  </section>
+
+  {% set apubs = [] %}{% for pub in publications %}{% if a.id in pub.areas %}{% set apubs = (apubs.push(pub), apubs) %}{% endif %}{% endfor %}
+  {% if apubs.length %}
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">Publications</div><h2 style="margin-top:8px">Selected work</h2></div><a class="more" href="/publications/">All publications</a></div>
+    <ul class="pubs">{% for pub in apubs | batch(8) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
+  </section>
+  {% endif %}
 </div>
-<div class="prose">{% for para in a.description | paragraphs %}<p>{{ para }}</p>{% endfor %}</div>
-
-{% if a.topics.length %}
-<section class="section">
-  <h2>Topics</h2>
-  <div class="minor-areas">{% for t in a.topics %}<div class="minor" data-c="{{ a.color }}"><h3 style="font-size:18px">{{ t.name }}</h3><p>{{ t.text }}</p></div>{% endfor %}</div>
-</section>
-{% endif %}
-
-<section class="section">
-  <h2>People</h2>
-  {% for c in categories %}{% set list = members | inCategory(c.id) %}{% if list.length %}
-  <div><h3 class="muted" style="font-family:var(--sans);font-size:14px;font-weight:500;margin-bottom:10px">{{ c.label }}</h3>
-  <div class="people-grid">{% for p in list %}{{ personCard(p) }}{% endfor %}</div></div>
-  {% endif %}{% endfor %}
-</section>
-
-{% set apubs = [] %}{% for pub in publications %}{% if a.id in pub.areas %}{% set apubs = (apubs.push(pub), apubs) %}{% endif %}{% endfor %}
-{% if apubs.length %}
-<section class="section">
-  <h2>Selected publications</h2>
-  <ul class="pubs">{% for pub in apubs | batch(10) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
-</section>
-{% endif %}
+</div>

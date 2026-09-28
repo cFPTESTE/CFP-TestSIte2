@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
 <meta name="description" content="{{ description or site.tagline }}">
+<meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
+<meta property="og:description" content="{{ description or site.tagline }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
@@ -25,13 +27,24 @@
     </nav>
   </div>
 </header>
-<main id="main"><div class="wrap">
+<main id="main">
 {{ content | safe }}
-</div></main>
+</main>
 <footer class="site-footer">
   <div class="wrap">
-    <address>{% for l in site.address %}{{ l }}<br>{% endfor %}</address>
-    <div>{{ site.name }} · founded {{ site.founded }}<br>© {{ build.year }}</div>
+    <div>
+      <b>{{ site.name }}</b>
+      <address>{% for l in site.address %}{{ l }}<br>{% endfor %}</address>
+    </div>
+    <div>
+      <div class="h">Research</div>
+      <ul>{% for a in areas %}<li><a href="/research/{{ a.id }}/">{{ a.name }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <div class="h">Centre</div>
+      <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li></ul>
+      <p style="margin-top:18px">Founded {{ site.founded }} · © {{ build.year }}</p>
+    </div>
   </div>
 </footer>
 <script>

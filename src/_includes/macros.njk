@@ -24,3 +24,35 @@
   {% if showWho and pub.members %}<span class="who">{% for m in pub.members %}<a href="/people/{{ m.slug }}/">{{ m.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
 </li>
 {% endmacro %}
+
+{% macro areaPanel(a, members) %}
+<article class="area" data-c="{{ a.color }}">
+  <div class="area-art">{% include "art/" + a.id + ".njk" ignore missing %}</div>
+  <div class="area-body">
+    <div class="kicker">{{ a.short }}</div>
+    <h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3>
+    <p>{{ a.summary }}</p>
+    {% if a.topics.length %}<ul class="topic-list">{% for t in a.topics %}<li>{{ t.name }}</li>{% endfor %}</ul>{% endif %}
+    <div class="area-foot">
+      <div class="faces">{% for p in members | senior %}{% if p.pending %}<span title="{{ p.name }}">{{ avatar(p) }}</span>{% else %}<a href="/people/{{ p.slug }}/" title="{{ p.name }}">{{ avatar(p) }}</a>{% endif %}{% endfor %}<span class="faces-count">{{ members | length }} people</span></div>
+      <a class="more" href="/research/{{ a.id }}/">Explore</a>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro minorArea(a) %}
+<div class="minor{% if a.id == 'physics-education' %} noart{% endif %}" data-c="{{ a.color }}">
+  {% if a.id != 'physics-education' %}<div class="mini-art">{% include "art/" + a.id + ".njk" ignore missing %}</div>{% endif %}
+  <div><div class="kicker">{{ a.short }}</div><h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3><p>{{ a.summary }}</p></div>
+</div>
+{% endmacro %}
+
+{% macro pageBand(eyebrow, title, lede, artId="") %}
+<section class="band page-band{% if not artId %} plain{% endif %}">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">{{ eyebrow | safe }}</div><h1>{{ title | safe }}</h1>{% if lede %}<p class="lede">{{ lede }}</p>{% endif %}</div>
+    {% if artId %}{% include "art/" + artId + ".njk" ignore missing %}{% endif %}
+  </div>
+</section>
+{% endmacro %}

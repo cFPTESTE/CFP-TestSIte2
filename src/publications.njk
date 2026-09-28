@@ -3,12 +3,9 @@ layout: base.njk
 title: Publications
 permalink: /publications/
 ---
-{% from "macros.njk" import pubItem %}
-<div class="page-head">
-  <div class="eyebrow">{{ publications | length }} papers</div>
-  <h1>Selected publications</h1>
-  <p class="lede">Papers chosen by each member as representative of their work. For complete lists, see the ORCID, INSPIRE or Google Scholar links on each profile.</p>
-</div>
+{% from "macros.njk" import pubItem, pageBand %}
+{{ pageBand((publications | length) + " papers", "Selected <em>publications</em>", "Papers chosen by each member as representative of their work. For complete lists, see the ORCID, INSPIRE or Google Scholar links on each profile.") }}
+<div class="wrap">
 <div class="filters">
   <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
     <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
@@ -16,11 +13,12 @@ permalink: /publications/
   </div>
 </div>
 {% for y in pubYears %}
-<section data-year>
+<section class="year-block" data-year>
   <h2 class="year">{{ y }}</h2>
   <ul class="pubs">{% for pub in publications | byYear(y) %}{{ pubItem(pub) }}{% endfor %}</ul>
 </section>
 {% endfor %}
+</div>
 <script>
 (()=>{document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const area=b.dataset.area;
  document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));

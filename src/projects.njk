@@ -3,15 +3,12 @@ layout: base.njk
 title: Projects
 permalink: /projects/
 ---
-{% from "macros.njk" import areaTags %}
-<div class="page-head">
-  <div class="eyebrow">Funding</div>
-  <h1>Projects</h1>
-  <p class="lede">Research projects hosted at or involving the Centro de Física do Porto.</p>
-</div>
-<div class="proj-grid">
+{% from "macros.njk" import areaTags, pageBand %}
+{{ pageBand("Funding", "Research <em>projects</em>", "Research projects hosted at or involving the Centro de Física do Porto.") }}
+<div class="wrap">
+<div class="card-grid">
 {% for pr in projects %}
-  <article class="proj">
+  <article class="card">
     <h3>{% if pr.url %}<a href="{{ pr.url }}" target="_blank" rel="noopener">{{ pr.acronym or pr.title }}</a>{% else %}{{ pr.acronym or pr.title }}{% endif %}</h3>
     {% if pr.acronym and pr.title %}<div class="muted">{{ pr.title }}</div>{% endif %}
     {% if pr.summary %}<p style="margin:0">{{ pr.summary }}</p>{% endif %}
@@ -26,4 +23,5 @@ permalink: /projects/
 {% else %}
   <p class="empty">No projects listed yet.</p>
 {% endfor %}
+</div>
 </div>

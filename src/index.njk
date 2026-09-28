@@ -1,49 +1,102 @@
 ---
 layout: base.njk
 ---
-{% from "macros.njk" import avatar, pubItem %}
-<section class="hero">
-  <div class="page-head" style="margin:0">
-    <div class="eyebrow">Faculty of Sciences · University of Porto</div>
-    <h1>Theoretical physics, from quantum materials to the early Universe</h1>
-    <p class="lede">{{ site.about }}</p>
-    <ul class="facts">
-      <li><b>{{ site.founded }}</b><span>Founded</span></li>
-      <li><b>{{ people | senior | length }}</b><span>Faculty and researchers</span></li>
-      <li><b>{{ people | students | length }}</b><span>PhD and MSc students</span></li>
-      <li><b>{{ site.fct_recognised }}</b><span>Recognised by FCT</span></li>
-    </ul>
-  </div>
-  {% include "hero-art.njk" %}
-</section>
-
-<section class="section" aria-labelledby="areas-h">
-  <div class="section-head"><h2 id="areas-h">Research areas</h2><a href="/research/">All research</a></div>
-  <div class="area-list">
-  {% for a in areas %}{% if a.core %}
-    {% set members = people | inArea(a.id) %}
-    <article class="area-row" data-c="{{ a.color }}">
-      <div>
-        <div class="kicker">{{ a.short }}</div>
-        <h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3>
-        <p>{{ a.summary }}</p>
+{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea %}
+<section class="band hero">
+  <canvas id="moire" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Centro de Física do Porto · since {{ site.founded }}</div>
+      <h1>Theoretical physics, from <em>quantum materials</em> to the <em>early Universe</em></h1>
+      <p class="lede">{{ site.about }}</p>
+      <div class="actions">
+        <a class="btn primary" href="/research/">Explore our research</a>
+        <a class="btn ghost" href="/people/">Meet the people</a>
       </div>
-      <div>
-        <ul class="topics">{% for t in a.topics %}<li>{{ t.name }}</li>{% endfor %}</ul>
-        <div class="faces">{% for p in members | senior %}<a href="{{ '/people/' + p.slug + '/' if not p.pending else '/people/' }}" title="{{ p.name }}">{{ avatar(p) }}</a>{% endfor %}</div>
-        <div class="count-line">{{ members | senior | length }} faculty and researchers · {{ members | students | length }} students</div>
-      </div>
-    </article>
-  {% endif %}{% endfor %}
-  </div>
-  <div class="minor-areas">
-  {% for a in areas %}{% if not a.core %}
-    <div class="minor" data-c="{{ a.color }}"><div class="kicker">{{ a.short }}</div><h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3><p>{{ a.summary }}</p></div>
-  {% endif %}{% endfor %}
+      <ul class="facts">
+        <li><b>{{ people | senior | length }}</b><span>Faculty &amp; researchers</span></li>
+        <li><b>{{ people | students | length }}</b><span>PhD &amp; MSc students</span></li>
+        <li><b>3</b><span>Core research areas</span></li>
+        <li><b>{{ site.fct_recognised }}</b><span>Recognised by FCT</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="section" aria-labelledby="pubs-h">
-  <div class="section-head"><h2 id="pubs-h">Recent publications</h2><a href="/publications/">All selected publications</a></div>
-  <ul class="pubs">{% for pub in publications | batch(6) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
-</section>
+<div class="wrap">
+  <section class="section" aria-labelledby="areas-h">
+    <div class="section-head">
+      <div><div class="eyebrow">Research</div><h2 id="areas-h" style="margin-top:8px">Three areas, one centre of <em>theorists</em></h2></div>
+      <a class="more" href="/research/">All research</a>
+    </div>
+    <div class="areas">
+      {% for a in areas %}{% if a.core %}{{ areaPanel(a, people | inArea(a.id)) }}{% endif %}{% endfor %}
+    </div>
+    <div class="minor-areas">
+      {% for a in areas %}{% if not a.core %}{{ minorArea(a) }}{% endif %}{% endfor %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="people-h">
+    <div class="section-head">
+      <div><div class="eyebrow">People</div><h2 id="people-h" style="margin-top:8px">{{ people | length }} physicists, from MSc students to full professors</h2></div>
+      <a class="more" href="/people/">Everyone</a>
+    </div>
+    <div class="mosaic">
+      {% for p in people %}{% if p.pending %}<span title="{{ p.name }}">{{ avatar(p) }}</span>{% else %}<a href="/people/{{ p.slug }}/" title="{{ p.name }}">{{ avatar(p) }}</a>{% endif %}{% endfor %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pubs-h">
+    <div class="section-head">
+      <div><div class="eyebrow">Publications</div><h2 id="pubs-h" style="margin-top:8px">Recent work</h2></div>
+      <a class="more" href="/publications/">Selected publications</a>
+    </div>
+    <div class="pub-cols">
+      {% set recent = publications | batch(6) | first %}
+      <ul class="pubs">{% for pub in recent | batch(3) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
+      <ul class="pubs">{% for pub in recent | batch(3) | last %}{{ pubItem(pub) }}{% endfor %}</ul>
+    </div>
+  </section>
+</div>
+
+<script>
+/* Moiré of two triangular lattices, slowly twisting (a nod to twisted bilayers). */
+(()=>{
+  const cv=document.getElementById("moire"); if(!cv) return;
+  const ctx=cv.getContext("2d");
+  const still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const css=getComputedStyle(document.documentElement);
+  const A=css.getPropertyValue("--art-a").trim()||"#6FA8C7", B=css.getPropertyValue("--art-b").trim()||"#F0A35E";
+  let W=0,H=0,dpr=1,visible=true,t0=performance.now();
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;}
+  function lattice(theta,color,cx,cy,a,r){
+    ctx.fillStyle=color;
+    const c=Math.cos(theta),s=Math.sin(theta),h=a*Math.sqrt(3)/2;
+    const R=Math.hypot(W,H), n=Math.ceil(R/a);
+    for(let j=-n;j<=n;j++){const y0=j*h, x0=(j&1)*a/2;
+      for(let i=-n;i<=n;i++){const x=i*a+x0;
+        const X=cx+x*c-y0*s, Y=cy+x*s+y0*c;
+        if(X<-4||Y<-4||X>W+4||Y>H+4) continue;
+        ctx.fillRect(X-r,Y-r,2*r,2*r);}}
+  }
+  function draw(now){
+    const t=(now-t0)/1000;
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+    const cx=W*0.78, cy=H*0.5, a=W<700?11:13;
+    const twist=(3.2+2.2*Math.sin(t*0.12))*Math.PI/180;
+    ctx.globalAlpha=.65; lattice(t*0.01,A,cx,cy,a,1.4);
+    ctx.globalAlpha=.7;  lattice(t*0.01+twist,B,cx,cy,a,1.4);
+    ctx.globalAlpha=1;
+    // fade toward the text side
+    const g=ctx.createLinearGradient(0,0,W,0);
+    const bg=css.getPropertyValue("--night").trim()||"#0B1422";
+    g.addColorStop(0,bg);g.addColorStop(W<900?0.75:0.38,bg);g.addColorStop(1,"rgba(0,0,0,0)");
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    if(!still&&visible) requestAnimationFrame(draw);
+  }
+  size(); addEventListener("resize",()=>{size(); if(still||!visible) draw(performance.now());});
+  new IntersectionObserver(es=>{const v=es[0].isIntersecting; if(v&&!visible){visible=true;requestAnimationFrame(draw);} visible=v;}).observe(cv);
+  requestAnimationFrame(draw);
+})();
+</script>

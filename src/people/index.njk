@@ -2,13 +2,9 @@
 layout: base.njk
 title: People
 ---
-{% from "macros.njk" import personCard %}
-<div class="page-head">
-  <div class="eyebrow">{{ people | length }} members</div>
-  <h1>People</h1>
-  <p class="lede">Faculty, researchers and students of the Centro de Física do Porto.</p>
-</div>
-
+{% from "macros.njk" import personCard, pageBand %}
+{{ pageBand((people | length) + " members", "The <em>people</em> of CFP", "Faculty, researchers and students of the Centro de Física do Porto.") }}
+<div class="wrap">
 <div class="filters">
   <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
     <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
@@ -25,6 +21,7 @@ title: People
 </section>
 {% endif %}{% endfor %}
 <p class="empty" id="none" hidden>No one matches this filter. Choose "All" or clear the search.</p>
+</div>
 
 <script>
 (()=>{let area="";const q=document.getElementById("q");

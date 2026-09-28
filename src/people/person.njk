@@ -8,34 +8,37 @@ permalink: "/people/{{ p.slug }}/"
 eleventyComputed:
   title: "{{ p.name }}"
 ---
-{% from "macros.njk" import avatar, areaTags, pubItem %}
-<div class="profile-head">
-  {{ avatar(p, "lg") }}
-  <div>
-    <div class="eyebrow"><a href="/people/">People</a></div>
-    <h1>{{ p.name }}</h1>
-    <div class="role">{{ p.categoryLabel }}{% if p.affiliation %} · {{ p.affiliation }}{% endif %}</div>
+{% from "macros.njk" import avatar, pubItem %}
+{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}
+<section class="band profile-band" data-c="{{ a0.color }}">
+  <div class="wrap">
+    {{ avatar(p, "lg") }}
+    <div>
+      <div class="eyebrow"><a href="/people/">People</a> · {{ p.categoryLabel }}</div>
+      <h1>{{ p.name }}</h1>
+      {% if p.affiliation %}<div class="role">{{ p.affiliation }}</div>{% endif %}
+      {% if p.areas.length %}<div class="tags">{% for id in p.areas %}{% set a = id | area %}<a class="tag" data-c="{{ a.color }}" href="/research/{{ a.id }}/">{{ a.label or a.name }}</a>{% endfor %}</div>{% endif %}
+    </div>
   </div>
-</div>
+</section>
 
+<div class="wrap">
 <div class="profile">
   <div>
-    {% if p.areas.length %}<div style="margin-bottom:14px">{{ areaTags(p.areas) }}</div>{% endif %}
     {% if p.keywords.length %}<p class="keywords">{{ p.keywords | join(" · ") }}</p>{% endif %}
     <div class="prose">{% for para in p.bio | paragraphs %}<p>{{ para }}</p>{% endfor %}</div>
-
     {% if p.publications.length %}
-    <h2 style="margin:36px 0 12px;font-size:24px">Selected publications</h2>
+    <div class="eyebrow" style="margin:48px 0 8px">Selected publications</div>
     <ul class="pubs">{% for pub in p.publications %}{{ pubItem(pub, false) }}{% endfor %}</ul>
     {% endif %}
   </div>
-
   <aside class="sidebar" aria-label="Contact and links">
     <dl>
       {% if p.email %}<div><dt>Email</dt><dd><span class="mono">{{ p.email }}</span><button class="copy" type="button" data-copy="{{ p.email }}">Copy</button></dd></div>{% endif %}
       {% if p.office %}<div><dt>Office</dt><dd>{{ p.office }}</dd></div>{% endif %}
       {% if p.orcid %}<div><dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/{{ p.orcid }}" target="_blank" rel="noopener">{{ p.orcid }}</a></dd></div>{% endif %}
-      {% if p.links.length %}<div><dt>Links</dt><dd>{% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</dd></div>{% endif %}
+      {% if p.links.length %}<div><dt>Elsewhere</dt><dd>{% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</dd></div>{% endif %}
     </dl>
   </aside>
+</div>
 </div>
