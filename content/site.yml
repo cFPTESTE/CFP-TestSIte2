@@ -1,6 +1,8 @@
 name: Centro de Física do Porto
 short: CFP
 tagline: Theoretical physics at the University of Porto
+# Visual theme: "" (dark bands, default) or "swiss" (light, grid, FCUP-blue colour fields)
+theme: ""
 about: >-
   The Centro de Física do Porto (CFP) is a research unit based at the Department of
   Physics and Astronomy of the Faculty of Sciences of the University of Porto. It is

@@ -44,6 +44,7 @@ export default async function (eleventyConfig) {
   const people = loadPeople();
   const areas = readYaml("areas.yml");
   const site = readYaml("site.yml");
+  if (process.env.SITE_THEME !== undefined) site.theme = process.env.SITE_THEME;
   const projects = (readYaml("projects.yml") || []).filter((p) => !p.hidden);
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const seminars = (readYaml("seminars.yml") || []).map((s) => ({ ...s, date: new Date(s.date) }))

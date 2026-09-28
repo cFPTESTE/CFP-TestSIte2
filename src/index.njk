@@ -90,7 +90,7 @@ layout: base.njk
   const ctx=cv.getContext("2d");
   const still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css=getComputedStyle(document.documentElement);
-  const A=css.getPropertyValue("--art-a").trim()||"#C8D6E5", B="#92C1E9";
+  const A=css.getPropertyValue("--art-a").trim()||"#C8D6E5", B=css.getPropertyValue("--art-b").trim()||"#92C1E9";
   let W=0,H=0,dpr=1,visible=true,t0=performance.now(),mx=0,my=0,tx=0,ty=0;
   cv.parentElement.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;});
   cv.parentElement.addEventListener("pointerleave",()=>{tx=0;ty=0;});
@@ -116,7 +116,7 @@ layout: base.njk
     ctx.globalAlpha=1;
     // fade toward the text side
     const g=ctx.createLinearGradient(0,0,W,0);
-    const bg=css.getPropertyValue("--night").trim()||"#0B1422";
+    const bg=(css.getPropertyValue("--hero-bg").trim()||css.getPropertyValue("--night").trim()||"#0B1422");
     g.addColorStop(0,bg);g.addColorStop(W<900?0.75:0.38,bg);g.addColorStop(1,"rgba(0,0,0,0)");
     ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
     if(!still&&visible) requestAnimationFrame(draw);
