@@ -8,11 +8,13 @@ mexer em HTML para atualizar pessoas, áreas ou projetos.
 
 ```
 content/
+  seminars.yml      seminários
   site.yml          nome, texto "about", morada, email do centro
   areas.yml         áreas de investigação (texto, tópicos, cor, ordem)
   projects.yml      projetos
   people/*.yml      um ficheiro por pessoa
 src/                modelos das páginas (HTML/Nunjucks) e CSS
+  news/*.md         notícias (uma por ficheiro)
   assets/people/    fotografias
 tools/import_form.py  importa respostas novas do Google Form
 .github/workflows/deploy.yml  publica o site a cada alteração
@@ -54,6 +56,19 @@ python3 tools/import_form.py "respostas.xlsx"
 Só cria perfis novos ou substitui os que ainda estão `pending: true`; perfis já editados à mão não são tocados.
 Se o nome no formulário for diferente do nome do ficheiro provisório (ex. "José Guilherme Matos" vs `jose-matos.yml`), apagar o provisório.
 Depois, rever o ficheiro criado: traduzir a bio se vier em português e acrescentar `title`/`journal` aos artigos.
+
+**Adicionar um seminário** – acrescentar uma entrada em `content/seminars.yml` (há um exemplo comentado no próprio ficheiro). O site separa sozinho os próximos seminários dos passados; é recompilado todas as noites para isso.
+
+**Publicar uma notícia** – criar um ficheiro em `src/news/`, por exemplo `2026-10-premio.md`:
+```markdown
+---
+title: Título da notícia
+date: 2026-10-05
+summary: Uma frase que aparece no cartão da notícia.
+area: quantum-materials   # opcional; dá a cor da área
+---
+Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-".
+```
 
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
 

@@ -43,6 +43,11 @@ export default function (eleventyConfig) {
   const areas = readYaml("areas.yml");
   const site = readYaml("site.yml");
   const projects = (readYaml("projects.yml") || []).filter((p) => !p.hidden);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const seminars = (readYaml("seminars.yml") || []).map((s) => ({ ...s, date: new Date(s.date) }))
+    .sort((a, b) => a.date - b.date);
+  const upcoming = seminars.filter((s) => s.date >= today);
+  const past = seminars.filter((s) => s.date < today).reverse();
 
   // Publications: merge duplicates across members (same URL)
   const pubMap = new Map();
@@ -64,11 +69,19 @@ export default function (eleventyConfig) {
   eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
   eleventyConfig.addGlobalData("areas", areas);
   eleventyConfig.addGlobalData("projects", projects);
+  eleventyConfig.addGlobalData("seminars", { upcoming, past });
   eleventyConfig.addGlobalData("publications", publications);
   eleventyConfig.addGlobalData("pubYears", pubYears);
   eleventyConfig.addGlobalData("categories", CATEGORY_ORDER.map((id) => ({ id, label: CATEGORY_LABEL[id] })));
   eleventyConfig.addGlobalData("build", { year: new Date().getFullYear() });
 
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  eleventyConfig.addFilter("day", (d) => new Date(d).getUTCDate());
+  eleventyConfig.addFilter("month", (d) => MONTHS[new Date(d).getUTCMonth()]);
+  eleventyConfig.addFilter("year", (d) => new Date(d).getUTCFullYear());
+  eleventyConfig.addFilter("dateLong", (d) => { const x = new Date(d); return `${x.getUTCDate()} ${MONTHS[x.getUTCMonth()]} ${x.getUTCFullYear()}`; });
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
+  eleventyConfig.addFilter("newest", (list) => [...(list || [])].sort((a, b) => b.date - a.date));
   eleventyConfig.addFilter("inCategory", (list, c) => list.filter((p) => p.category === c));
   eleventyConfig.addFilter("inArea", (list, a) => list.filter((p) => (p.areas || []).includes(a)));
   eleventyConfig.addFilter("byYear", (list, y) => list.filter((p) => p.year === y));
@@ -82,6 +95,7 @@ export default function (eleventyConfig) {
   return {
     dir: { input: "src", includes: "_includes", output: "_site" },
     templateFormats: ["njk", "md"],
+    markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     // Set by the GitHub Action for project pages (https://<user>.github.io/<repo>/)
     pathPrefix: process.env.PATH_PREFIX || "/",

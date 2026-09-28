@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: News & Seminars
+permalink: /news/
+eleventyExcludeFromCollections: true
+---
+{% from "macros.njk" import pageBand, seminarCard, newsCard %}
+{{ pageBand("News & seminars", "What's <em>happening</em> at CFP", "Seminars, new members, papers and other news from the centre.") }}
+<div class="wrap">
+  <section class="section" aria-labelledby="up-h">
+    <div class="section-head"><div><div class="eyebrow">Seminars</div><h2 id="up-h" style="margin-top:8px">Upcoming seminars</h2></div></div>
+    {% if seminars.upcoming.length %}
+      <div class="seminar-list">{% for s in seminars.upcoming %}{{ seminarCard(s, loop.first) }}{% endfor %}</div>
+    {% else %}
+      <p class="note">No seminars scheduled right now. New seminars are announced here and by email to CFP members.</p>
+    {% endif %}
+  </section>
+
+  <section class="section" aria-labelledby="news-h">
+    <div class="section-head"><div><div class="eyebrow">News</div><h2 id="news-h" style="margin-top:8px">Latest news</h2></div></div>
+    <div class="news-grid">{% for n in collections.news | newest %}{{ newsCard(n) }}{% endfor %}</div>
+  </section>
+
+  {% if seminars.past.length %}
+  <section class="section" aria-labelledby="past-h">
+    <div class="section-head"><div><div class="eyebrow">Archive</div><h2 id="past-h" style="margin-top:8px">Past seminars</h2></div></div>
+    <div class="seminar-list past">{% for s in seminars.past %}{{ seminarCard(s) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+</div>

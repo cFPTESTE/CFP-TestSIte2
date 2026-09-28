@@ -1,0 +1,18 @@
+# CFP seminars. Add one entry per seminar; the site sorts them and splits
+# upcoming / past automatically (the site is rebuilt every night).
+#
+# Fields: date (YYYY-MM-DD), time, speaker, affiliation, title, room, online (link),
+#         area (id from areas.yml), abstract, slides (link, after the talk)
+#
+# Example (remove the "#" at the start of each line to use it):
+# - date: 2026-10-14
+#   time: "14:30"
+#   speaker: Name Surname
+#   affiliation: University of Somewhere
+#   title: Title of the talk
+#   room: FC3 – 332
+#   online: https://videoconf-colibri.zoom.us/j/...
+#   area: qft-holography
+#   abstract: >-
+#     One paragraph with the abstract.
+[]

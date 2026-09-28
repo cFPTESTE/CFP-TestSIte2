@@ -4,7 +4,7 @@
   if (still) { document.querySelectorAll("svg.art").forEach(s => { try { s.pauseAnimations(); } catch(e){} }); return; }
 
   // Reveal on scroll: only elements that start below the fold get hidden, so the page is never blank.
-  const sel = ".section-head, .area, .minor, .pcard, .pubs li, .topics-grid > div, .mosaic .av, .card, .year-block, .prose, .sidebar";
+  const sel = ".section-head, .area, .minor, .pcard, .news-card, .seminar, .pubs li, .topics-grid > div, .mosaic .av, .card, .year-block, .prose, .sidebar";
   const els = [...document.querySelectorAll(sel)].filter(el => el.getBoundingClientRect().top > innerHeight * 0.92);
   const groups = new Map();
   els.forEach(el => {

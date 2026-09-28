@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+{% from "macros.njk" import pageBand %}
+{% set a = area | area if area else {color:"muted"} %}
+<div data-c="{{ a.color }}">
+{{ pageBand('<a href="/news/">News</a> · ' + (page.date | dateLong), title, summary) }}
+<div class="wrap">
+  <article class="section prose news-body">{{ content | safe }}</article>
+  <p style="margin-top:40px"><a class="more" href="/news/">All news and seminars</a></p>
+</div>
+</div>

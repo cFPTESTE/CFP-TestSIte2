@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * *"   # nightly rebuild so upcoming seminars move to the archive
 
 permissions:
   contents: read

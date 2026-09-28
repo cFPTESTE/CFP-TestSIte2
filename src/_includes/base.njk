@@ -7,9 +7,6 @@
 <meta name="description" content="{{ description or site.tagline }}">
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
 <meta property="og:description" content="{{ description or site.tagline }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
@@ -22,7 +19,7 @@
       <span><b>{{ site.name }}</b><small>{{ site.tagline }}</small></span>
     </a>
     <nav class="nav" aria-label="Main">
-      {% set navs = [["/research/","Research"],["/people/","People"],["/publications/","Publications"],["/projects/","Projects"],["/contact/","Contact"]] %}
+      {% set navs = [["/research/","Research"],["/people/","People"],["/publications/","Publications"],["/news/","News & Seminars"],["/projects/","Projects"],["/contact/","Contact"]] %}
       {% for n in navs %}<a href="{{ n[0] }}"{% if page.url.startsWith(n[0]) %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}
     </nav>
   </div>
@@ -42,7 +39,7 @@
     </div>
     <div>
       <div class="h">Centre</div>
-      <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li></ul>
+      <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/news/">News &amp; Seminars</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li></ul>
       <p style="margin-top:18px">Founded {{ site.founded }} · © {{ build.year }}</p>
     </div>
   </div>

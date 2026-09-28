@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea %}
+{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea, seminarCard, newsCard %}
 <section class="band hero">
   <canvas id="moire" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -37,6 +37,15 @@ layout: base.njk
     </div>
   </section>
 
+  <section class="section" aria-labelledby="news-h">
+    <div class="section-head">
+      <div><div class="eyebrow">News &amp; seminars</div><h2 id="news-h" style="margin-top:8px">What's <em>happening</em></h2></div>
+      <a class="more" href="/news/">All news and seminars</a>
+    </div>
+    {% if seminars.upcoming.length %}<div class="seminar-list">{% for s in seminars.upcoming | batch(2) | first %}{{ seminarCard(s) }}{% endfor %}</div>{% endif %}
+    <div class="news-grid">{% for n in collections.news | newest | batch(3) | first %}{{ newsCard(n) }}{% endfor %}</div>
+  </section>
+
   <section class="section" aria-labelledby="people-h">
     <div class="section-head">
       <div><div class="eyebrow">People</div><h2 id="people-h" style="margin-top:8px">{{ people | length }} physicists, from MSc students to full professors</h2></div>
@@ -67,7 +76,7 @@ layout: base.njk
   const ctx=cv.getContext("2d");
   const still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css=getComputedStyle(document.documentElement);
-  const A=css.getPropertyValue("--art-a").trim()||"#6FA8C7", B=css.getPropertyValue("--art-b").trim()||"#F0A35E";
+  const A=css.getPropertyValue("--art-a").trim()||"#C8D6E5", B="#92C1E9";
   let W=0,H=0,dpr=1,visible=true,t0=performance.now(),mx=0,my=0,tx=0,ty=0;
   cv.parentElement.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;});
   cv.parentElement.addEventListener("pointerleave",()=>{tx=0;ty=0;});

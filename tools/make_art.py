@@ -73,7 +73,7 @@ grav=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs><radialG
 # 4. Quantum computation: small circuit
 wires=[90,160,230,300]
 el=[f'<path d="M30 {y}H370" stroke="var(--art-a)" stroke-width="1.5" opacity=".7"/>' for y in wires]
-def box(x,y,t): return f'<rect x="{x-20}" y="{y-20}" width="40" height="40" rx="4" fill="var(--art-bg)" stroke="var(--art-b)" stroke-width="2"/><text x="{x}" y="{y+7}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="19" fill="var(--art-b)">{t}</text>'
+def box(x,y,t): return f'<rect x="{x-20}" y="{y-20}" width="40" height="40" rx="4" fill="var(--art-bg)" stroke="var(--art-b)" stroke-width="2"/><text x="{x}" y="{y+7}" text-anchor="middle" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="19" fill="var(--art-b)">{t}</text>'
 def cnot(x,c,t): return (f'<path d="M{x} {c}V{t+16 if t>c else t-16}" stroke="var(--art-b)" stroke-width="2"/><circle cx="{x}" cy="{c}" r="6" fill="var(--art-b)"/>'
                          f'<circle cx="{x}" cy="{t}" r="16" fill="var(--art-bg)" stroke="var(--art-b)" stroke-width="2"/><path d="M{x-16} {t}H{x+16}M{x} {t-16}V{t+16}" stroke="var(--art-b)" stroke-width="2"/>')
 for y in wires: el.append(box(75,y,'H'))

@@ -56,3 +56,24 @@
   </div>
 </section>
 {% endmacro %}
+
+{% macro seminarCard(s, open=false) %}{% set a = (s.area | area) if s.area else {color:"muted"} %}
+<article class="seminar" data-c="{{ a.color }}">
+  <time class="sdate" datetime="{{ s.date | isoDate }}"><b>{{ s.date | day }}</b><span>{{ s.date | month }} {{ s.date | year }}</span>{% if s.time %}<span>{{ s.time }}</span>{% endif %}</time>
+  <div class="sbody">
+    <h3>{{ s.title }}</h3>
+    <div class="speaker">{{ s.speaker }}{% if s.affiliation %} <span class="muted">· {{ s.affiliation }}</span>{% endif %}</div>
+    <div class="smeta">{% if s.room %}<span>{{ s.room }}</span>{% endif %}{% if s.online %}<a href="{{ s.online }}" target="_blank" rel="noopener">Join online</a>{% endif %}{% if s.slides %}<a href="{{ s.slides }}" target="_blank" rel="noopener">Slides</a>{% endif %}{% if s.area %}<span class="tag" data-c="{{ a.color }}">{{ a.label or a.name }}</span>{% endif %}</div>
+    {% if s.abstract %}<details{% if open %} open{% endif %}><summary>Abstract</summary><p>{{ s.abstract }}</p></details>{% endif %}
+  </div>
+</article>
+{% endmacro %}
+
+{% macro newsCard(n) %}{% set a = (n.data.area | area) if n.data.area else {color:"fcup"} %}
+<a class="news-card" href="{{ n.url }}" data-c="{{ a.color }}">
+  <time datetime="{{ n.date | isoDate }}">{{ n.date | dateLong }}</time>
+  <h3>{{ n.data.title }}</h3>
+  {% if n.data.summary %}<p>{{ n.data.summary }}</p>{% endif %}
+  <span class="more">Read</span>
+</a>
+{% endmacro %}
