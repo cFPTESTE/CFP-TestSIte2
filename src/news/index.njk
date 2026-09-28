@@ -4,7 +4,7 @@ title: News & Seminars
 permalink: /news/
 eleventyExcludeFromCollections: true
 ---
-{% from "macros.njk" import pageBand, seminarCard, newsCard %}
+{% from "macros.njk" import pageBand, seminarCard, newsCard, videoGrid, youtubeCta %}
 {{ pageBand("News & seminars", "What's <em>happening</em> at CFP", "Seminars, new members, papers and other news from the centre.") }}
 <div class="wrap">
   <section class="section" aria-labelledby="up-h">
@@ -20,6 +20,16 @@ eleventyExcludeFromCollections: true
     <div class="section-head"><div><div class="eyebrow">News</div><h2 id="news-h" style="margin-top:8px">Latest news</h2></div></div>
     <div class="news-grid">{% for n in collections.news | newest %}{{ newsCard(n) }}{% endfor %}</div>
   </section>
+
+  {% if site.youtube %}
+  <section class="section" aria-labelledby="rec-h">
+    <div class="section-head">
+      <div><div class="eyebrow">Recordings</div><h2 id="rec-h" style="margin-top:8px">Recorded talks</h2></div>
+      <a class="more" href="{{ site.youtube.url }}" target="_blank" rel="noopener">All videos on YouTube</a>
+    </div>
+    {% if videos.length %}{{ videoGrid(videos, 8) }}{% else %}{{ youtubeCta(site) }}{% endif %}
+  </section>
+  {% endif %}
 
   {% if seminars.past.length %}
   <section class="section" aria-labelledby="past-h">

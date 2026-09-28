@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea, seminarCard, newsCard %}
+{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea, seminarCard, newsCard, videoGrid, youtubeCta %}
 <section class="band hero">
   <canvas id="moire" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -45,6 +45,16 @@ layout: base.njk
     {% if seminars.upcoming.length %}<div class="seminar-list">{% for s in seminars.upcoming | batch(2) | first %}{{ seminarCard(s) }}{% endfor %}</div>{% endif %}
     <div class="news-grid">{% for n in collections.news | newest | batch(3) | first %}{{ newsCard(n) }}{% endfor %}</div>
   </section>
+
+  {% if site.youtube %}
+  <section class="section" aria-labelledby="watch-h">
+    <div class="section-head">
+      <div><div class="eyebrow">Watch</div><h2 id="watch-h" style="margin-top:8px">Seminars and journal clubs on <em>YouTube</em></h2></div>
+      <a class="more" href="{{ site.youtube.url }}" target="_blank" rel="noopener">Open the channel</a>
+    </div>
+    {% if videos.length %}{{ videoGrid(videos, 4) }}{% else %}{{ youtubeCta(site) }}{% endif %}
+  </section>
+  {% endif %}
 
   <section class="section" aria-labelledby="people-h">
     <div class="section-head">

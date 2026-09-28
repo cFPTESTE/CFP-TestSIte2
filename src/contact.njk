@@ -3,7 +3,7 @@ layout: base.njk
 title: Contact
 permalink: /contact/
 ---
-{% from "macros.njk" import pageBand %}
+{% from "macros.njk" import pageBand, ytIcon %}
 {{ pageBand("Contact", "Visit <em>and</em> contact", "CFP is located in the Physics and Astronomy building (FC3) of the Faculty of Sciences, on the Campo Alegre campus in Porto.") }}
 <div class="wrap">
   <div class="card-grid" style="max-width:780px">
@@ -17,5 +17,10 @@ permalink: /contact/
       {% if site.email %}<p style="margin:0"><span class="mono">{{ site.email }}</span><button class="copy" type="button" data-copy="{{ site.email }}">Copy</button></p>
       {% else %}<p style="margin:0">To contact a member directly, use the email on their <a href="/people/">profile</a>.</p>{% endif %}
     </div>
+    {% if site.youtube %}<div class="card">
+      <div class="eyebrow">YouTube</div>
+      <p style="margin:0">{{ site.youtube.about }}</p>
+      <a class="more" href="{{ site.youtube.url }}" target="_blank" rel="noopener">@centrodefisicadoporto</a>
+    </div>{% endif %}
   </div>
 </div>

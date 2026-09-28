@@ -13,5 +13,9 @@ address:
   - Faculdade de Ciências da Universidade do Porto
   - Rua do Campo Alegre 687
   - 4169-007 Porto, Portugal
+youtube:
+  url: https://www.youtube.com/@centrodefisicadoporto
+  channel_id: UCgxtHgvJlk7uI6tY01xbXaA
+  about: Journal clubs, seminars and colloquia of theoretical physics.
 # Contact email for the centre (fill in):
 email: ""

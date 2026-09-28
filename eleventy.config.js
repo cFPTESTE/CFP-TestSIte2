@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as yaml from "js-yaml";
 import { HtmlBasePlugin } from "@11ty/eleventy";
+import { fetchVideos } from "./youtube.js";
 
 const CONTENT = "content";
 const readYaml = (f) => yaml.load(fs.readFileSync(path.join(CONTENT, f), "utf8"));
@@ -70,6 +71,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addGlobalData("areas", areas);
   eleventyConfig.addGlobalData("projects", projects);
   eleventyConfig.addGlobalData("seminars", { upcoming, past });
+  eleventyConfig.addGlobalData("videos", () => fetchVideos(site.youtube && site.youtube.channel_id, 8));
   eleventyConfig.addGlobalData("publications", publications);
   eleventyConfig.addGlobalData("pubYears", pubYears);
   eleventyConfig.addGlobalData("categories", CATEGORY_ORDER.map((id) => ({ id, label: CATEGORY_LABEL[id] })));

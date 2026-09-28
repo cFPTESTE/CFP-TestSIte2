@@ -63,7 +63,7 @@
   <div class="sbody">
     <h3>{{ s.title }}</h3>
     <div class="speaker">{{ s.speaker }}{% if s.affiliation %} <span class="muted">· {{ s.affiliation }}</span>{% endif %}</div>
-    <div class="smeta">{% if s.room %}<span>{{ s.room }}</span>{% endif %}{% if s.online %}<a href="{{ s.online }}" target="_blank" rel="noopener">Join online</a>{% endif %}{% if s.slides %}<a href="{{ s.slides }}" target="_blank" rel="noopener">Slides</a>{% endif %}{% if s.area %}<span class="tag" data-c="{{ a.color }}">{{ a.label or a.name }}</span>{% endif %}</div>
+    <div class="smeta">{% if s.room %}<span>{{ s.room }}</span>{% endif %}{% if s.online %}<a href="{{ s.online }}" target="_blank" rel="noopener">Join online</a>{% endif %}{% if s.slides %}<a href="{{ s.slides }}" target="_blank" rel="noopener">Slides</a>{% endif %}{% if s.video %}<a href="{{ s.video }}" target="_blank" rel="noopener">▶ Watch recording</a>{% endif %}{% if s.area %}<span class="tag" data-c="{{ a.color }}">{{ a.label or a.name }}</span>{% endif %}</div>
     {% if s.abstract %}<details{% if open %} open{% endif %}><summary>Abstract</summary><p>{{ s.abstract }}</p></details>{% endif %}
   </div>
 </article>
@@ -75,5 +75,25 @@
   <h3>{{ n.data.title }}</h3>
   {% if n.data.summary %}<p>{{ n.data.summary }}</p>{% endif %}
   <span class="more">Read</span>
+</a>
+{% endmacro %}
+
+{% macro ytIcon() %}<svg class="yt-icon" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="currentColor"/><path d="M11 5.5v9l8-4.5z" fill="var(--yt-play,#fff)"/></svg>{% endmacro %}
+
+{% macro videoGrid(list, n=4) %}
+<div class="video-grid">{% for v in list | batch(n) | first %}
+  <a class="video" href="{{ v.url }}" target="_blank" rel="noopener">
+    <span class="thumb"><img src="{{ v.thumb }}" alt="" loading="lazy">{{ ytIcon() }}</span>
+    <span class="vt">{{ v.title }}</span>
+    <time datetime="{{ v.date | isoDate }}">{{ v.date | dateLong }}</time>
+  </a>{% endfor %}
+</div>
+{% endmacro %}
+
+{% macro youtubeCta(site) %}
+<a class="yt-cta" href="{{ site.youtube.url }}" target="_blank" rel="noopener">
+  {{ ytIcon() }}
+  <span><b>CFP on YouTube</b><span>{{ site.youtube.about }}</span></span>
+  <span class="more">Open the channel</span>
 </a>
 {% endmacro %}

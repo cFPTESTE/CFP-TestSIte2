@@ -70,6 +70,8 @@ area: quantum-materials   # opcional; dá a cor da área
 Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-".
 ```
 
+**Vídeos do YouTube** – os vídeos mais recentes do canal aparecem sozinhos na página inicial e em News & Seminars (o site lê o canal cada vez que é compilado, todas as noites). O canal está definido em `content/site.yml`. Para ligar um seminário à gravação, acrescentar `video: https://www.youtube.com/watch?v=...` à entrada em `content/seminars.yml`.
+
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
 
 ## Trabalhar no computador (opcional)
