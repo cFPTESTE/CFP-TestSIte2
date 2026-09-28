@@ -4,7 +4,7 @@ OUT=os.path.join(os.path.dirname(__file__),'..','src','_includes','art')
 S=400
 def f(x): return f'{x:.1f}'
 
-# 1. Quantum materials: moiré of two hexagonal line lattices
+# 1. Quantum materials
 def hex_lines(theta, a, cx, cy, R):
     out=[]
     for k in range(3):
@@ -16,15 +16,15 @@ def hex_lines(theta, a, cx, cy, R):
             ox,oy=cx+nx*i*a,cy+ny*i*a
             out.append(f'M{f(ox-dx*R)} {f(oy-dy*R)}L{f(ox+dx*R)} {f(oy+dy*R)}')
     return ''.join(out)
-a=9.0; h=a*math.sqrt(3)
-def lat(id,ang,color):
-    return (f'<pattern id="{id}" width="{a}" height="{f(h)}" patternUnits="userSpaceOnUse" patternTransform="rotate({ang} 200 200)">'
-            f'<circle cx="0" cy="0" r="2.1" fill="{color}"/><circle cx="{a}" cy="0" r="2.1" fill="{color}"/><circle cx="0" cy="{f(h)}" r="2.1" fill="{color}"/>'
-            f'<circle cx="{a}" cy="{f(h)}" r="2.1" fill="{color}"/><circle cx="{a/2}" cy="{f(h/2)}" r="2.1" fill="{color}"/>'
-            + (f'<animateTransform attributeName="patternTransform" type="rotate" values="{ang} 200 200;{ang+4} 200 200;{ang} 200 200" dur="26s" repeatCount="indefinite"/>' if ang else '')
-            + '</pattern>')
-moire=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs>{lat("cm-l1",0,"var(--art-a)")}{lat("cm-l2",5.2,"var(--art-b)")}</defs>'
- f'<circle cx="200" cy="200" r="190" fill="url(#cm-l1)" opacity=".9"/><circle cx="200" cy="200" r="190" fill="url(#cm-l2)" opacity=".8"/>'
+# twisted bilayer graphene: two honeycomb bond patterns, the top one slowly changing its twist
+d=8.5; w=d*math.sqrt(3); hh=3*d
+def honey(id,ang,color,anim):
+    segs=f'M0 {f(d/2)}L{f(w/2)} 0L{f(w)} {f(d/2)}M0 {f(d/2)}V{f(1.5*d)}M{f(w)} {f(d/2)}V{f(1.5*d)}M0 {f(1.5*d)}L{f(w/2)} {f(2*d)}L{f(w)} {f(1.5*d)}M{f(w/2)} {f(2*d)}V{f(3*d)}'
+    a=(f'<animateTransform attributeName="patternTransform" type="rotate" values="{ang} 200 200;{ang-2.5} 200 200;{ang} 200 200" dur="28s" repeatCount="indefinite"/>' if anim else '')
+    return (f'<pattern id="{id}" width="{f(w)}" height="{f(hh)}" patternUnits="userSpaceOnUse" patternTransform="rotate({ang} 200 200)">'
+            f'<path d="{segs}" fill="none" stroke="{color}" stroke-width="1.1"/>{a}</pattern>')
+moire=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs>{honey("tbg-l1",0,"var(--art-a)",False)}{honey("tbg-l2",4.5,"var(--art-b)",True)}</defs>'
+ f'<circle cx="200" cy="200" r="190" fill="url(#tbg-l1)" opacity=".75"/><circle cx="200" cy="200" r="190" fill="url(#tbg-l2)" opacity=".9"/>'
  f'<circle cx="200" cy="200" r="190" fill="none" stroke="var(--art-a)" stroke-width="1.5" opacity=".5"/></svg>')
 
 # 2. QFT & holography: Poincaré disk with geodesics

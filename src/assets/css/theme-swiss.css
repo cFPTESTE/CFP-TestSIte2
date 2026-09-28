@@ -134,3 +134,5 @@ a.pcard:hover{box-shadow:none;background:var(--hover);transform:none}
 .profile-band .wrap{flex-wrap:nowrap;align-items:flex-end;gap:32px}
 .profile-band .wrap>div{min-width:0}
 @media (max-width:620px){.profile-band .wrap{flex-wrap:wrap;align-items:flex-start}}
+.tbg-label{color:#0A0A0A;background:color-mix(in srgb,var(--fcup) 75%,transparent)}
+.tbg-label b{color:var(--navy)}
