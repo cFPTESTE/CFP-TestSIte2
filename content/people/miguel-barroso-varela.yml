@@ -1,0 +1,40 @@
+name: Miguel Barroso Varela
+category: phd
+areas:
+- gravitation-cosmology
+keywords:
+- Cosmology
+- Chain Inflation
+- Modified Gravity
+- Gravitational Waves
+- Large-Scale Structure Growth
+email: up201907272@edu.fc.up.pt
+office: FC3 – 332
+orcid: 0009-0006-9844-7661
+links:
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/2720072
+photo: ''
+bio: |
+  Miguel Barroso Varela is a PhD student at the University of Porto, having earned an MSci in Theoretical Physics from Imperial College London in 2023. As a theorist working in phenomenological cosmology, his research bridges foundational physics with observational data. His work encompasses modified gravity and its role in late-time cosmology, such as addressing the Hubble tension and analyzing the growth of density perturbations. He has also worked on interacting dark sector models and their implications on the role of dark matter and dark energy in the Universe. Additionally, he focuses on exploring the theoretical and phenomenological aspects of chain inflation, with an emphasis on its impact on observational signals from the early Universe, such as stochastic gravitational wave signals that could be detectable by upcoming interferometers or the formation of primordial black holes.
+publications:
+- title: Hubble tension in a nonminimally coupled curvature-matter gravity model
+  journal: JCAP 06 (2024) 025
+  year: 2024
+  url: https://doi.org/10.1088/1475-7516/2024/06/025
+- title: Gravitational wave polarizations in nonminimally coupled gravity
+  journal: Phys. Rev. D 111, 024014
+  year: 2025
+  url: https://doi.org/10.1103/PhysRevD.111.024014
+- title: Inflationary dynamics of non-minimally coupled f(R) matter-curvature theories
+  journal: JCAP 01 (2026) 061
+  year: 2026
+  url: https://doi.org/10.1088/1475-7516/2026/01/061
+- title: Implications of f(R) gravity on late-time cosmic structure growth through a complete description of density perturbations
+  journal: Phys. Dark Univ. 51, 102232
+  year: 2026
+  url: https://doi.org/10.1016/j.dark.2026.102232
+- title: Non-Minimally Coupled Chain Inflation at High Scales
+  journal: arXiv:2607.27193
+  year: 2026
+  url: https://arxiv.org/abs/2607.27193

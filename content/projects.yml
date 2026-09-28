@@ -1,0 +1,22 @@
+# Research projects. Fill in each field; entries with "hidden: true" are not shown.
+# Fields: title, acronym, funding, reference, pi, start, end, url, areas, summary
+- acronym: QPI-MoireS
+  title: ""
+  funding: ""
+  reference: ""
+  pi: Eduardo V. Castro
+  start: ""
+  end: ""
+  url: ""
+  areas: [quantum-materials]
+  summary: ""
+- acronym: ND4QTECH
+  title: ""
+  funding: Norte 2030
+  reference: NORTE2030-FEDER-02708200
+  pi: ""
+  start: ""
+  end: ""
+  url: ""
+  areas: [quantum-materials, quantum-computation]
+  summary: ""

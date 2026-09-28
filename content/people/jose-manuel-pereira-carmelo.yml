@@ -1,0 +1,33 @@
+name: José Manuel Pereira Carmelo
+category: researcher
+areas:
+- quantum-materials
+keywords:
+- Correlated systems
+- Transport in low-dimensional systems
+email: carmelo@fisica.uminho.pt
+orcid: 0000-0001-5624-6294
+photo: ''
+bio: |
+  José Carmelo received his PhD from the University of Copenhagen in 1986. His research is in quantum condensed matter systems, including recent studies of the Hubbard model on bipartite lattices. Over the past forty years, much of his work has been devoted to low-dimensional correlated systems.
+publications:
+- title: Solution of the one-dimensional Hubbard model for arbitrary electron density and large U
+  journal: Phys. Rev. B 37, 7541
+  year: 1988
+  url: https://doi.org/10.1103/PhysRevB.37.7541
+- title: Electronic structure of the quasi-one-dimensional organic conductor TTF-TCNQ
+  journal: Phys. Rev. B 68, 125111
+  year: 2003
+  url: https://doi.org/10.1103/PhysRevB.68.125111
+- title: Angle resolved photoemission spectroscopy reveals spin charge separation in metallic MoSe2 grain boundary
+  journal: Nat. Commun. 8, 14231
+  year: 2017
+  url: https://doi.org/10.1038/ncomms14231
+- title: Finite-temperature transport in gapless and gapped 1D integrable quantum systems
+  journal: Rep. Prog. Phys. 89, 034501
+  year: 2026
+  url: https://doi.org/10.1088/1361-6633/ae5072
+- title: 'Exact results for the Hubbard model on bipartite lattices in spatial dimensions d>1: Seven theorems from the full [SU(2)×SU(2)×U(1)]/Z2^2 symmetry'
+  journal: Phys. Rev. B 113, 155157
+  year: 2026
+  url: https://doi.org/10.1103/p1sc-sx2d

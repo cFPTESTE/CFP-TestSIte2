@@ -1,0 +1,29 @@
+name: Ricardo Rodrigues
+category: phd
+areas:
+- qft-holography
+keywords:
+- Conformal Bootstrap
+- S-matrix Bootstrap
+- Energy-Correlators
+- Non-perturbative methods
+email: rical.rodri@gmail.com
+office: FC3 – 332
+orcid: 0009-0009-8894-9854
+links:
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/2758338
+photo: ''
+bio: |
+  Ricardo completed his undergraduate and master's studies at the Faculdade de Ciências da Universidade do Porto (FCUP). He then began his PhD at FCUP in 2023 under the supervision of Prof. Miguel Costa and Prof. Vasco Gonçalves.
+
+  His research focuses on understanding the non-perturbative structure of Quantum Field Theories via the conformal and S-matrix bootstrap. These approaches allow for the study of physical theories at any value of the couplings and independently of a Lagrangian description. Additionally, he is interested in energy correlators, which connect formal bootstrap techniques to actual collider physics. These observables not only provide high-precision insights into QCD and jet substructure, but also offer a rigorous framework to study Lorentzian dynamics in conformal field theories.
+publications:
+- title: Two-loop integrals of half-BPS six-point functions on a line
+  journal: JHEP 05 (2024) 007
+  year: 2024
+  url: https://doi.org/10.1007/JHEP05(2024)007
+- title: On the space of U(N) scattering amplitudes
+  journal: JHEP 09 (2025) 076
+  year: 2025
+  url: https://doi.org/10.1007/JHEP09(2025)076

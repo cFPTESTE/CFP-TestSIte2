@@ -1,0 +1,41 @@
+name: Vasco Gonçalves
+category: researcher
+areas:
+- qft-holography
+keywords:
+- Quantum field theory
+- AdS/CFT
+email: vgoncalves@fc.up.pt
+office: FC3 – 321
+orcid: 0000-0001-8091-7959
+links:
+- label: Scopus
+  url: https://www.scopus.com/authid/detail.uri?authorId=55754409100
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=MwO0H64AAAAJ&hl=en&oi=sra
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/1267725?ui-citation-summary=true
+photo: ''
+bio: |
+  Vasco Gonçalves obtained his BSc, MSc and PhD in Physics from the University of Porto. From 2016 to 2020 he was a postdoctoral researcher at ICTP-SAIFR. He then returned to Porto as a postdoctoral researcher and later became a permanent Assistant Researcher. His main research interests are conformal field theories, gauge theories and holography.
+publications:
+- title: Defects in conformal field theory
+  journal: JHEP 04 (2016) 091
+  year: 2016
+  url: https://doi.org/10.1007/JHEP04(2016)091
+- title: Four point function of N=4 stress-tensor multiplet at strong coupling
+  journal: JHEP 04 (2015) 150
+  year: 2015
+  url: https://doi.org/10.1007/JHEP04(2015)150
+- title: 20' Five-Point Function from AdS5×S5 Supergravity
+  journal: JHEP 10 (2019) 247
+  year: 2019
+  url: https://doi.org/10.1007/JHEP10(2019)247
+- title: Nonlinear Gravitational Memory in the Post-Minkowskian Expansion
+  journal: Phys. Rev. Lett. 136, 121401
+  year: 2026
+  url: https://doi.org/10.1103/8m17-s2y8
+- title: Light-Cone Bootstrap of Higher Point Functions and Wilson Loop Duality
+  journal: Phys. Rev. Lett. 126, 121603
+  year: 2021
+  url: https://doi.org/10.1103/PhysRevLett.126.121603

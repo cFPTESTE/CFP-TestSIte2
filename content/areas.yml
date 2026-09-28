@@ -1,0 +1,105 @@
+# Research areas. "core: true" areas get their own section on the home page.
+# Order here is the order on the site. Edit the text freely.
+- id: quantum-materials
+  name: Quantum Materials
+  label: Quantum Materials   # short name used on tags and filters
+  short: Condensed matter theory
+  core: true
+  color: cm
+  summary: >-
+    Electronic, topological and collective phenomena in quantum materials, from
+    graphene and moiré heterostructures to quasiperiodic and strongly correlated
+    low-dimensional systems.
+  description: |
+    The largest group at CFP studies how dimensionality, geometry and interactions
+    shape the behaviour of electrons in solids. Work ranges from analytical models to
+    large-scale numerical simulation, often in close collaboration with experimental groups.
+  topics:
+    - name: 2D and moiré materials
+      text: Graphene, twisted and incommensurate heterostructures, narrow-band and flat-band physics.
+    - name: Quasiperiodic systems
+      text: Localization, multifractality and correlated phases in systems without translational order.
+    - name: Topological matter
+      text: Topological insulators and semimetals, the role of disorder and interactions, excitonic phases.
+    - name: Correlated and integrable systems
+      text: Hubbard-type models, Bethe ansatz, transport in low-dimensional correlated systems.
+    - name: Optical and nonlinear response
+      text: Nonlinear Hall effect, Berry-curvature effects, nonlinear optics and polaritons.
+
+- id: qft-holography
+  name: Quantum Field Theory & Holography
+  label: QFT & Holography   # short name used on tags and filters
+  short: Formal high energy theory
+  core: true
+  color: hep
+  summary: >-
+    Non-perturbative quantum field theory: the AdS/CFT correspondence, the conformal
+    and S-matrix bootstrap, gauge theories and lattice methods.
+  description: |
+    This group develops exact and non-perturbative tools to understand quantum field
+    theories at any coupling, with a strong focus on conformal field theories and
+    their holographic duals.
+  topics:
+    - name: AdS/CFT and holography
+      text: Correlation functions, Wilson loops and Kaluza-Klein modes in N=4 super Yang-Mills and its dual.
+    - name: Bootstrap methods
+      text: Conformal and S-matrix bootstrap, light-cone and multipoint bootstrap, energy correlators.
+    - name: Lattice and numerical field theory
+      text: Monte Carlo studies of conformal field theories and gauge theories; neural quantum states for matrix models.
+    - name: Solitons and defects
+      text: Topological defects, BPS solutions and defects in conformal field theory.
+
+- id: gravitation-cosmology
+  name: Gravitation & Cosmology
+  label: Gravitation & Cosmology   # short name used on tags and filters
+  short: Gravity, the early and late Universe
+  core: true
+  color: cos
+  summary: >-
+    Alternative theories of gravity, black holes and gravitational waves, inflation
+    and the dark sector, and tests of fundamental physics in space.
+  description: |
+    This group works at the interface between fundamental theory and observation,
+    using cosmological and astrophysical data to test gravity and the physics of the
+    early Universe.
+  topics:
+    - name: Modified gravity
+      text: Non-minimally coupled and f(R) theories, Weyl connection gravity, the Hubble tension.
+    - name: Black holes and gravitational waves
+      text: Black hole solutions and shadows, cosmologically coupled and primordial black holes, wave polarizations.
+    - name: Early Universe
+      text: Inflationary models, chain inflation and stochastic gravitational-wave backgrounds.
+    - name: Fundamental physics in space
+      text: Solar System tests of gravity and space-based experiments.
+
+- id: quantum-computation
+  name: Quantum Computation & Computational Methods
+  label: Quantum Computation   # short name used on tags and filters
+  short: Cross-cutting line
+  core: false
+  color: qc
+  summary: >-
+    Quantum algorithms and numerical methods shared across the centre, from
+    quantum data analysis to large-scale simulation and machine learning.
+  description: |
+    A cross-cutting line that brings together quantum computing and the numerical
+    methods used across CFP's research areas.
+  topics:
+    - name: Quantum algorithms
+      text: Quantum methods for data reconstruction, clustering and simulation of complex networks.
+    - name: Numerical methods
+      text: Spectral and transport methods for large systems, Monte Carlo, neural-network wave functions.
+
+- id: physics-education
+  name: Physics Education
+  label: Physics Education   # short name used on tags and filters
+  short: Other activities
+  core: false
+  color: edu
+  summary: >-
+    Research on how students learn physics, with a focus on metacognition and
+    active-learning environments.
+  description: |
+    Physics education research at CFP studies metacognitive strategies and
+    collaborative learning environments in physics teaching.
+  topics: []

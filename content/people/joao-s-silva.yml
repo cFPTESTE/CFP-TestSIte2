@@ -1,0 +1,32 @@
+name: João S. Silva
+category: phd
+areas:
+- quantum-materials
+affiliation: CeFEMA
+keywords:
+- Nodal loop semimetals
+- Disorder models
+- Transport
+- Topological insulators
+email: up201605496@up.pt
+office: FC3 – 104
+orcid: 0000-0002-9982-8419
+links:
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=tvhA_IQAAAAJ&hl=pt-PT
+photo: ''
+bio: |
+  João Santos Silva is a PhD Candidate in Theoretical Physics at the Faculty of Sciences of the University of Porto (FCUP), where he also completed his BSc and MSc degrees in Physics. His scientific trajectory includes research projects at FCUP and ICMM-CSIC in Spain, alongside teaching experience as an Invited Assistant at ISEP. Currently, his research focuses on the properties of topological matter lacking translational invariance. His main research interests revolve around the interplay between disorder, interactions, and nontrivial topological phases.
+publications:
+- title: Topological Anderson insulating phases in the interacting Haldane model
+  journal: Phys. Rev. B 109, 125145
+  year: 2024
+  url: https://doi.org/10.1103/PhysRevB.109.125145
+- title: Delocalization of topological surface states by diagonal disorder in nodal loop semimetals
+  journal: Phys. Rev. B 107, 045146
+  year: 2023
+  url: https://doi.org/10.1103/PhysRevB.107.045146
+- title: Disorder-induced instability of a Weyl nodal loop semimetal towards a diffusive topological metal with protected multifractal surface states
+  journal: Phys. Rev. B 111, L041116
+  year: 2025
+  url: https://doi.org/10.1103/PhysRevB.111.L041116

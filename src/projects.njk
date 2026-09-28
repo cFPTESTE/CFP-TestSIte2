@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Projects
+permalink: /projects/
+---
+{% from "macros.njk" import areaTags %}
+<div class="page-head">
+  <div class="eyebrow">Funding</div>
+  <h1>Projects</h1>
+  <p class="lede">Research projects hosted at or involving the Centro de Física do Porto.</p>
+</div>
+<div class="proj-grid">
+{% for pr in projects %}
+  <article class="proj">
+    <h3>{% if pr.url %}<a href="{{ pr.url }}" target="_blank" rel="noopener">{{ pr.acronym or pr.title }}</a>{% else %}{{ pr.acronym or pr.title }}{% endif %}</h3>
+    {% if pr.acronym and pr.title %}<div class="muted">{{ pr.title }}</div>{% endif %}
+    {% if pr.summary %}<p style="margin:0">{{ pr.summary }}</p>{% endif %}
+    <dl>
+      {% if pr.pi %}<dt>PI</dt><dd>{{ pr.pi }}</dd>{% endif %}
+      {% if pr.funding %}<dt>Funding</dt><dd>{{ pr.funding }}</dd>{% endif %}
+      {% if pr.reference %}<dt>Reference</dt><dd class="mono" style="font-size:13px">{{ pr.reference }}</dd>{% endif %}
+      {% if pr.start %}<dt>Period</dt><dd>{{ pr.start }}{% if pr.end %}–{{ pr.end }}{% endif %}</dd>{% endif %}
+    </dl>
+    {% if pr.areas %}{{ areaTags(pr.areas) }}{% endif %}
+  </article>
+{% else %}
+  <p class="empty">No projects listed yet.</p>
+{% endfor %}
+</div>

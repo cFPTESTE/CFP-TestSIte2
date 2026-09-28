@@ -1,0 +1,31 @@
+name: Bruno Fernandes
+category: phd
+areas:
+- qft-holography
+keywords:
+- Quantum field theory
+- Supersymmetry
+- Holography
+- Gauge theory
+email: cbruno.dfernandes@gmail.com
+office: FC3 – 332
+orcid: 0000-0003-0962-3485
+links:
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/2747088
+photo: ''
+bio: |
+  Bruno Fernandes obtained his Bachelor's degree in 2020 and his Master's degree in 2022, both from the University of Porto. He is currently a PhD student whose research focuses on calculating observables in conformal gauge theories, namely N=4 Supersymmetric Yang-Mills theory, such as correlation functions of local operators and Wilson loops. His work exploits the enhanced symmetry of these theories to obtain explicit results. The calculation of these quantities gives insights into how to approach more general, non-conformal gauge theories, and in particular are important steps towards calculating scattering amplitudes which can be experimentally observed in particle colliders.
+publications:
+- title: 'Two-loop five-point integrals: light, heavy and large-spin correlators'
+  journal: JHEP 10 (2024) 242
+  year: 2024
+  url: https://doi.org/10.1007/JHEP10(2024)242
+- title: 'Wilson Loops with Lagrangians: Large-Spin Operator Product Expansion and Cusp Anomalous Dimension Dictionary'
+  journal: Phys. Rev. Lett. 134, 141601
+  year: 2025
+  url: https://doi.org/10.1103/PhysRevLett.134.141601
+- title: AdS×S Mellin Bootstrap, Hidden 10D Symmetry and Five-Point Kaluza-Klein Functions in N=4 Supersymmetric Yang-Mills Theory
+  journal: Phys. Rev. Lett. 136, 081602
+  year: 2026
+  url: https://doi.org/10.1103/3qyd-n621

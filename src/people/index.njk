@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: People
+---
+{% from "macros.njk" import personCard %}
+<div class="page-head">
+  <div class="eyebrow">{{ people | length }} members</div>
+  <h1>People</h1>
+  <p class="lede">Faculty, researchers and students of the Centro de Física do Porto.</p>
+</div>
+
+<div class="filters">
+  <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
+    <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
+    {% for a in areas %}<button class="chip" type="button" data-area="{{ a.id }}" data-c="{{ a.color }}" aria-pressed="false"><span class="dot"></span>{{ a.label or a.name }}</button>{% endfor %}
+  </div>
+  <label class="muted" for="q" style="font-size:14px">Search by name or keyword</label>
+  <input type="search" id="q" placeholder="e.g. moiré, bootstrap, inflation">
+</div>
+
+{% for c in categories %}{% set list = people | inCategory(c.id) %}{% if list.length %}
+<section class="cat" data-cat>
+  <h2>{{ c.label }} <small data-count>{{ list.length }}</small></h2>
+  <div class="people-grid">{% for p in list %}{{ personCard(p) }}{% endfor %}</div>
+</section>
+{% endif %}{% endfor %}
+<p class="empty" id="none" hidden>No one matches this filter. Choose "All" or clear the search.</p>
+
+<script>
+(()=>{let area="";const q=document.getElementById("q");
+function apply(){const s=q.value.trim().toLowerCase();let any=0;
+ document.querySelectorAll("[data-cat]").forEach(sec=>{let n=0;
+  sec.querySelectorAll(".pcard").forEach(c=>{const ok=(!area||c.dataset.areas.split(" ").includes(area))&&(!s||c.dataset.search.includes(s));c.hidden=!ok;if(ok)n++;});
+  sec.hidden=!n;sec.querySelector("[data-count]").textContent=n;any+=n;});
+ document.getElementById("none").hidden=!!any;}
+document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;area=b.dataset.area;
+ document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));apply();});
+q.addEventListener("input",apply);})();
+</script>

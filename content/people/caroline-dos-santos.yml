@@ -1,0 +1,35 @@
+name: Caroline dos Santos
+category: faculty
+areas:
+- qft-holography
+keywords:
+- Topological defects
+- Sine-Gordon model
+- BPS solutions
+email: cssilva@fc.up.pt
+office: FC3 – 319
+orcid: 0000-0003-2083-999X
+photo: ''
+bio: |
+  Caroline dos Santos received her PhD from Durham University in 1999, supervised by Ruth Gregory at the Centre for Particle Theory (CPT), Department of Mathematical Sciences. She has taught at the Department of Physics of the Faculty of Sciences of the University of Porto since 1991 and has been a member of Centro de Física do Porto since 2002.
+publications:
+- title: BPS solutions to a generalized Maxwell-Higgs model
+  journal: Eur. Phys. J. C 71, 1833
+  year: 2011
+  url: https://doi.org/10.1140/epjc/s10052-011-1833-9
+- title: Generalized sine-Gordon solitons
+  journal: 'J. Phys. A: Math. Theor. 44, 425402'
+  year: 2011
+  url: https://doi.org/10.1088/1751-8113/44/42/425402
+- title: Lump-like solitons in a generalized Abelian-Higgs Chern-Simons model
+  journal: Eur. Phys. J. C 71, 1519
+  year: 2011
+  url: https://doi.org/10.1140/epjc/s10052-010-1519-8
+- title: Compact solitons in an Abelian-Higgs Chern-Simons model
+  journal: Phys. Rev. D 82, 125009
+  year: 2010
+  url: https://doi.org/10.1103/PhysRevD.82.125009
+- title: Compactlike kinks and vortices in generalized models
+  journal: Phys. Rev. D 81, 125016
+  year: 2010
+  url: https://doi.org/10.1103/PhysRevD.81.125016

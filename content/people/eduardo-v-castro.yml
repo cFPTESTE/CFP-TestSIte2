@@ -1,0 +1,43 @@
+name: Eduardo V. Castro
+category: faculty
+areas:
+- quantum-materials
+affiliation: Centro de Física das Universidades do Minho e do Porto, LaPMET, Departamento de Física e Astronomia, Faculdade de Ciências, Universidade do Porto
+keywords:
+- 2D materials
+- Topological Materials
+- Moiré systems
+email: evcastro@fc.up.pt
+office: FC3 – 315
+orcid: 0000-0002-0993-3734
+links:
+- label: Personal page
+  url: https://eduardovcastro.weebly.com/
+- label: Scopus
+  url: https://www.scopus.com/pages/authors/24466388300
+- label: Google Scholar
+  url: http://scholar.google.com/citations?hl=en&user=cCk9DqcAAAAJ
+photo: ''
+bio: |
+  Eduardo V. Castro is an Associate Professor at the Physics and Astronomy Department of the Faculty of Sciences of University Porto (UP). After his PhD, obtained from UP in 2008, he was a visiting post-doc at MPI-PKS in Dresden, and a Juan de la Cierva post-doc at ICMM-CSIC in Madrid. In 2012 he joined IST at University of Lisbon as an Assistant Professor, and moved to UP in 2018. E. V. Castro has a background in Theoretical Condensed Matter Physics, with focus on phenomenological descriptions of 2D systems and topological matter.
+publications:
+- title: Incommensurability enabled quasi-fractal order in 1D narrow-band moiré systems
+  journal: Nat. Phys. 20, 1933
+  year: 2024
+  url: https://doi.org/10.1038/s41567-024-02662-2
+- title: Incommensurability-induced sub-ballistic narrow-band-states in twisted bilayer graphene
+  journal: 2D Mater. 9, 011001
+  year: 2022
+  url: https://doi.org/10.1088/2053-1583/ac3259
+- title: Temperature-Driven Gapless Topological Insulator
+  journal: Phys. Rev. Lett. 122, 126601
+  year: 2019
+  url: https://doi.org/10.1103/PhysRevLett.122.126601
+- title: Limits on Charge Carrier Mobility in Suspended Graphene due to Flexural Phonons
+  journal: Phys. Rev. Lett. 105, 266601
+  year: 2010
+  url: https://doi.org/10.1103/PhysRevLett.105.266601
+- title: 'Biased Bilayer Graphene: Semiconductor with a Gap Tunable by the Electric Field Effect'
+  journal: Phys. Rev. Lett. 99, 216802
+  year: 2007
+  url: https://doi.org/10.1103/PhysRevLett.99.216802

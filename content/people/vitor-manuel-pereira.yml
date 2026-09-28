@@ -1,0 +1,49 @@
+name: Vitor Manuel Pereira
+category: faculty
+areas:
+- quantum-materials
+affiliation: LaPMET - Laboratory of Physics for Materials and Emergent Technologies
+keywords:
+- Quantum condensed matter theory
+- Quantum materials
+- 2D materials
+- Topological materials
+- Interacting and collective states in quantum materials
+email: vmpereir@fc.up.pt
+office: FC3 – 318
+orcid: 0000-0002-3462-524X
+links:
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=GWaLRssAAAAJ
+- label: Web of Science
+  url: https://www.webofscience.com/wos/author/record/1580840
+photo: ''
+bio: |
+  Vitor is a quantum condensed matter theorist interested in quantum materials. From 2010 to 2020, he was Principal Investigator at the National University of Singapore, where he was a founding member of the Centre for Advanced 2D Materials. He received his PhD in theoretical condensed matter physics for research carried out jointly at Boston University and the University of Porto.
+
+  He has dexterity in a variety of analytical methods as well as advanced numerical techniques to investigate novel properties and potential applications of quantum materials. A prevalent theme of his work has been developing microscopic models that explain experimental observations and predict new physical phenomena, often in close collaboration with experimental groups in Europe, the United States and Asia.
+
+  He has made recognized contributions to the rise of graphene and more broadly across the field of 2D quantum materials, tackling themes of electronic interactions and strong correlations, disorder, strain-engineering, impurity physics, collective many-body effects, nonlinear response, spintronics, and topological phenomena.
+
+  Vitor has published extensively in leading international journals, including a full review article in Rev. Mod. Phys., several Nature-family journals and Phys. Rev. Lett., and has been a regular invited speaker within this field. He is also actively involved in teaching, doctoral supervision, postdoctoral mentoring, and advanced research training.
+publications:
+- title: Topological excitons
+  journal: Nat. Phys. 18, 6
+  year: 2022
+  url: https://doi.org/10.1038/s41567-021-01466-y
+- title: Canted Persistent Spin Texture and Quantum Spin Hall Effect in WTe2
+  journal: Phys. Rev. Lett. 125, 256603
+  year: 2020
+  url: https://doi.org/10.1103/PhysRevLett.125.256603
+- title: Coexistence of large conventional and planar spin Hall effect with long spin diffusion length in a low-symmetry semimetal at room temperature
+  journal: Nat. Mater. 19, 292
+  year: 2020
+  url: https://doi.org/10.1038/s41563-019-0600-4
+- title: Reproduction of the Charge Density Wave Phase Diagram in 1T-TiSe2 Exposes its Excitonic Character
+  journal: Phys. Rev. Lett. 121, 226602
+  year: 2018
+  url: https://doi.org/10.1103/PhysRevLett.121.226602
+- title: 'Electron-electron interactions in graphene: Current status and perspectives'
+  journal: Rev. Mod. Phys. 84, 1067
+  year: 2012
+  url: https://doi.org/10.1103/RevModPhys.84.1067

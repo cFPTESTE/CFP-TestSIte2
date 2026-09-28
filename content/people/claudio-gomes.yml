@@ -1,0 +1,39 @@
+name: Cláudio Gomes
+category: researcher
+areas:
+- gravitation-cosmology
+affiliation: Okeanos Institute
+keywords:
+- Alternative Theories of Gravity
+- Gravitation
+- Fundamental Physics in Space
+- Cosmology
+email: claudio.gomes@fc.up.pt
+orcid: 0000-0001-6022-459X
+links:
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/1287135
+photo: ''
+bio: |
+  Cláudio Gomes holds a PhD in Theoretical Physics in the areas of Gravitation and Cosmology. His research interests include alternative theories of gravity, gravitational waves, black holes, cosmic inflation, dark matter and dark energy, as well as interdisciplinary approaches in physics.
+publications:
+- title: Gravitational wave propagation in generalized hybrid metric-Palatini gravity
+  journal: Eur. Phys. J. C 85, 1359
+  year: 2025
+  url: https://doi.org/10.1140/epjc/s10052-025-15085-x
+- title: Black hole shadows in nonminimally coupled Weyl connection gravity
+  journal: Eur. Phys. J. C 86, 707
+  year: 2026
+  url: https://doi.org/10.1140/epjc/s10052-026-16006-2
+- title: Black Hole Solutions in Non-Minimally Coupled Weyl Connection Gravity
+  journal: Universe 10, 433
+  year: 2024
+  url: https://doi.org/10.3390/universe10110433
+- title: Jeans instability in non-minimal matter-curvature coupling gravity
+  journal: Eur. Phys. J. C 80, 633
+  year: 2020
+  url: https://doi.org/10.1140/epjc/s10052-020-8189-y
+- title: 'Inflation with Planck data: A survey of some exotic inflationary models'
+  journal: Phys. Rev. D 97, 104061
+  year: 2018
+  url: https://doi.org/10.1103/PhysRevD.97.104061

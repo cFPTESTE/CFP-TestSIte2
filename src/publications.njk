@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: Publications
+permalink: /publications/
+---
+{% from "macros.njk" import pubItem %}
+<div class="page-head">
+  <div class="eyebrow">{{ publications | length }} papers</div>
+  <h1>Selected publications</h1>
+  <p class="lede">Papers chosen by each member as representative of their work. For complete lists, see the ORCID, INSPIRE or Google Scholar links on each profile.</p>
+</div>
+<div class="filters">
+  <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
+    <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
+    {% for a in areas %}<button class="chip" type="button" data-area="{{ a.id }}" data-c="{{ a.color }}" aria-pressed="false"><span class="dot"></span>{{ a.label or a.name }}</button>{% endfor %}
+  </div>
+</div>
+{% for y in pubYears %}
+<section data-year>
+  <h2 class="year">{{ y }}</h2>
+  <ul class="pubs">{% for pub in publications | byYear(y) %}{{ pubItem(pub) }}{% endfor %}</ul>
+</section>
+{% endfor %}
+<script>
+(()=>{document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const area=b.dataset.area;
+ document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+ document.querySelectorAll("[data-year]").forEach(sec=>{let n=0;sec.querySelectorAll("li[data-areas]").forEach(d=>{const ok=!area||d.dataset.areas.split(" ").includes(area);d.hidden=!ok;if(ok)n++;});sec.hidden=!n;});});})();
+</script>

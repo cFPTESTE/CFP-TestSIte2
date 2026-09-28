@@ -1,0 +1,26 @@
+name: Ricardo Oliveira
+category: phd
+areas:
+- quantum-materials
+keywords:
+- Superconductivity
+- Quasiperiodicity
+- Moiré materials
+email: up201706996@up.pt
+office: FC3 – 103
+orcid: 0000-0001-9305-1998
+links:
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=rOBboUsAAAAJ&hl=pt-PT
+photo: ''
+bio: |
+  Ricardo Oliveira holds a Master's degree from the Faculty of Sciences of the University of Porto (FCUP) and is currently a PhD student and researcher at the Centro de Física do Porto (CFP). His research focuses on theoretical and computational condensed matter physics, with a particular interest in low-dimensional systems, quasiperiodic materials, and moiré physics. His work explores electronic properties and correlated states, aiming to uncover how spatial order, dimensionality, and quantum criticality shape novel material behaviors.
+publications:
+- title: Quasiperiodicity-induced enhancement of superconductivity in one-dimensional critical systems
+  journal: Phys. Rev. B 113, 174206
+  year: 2026
+  url: https://doi.org/10.1103/dq2r-6gxd
+- title: Local Density of States as a Probe of Multifractality in Quasiperiodic Moiré Materials
+  journal: arXiv:2510.20575
+  year: 2025
+  url: https://arxiv.org/abs/2510.20575

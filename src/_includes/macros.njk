@@ -1,0 +1,26 @@
+{% macro avatar(p, cls="") %}{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}<span class="av {{ cls }}" data-c="{{ a0.color }}" aria-hidden="true">{% if p.photo %}<img src="{{ p.photo }}" alt="">{% else %}{{ p.initials }}{% endif %}</span>{% endmacro %}
+
+{% macro areaTags(ids) %}<span class="tags">{% for id in ids %}{% set a = id | area %}<a class="tag" data-c="{{ a.color }}" href="/research/{{ a.id }}/">{{ a.label or a.name }}</a>{% endfor %}</span>{% endmacro %}
+
+{% macro personCard(p) %}{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}
+{% if p.pending %}
+<div class="pcard pending" data-c="{{ a0.color }}" data-areas="{{ p.areas | join(' ') }}" data-search="{{ p.name | lower }}">
+  {{ avatar(p) }}
+  <div><div class="n">{{ p.name }}</div><div class="k">Profile coming soon</div>{% if p.areas.length %}<div class="tags">{% for id in p.areas %}{% set a = id | area %}<span class="tag" data-c="{{ a.color }}">{{ a.label or a.name }}</span>{% endfor %}</div>{% endif %}</div>
+</div>
+{% else %}
+<a class="pcard" href="/people/{{ p.slug }}/" data-c="{{ a0.color }}" data-areas="{{ p.areas | join(' ') }}" data-search="{{ (p.name + ' ' + (p.keywords | join(' ')) + ' ' + (p.affiliation or '')) | lower }}">
+  {{ avatar(p) }}
+  <div><div class="n">{{ p.name }}</div><div class="k">{{ p.keywords | join(" · ") }}</div>
+  <div class="tags">{% for id in p.areas %}{% set a = id | area %}<span class="tag" data-c="{{ a.color }}">{{ a.label or a.name }}</span>{% endfor %}</div></div>
+</a>
+{% endif %}
+{% endmacro %}
+
+{% macro pubItem(pub, showWho=true) %}
+<li data-areas="{{ (pub.areas or []) | join(' ') }}">
+  <a class="t" href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title or pub.url }}</a>
+  <span class="j">{{ pub.journal }}{% if pub.year and (pub.journal | string).indexOf(pub.year | string) == -1 %} ({{ pub.year }}){% endif %}</span>
+  {% if showWho and pub.members %}<span class="who">{% for m in pub.members %}<a href="/people/{{ m.slug }}/">{{ m.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
+</li>
+{% endmacro %}

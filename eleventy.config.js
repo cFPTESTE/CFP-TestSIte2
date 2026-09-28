@@ -1,0 +1,89 @@
+import fs from "node:fs";
+import path from "node:path";
+import * as yaml from "js-yaml";
+import { HtmlBasePlugin } from "@11ty/eleventy";
+
+const CONTENT = "content";
+const readYaml = (f) => yaml.load(fs.readFileSync(path.join(CONTENT, f), "utf8"));
+
+const CATEGORY_ORDER = ["faculty", "researcher", "phd", "msc"];
+const CATEGORY_LABEL = { faculty: "Faculty", researcher: "Researchers", phd: "PhD students", msc: "MSc students" };
+const CATEGORY_SINGULAR = { faculty: "Faculty", researcher: "Researcher", phd: "PhD student", msc: "MSc student" };
+
+function slugify(s) {
+  return s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+// Sort by surname-ish: last word, then full name
+const sortKey = (n) => { const w = n.split(/\s+/); return (w[w.length - 1] + " " + n).toLowerCase(); };
+
+function loadPeople() {
+  const dir = path.join(CONTENT, "people");
+  return fs.readdirSync(dir)
+    .filter((f) => f.endsWith(".yml") || f.endsWith(".yaml"))
+    .map((f) => {
+      const p = yaml.load(fs.readFileSync(path.join(dir, f), "utf8"));
+      p.slug = path.basename(f).replace(/\.ya?ml$/, "");
+      p.areas = p.areas || [];
+      p.keywords = p.keywords || [];
+      p.links = p.links || [];
+      p.publications = (p.publications || []).sort((a, b) => (b.year || 0) - (a.year || 0));
+      p.categoryLabel = CATEGORY_SINGULAR[p.category] || p.category;
+      p.initials = p.name.split(/\s+/).filter((w) => /^\p{Lu}/u.test(w)).map((w) => w[0]).filter((_, i, a) => i === 0 || i === a.length - 1).join("");
+      return p;
+    })
+    .sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name), "pt"));
+}
+
+export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addWatchTarget(CONTENT);
+
+  const people = loadPeople();
+  const areas = readYaml("areas.yml");
+  const site = readYaml("site.yml");
+  const projects = (readYaml("projects.yml") || []).filter((p) => !p.hidden);
+
+  // Publications: merge duplicates across members (same URL)
+  const pubMap = new Map();
+  for (const p of people) {
+    for (const pub of p.publications) {
+      const key = (pub.url || pub.title).toLowerCase();
+      if (!pubMap.has(key)) pubMap.set(key, { ...pub, members: [], areas: new Set() });
+      const e = pubMap.get(key);
+      e.members.push({ name: p.name, slug: p.slug });
+      p.areas.forEach((a) => e.areas.add(a));
+    }
+  }
+  const publications = [...pubMap.values()].map((e) => ({ ...e, areas: [...e.areas] }))
+    .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
+  const pubYears = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
+
+  eleventyConfig.addGlobalData("site", site);
+  eleventyConfig.addGlobalData("people", people);
+  eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
+  eleventyConfig.addGlobalData("areas", areas);
+  eleventyConfig.addGlobalData("projects", projects);
+  eleventyConfig.addGlobalData("publications", publications);
+  eleventyConfig.addGlobalData("pubYears", pubYears);
+  eleventyConfig.addGlobalData("categories", CATEGORY_ORDER.map((id) => ({ id, label: CATEGORY_LABEL[id] })));
+  eleventyConfig.addGlobalData("build", { year: new Date().getFullYear() });
+
+  eleventyConfig.addFilter("inCategory", (list, c) => list.filter((p) => p.category === c));
+  eleventyConfig.addFilter("inArea", (list, a) => list.filter((p) => (p.areas || []).includes(a)));
+  eleventyConfig.addFilter("byYear", (list, y) => list.filter((p) => p.year === y));
+  eleventyConfig.addFilter("area", (id) => areas.find((a) => a.id === id) || { id, name: id, color: "muted" });
+  eleventyConfig.addFilter("slugify2", slugify);
+  eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
+  eleventyConfig.addFilter("paragraphs", (s) => (s || "").trim().split(/\n\s*\n/).map((x) => x.trim()));
+  eleventyConfig.addFilter("senior", (list) => list.filter((p) => p.category === "faculty" || p.category === "researcher"));
+  eleventyConfig.addFilter("students", (list) => list.filter((p) => p.category === "phd" || p.category === "msc"));
+
+  return {
+    dir: { input: "src", includes: "_includes", output: "_site" },
+    templateFormats: ["njk", "md"],
+    htmlTemplateEngine: "njk",
+    // Set by the GitHub Action for project pages (https://<user>.github.io/<repo>/)
+    pathPrefix: process.env.PATH_PREFIX || "/",
+  };
+}

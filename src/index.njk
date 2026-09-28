@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+{% from "macros.njk" import avatar, pubItem %}
+<section class="hero">
+  <div class="page-head" style="margin:0">
+    <div class="eyebrow">Faculty of Sciences · University of Porto</div>
+    <h1>Theoretical physics, from quantum materials to the early Universe</h1>
+    <p class="lede">{{ site.about }}</p>
+    <ul class="facts">
+      <li><b>{{ site.founded }}</b><span>Founded</span></li>
+      <li><b>{{ people | senior | length }}</b><span>Faculty and researchers</span></li>
+      <li><b>{{ people | students | length }}</b><span>PhD and MSc students</span></li>
+      <li><b>{{ site.fct_recognised }}</b><span>Recognised by FCT</span></li>
+    </ul>
+  </div>
+  {% include "hero-art.njk" %}
+</section>
+
+<section class="section" aria-labelledby="areas-h">
+  <div class="section-head"><h2 id="areas-h">Research areas</h2><a href="/research/">All research</a></div>
+  <div class="area-list">
+  {% for a in areas %}{% if a.core %}
+    {% set members = people | inArea(a.id) %}
+    <article class="area-row" data-c="{{ a.color }}">
+      <div>
+        <div class="kicker">{{ a.short }}</div>
+        <h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3>
+        <p>{{ a.summary }}</p>
+      </div>
+      <div>
+        <ul class="topics">{% for t in a.topics %}<li>{{ t.name }}</li>{% endfor %}</ul>
+        <div class="faces">{% for p in members | senior %}<a href="{{ '/people/' + p.slug + '/' if not p.pending else '/people/' }}" title="{{ p.name }}">{{ avatar(p) }}</a>{% endfor %}</div>
+        <div class="count-line">{{ members | senior | length }} faculty and researchers · {{ members | students | length }} students</div>
+      </div>
+    </article>
+  {% endif %}{% endfor %}
+  </div>
+  <div class="minor-areas">
+  {% for a in areas %}{% if not a.core %}
+    <div class="minor" data-c="{{ a.color }}"><div class="kicker">{{ a.short }}</div><h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3><p>{{ a.summary }}</p></div>
+  {% endif %}{% endfor %}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="pubs-h">
+  <div class="section-head"><h2 id="pubs-h">Recent publications</h2><a href="/publications/">All selected publications</a></div>
+  <ul class="pubs">{% for pub in publications | batch(6) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
+</section>

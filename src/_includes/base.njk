@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+<meta name="description" content="{{ description or site.tagline }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{ site.name }} home">
+      {% include "mark.njk" %}
+      <span><b>{{ site.name }}</b><small>{{ site.tagline }}</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      {% set navs = [["/research/","Research"],["/people/","People"],["/publications/","Publications"],["/projects/","Projects"],["/contact/","Contact"]] %}
+      {% for n in navs %}<a href="{{ n[0] }}"{% if page.url.startsWith(n[0]) %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap">
+{{ content | safe }}
+</div></main>
+<footer class="site-footer">
+  <div class="wrap">
+    <address>{% for l in site.address %}{{ l }}<br>{% endfor %}</address>
+    <div>{{ site.name }} · founded {{ site.founded }}<br>© {{ build.year }}</div>
+  </div>
+</footer>
+<script>
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
+ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1400)}).catch(()=>{});});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+name: Duarte Magano
+category: faculty
+areas:
+- quantum-computation
+affiliation: Faculdade de Ciências da Universidade do Porto
+keywords:
+- Quantum computing
+- Quantum algorithms
+email: duarte.magano@fc.up.pt
+orcid: 0000-0001-5015-4217
+links:
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=_M_vFIYAAAAJ&hl=en
+photo: ''
+bio: |
+  Duarte Magano works on quantum computing and its applications. He obtained his bachelor's degree in Physics from the University of Porto and his master's degree in Theoretical Physics from the École Normale Supérieure in Paris, and completed a PhD in Physics at the University of Lisbon, carrying out his doctoral research in quantum computing at Instituto Superior Técnico and Instituto de Telecomunicações.
+
+  His research interests include quantum algorithms, quantum approaches to data analysis, and computational methods for near-term quantum devices. He has developed quantum methods for classical data-reconstruction problems, including particle-track reconstruction, clustering and link prediction. His work has also explored the quantum simulation of complex networks, super-resolution techniques for quantum simulation, and trade-offs between sampling complexity and quantum-circuit depth.
+
+  In addition to his academic research, he has experience in industrial research and development and currently works on advanced autonomous and decision-making systems for defence applications.
+publications:
+- title: Quantum speedup for track reconstruction in particle accelerators
+  journal: Phys. Rev. D 105, 076012
+  year: 2022
+  url: https://doi.org/10.1103/PhysRevD.105.076012
+- title: Quantum density peak clustering
+  journal: Quantum Mach. Intell. 5, 9
+  year: 2023
+  url: https://doi.org/10.1007/s42484-022-00090-0
+- title: On the quantum simulation of complex networks
+  journal: SciPost Phys. Core 6, 058
+  year: 2023
+  url: https://doi.org/10.21468/SciPostPhysCore.6.3.058
+- title: Superresolution of Green's functions on noisy quantum computers
+  journal: Phys. Rev. A 108, 012618
+  year: 2023
+  url: https://doi.org/10.1103/PhysRevA.108.012618
+- title: Simplifying a classical-quantum algorithm interpolation with quantum singular value transformations
+  journal: Phys. Rev. A 106, 062419
+  year: 2022
+  url: https://doi.org/10.1103/PhysRevA.106.062419

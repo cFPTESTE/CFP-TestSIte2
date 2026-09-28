@@ -1,0 +1,17 @@
+name: Centro de Física do Porto
+short: CFP
+tagline: Theoretical physics at the University of Porto
+about: >-
+  The Centro de Física do Porto (CFP) is a research unit based at the Department of
+  Physics and Astronomy of the Faculty of Sciences of the University of Porto. It is
+  devoted to research in theoretical physics: quantum physics and fields in high energy
+  and condensed matter, gravitation and cosmology.
+founded: 1994
+fct_recognised: 1997
+address:
+  - Departamento de Física e Astronomia
+  - Faculdade de Ciências da Universidade do Porto
+  - Rua do Campo Alegre 687
+  - 4169-007 Porto, Portugal
+# Contact email for the centre (fill in):
+email: ""
