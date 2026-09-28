@@ -326,3 +326,5 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .tbg-label{position:absolute;right:24px;bottom:20px;z-index:1;display:flex;gap:10px;align-items:baseline;font:500 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--night-muted);background:color-mix(in srgb,var(--night) 70%,transparent);padding:6px 10px}
 .tbg-label b{font:700 15px var(--sans);letter-spacing:0;text-transform:none;color:var(--fcup);font-variant-numeric:tabular-nums;min-width:6.5ch}
 @media (max-width:560px){.tbg-label{right:12px;bottom:10px}}
+.art-stack{position:relative;aspect-ratio:1/1}
+.art-stack svg,.art-stack canvas{position:absolute;inset:0;width:100%;height:100%}

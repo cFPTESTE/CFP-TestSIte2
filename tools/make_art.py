@@ -43,11 +43,10 @@ for k in range(n):
     t=2*math.pi*k/n
     for m,op in [(3,'.9'),(5,'.55'),(8,'.3')]:
         paths.append(f'<path d="{geodesic(t,t+2*math.pi*m/n)}" opacity="{op}"/>')
-ads=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1.1">{"".join(paths)}'
-     f'<animateTransform attributeName="transform" type="rotate" from="0 {C} {C}" to="360 {C} {C}" dur="140s" repeatCount="indefinite"/></g>'
-     f'<circle cx="{C}" cy="{C}" r="{R}" fill="none" stroke="var(--art-b)" stroke-width="2.5"/>'
-     f'<circle cx="{C}" cy="{C}" r="4" fill="var(--art-b)"/>'
-     f'<circle cx="{C}" cy="{C}" r="6" fill="none" stroke="var(--art-b)"><animate attributeName="r" values="6;60" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="4s" repeatCount="indefinite"/></circle></svg>')
+# static background (faint geodesics + boundary) with a canvas on top where
+# src/assets/js/witten.js animates a Witten exchange diagram
+ads=(f'<div class="art art-stack" data-art="witten"><svg viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1" opacity=".35">{"".join(paths)}</g>'
+     f'<circle cx="{C}" cy="{C}" r="{R}" fill="none" stroke="var(--art-b)" stroke-width="2.5"/></svg><canvas aria-hidden="true"></canvas></div>')
 
 # 3. Gravitation: warped spacetime grid (embedding diagram) in oblique projection
 def z(x,y): return -95/math.sqrt((x*x+y*y)/900+1)
