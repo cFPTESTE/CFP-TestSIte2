@@ -42,6 +42,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget(CONTENT);
 
   const people = loadPeople();
+  // Preview only: PHOTO_DEMO="slug:/assets/people/file.jpg" shows how a profile photo looks
+  if (process.env.PHOTO_DEMO) { const [s, f] = process.env.PHOTO_DEMO.split(":"); const p = people.find((x) => x.slug === s); if (p) p.photo = f; }
   const areas = readYaml("areas.yml");
   const site = readYaml("site.yml");
   if (process.env.SITE_THEME !== undefined) site.theme = process.env.SITE_THEME;

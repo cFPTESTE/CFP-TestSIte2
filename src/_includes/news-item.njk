@@ -6,7 +6,9 @@ layout: base.njk
 <div data-c="{{ a.color }}">
 {{ pageBand('<a href="/news/">News</a> · ' + (page.date | dateLong), title, summary) }}
 <div class="wrap">
+  {% if image %}<figure class="news-figure"><img src="{{ image }}" alt="{{ image_alt or '' }}" onerror="this.closest('figure').remove()">{% if image_credit %}<figcaption>Photo: {{ image_credit }}</figcaption>{% endif %}</figure>{% endif %}
   <article class="section prose news-body">{{ content | safe }}</article>
+  {% if external %}<p style="margin-top:28px"><a class="btn outline" href="{{ external }}" target="_blank" rel="noopener">Read the full article · {{ external_label or "external link" }}</a></p>{% endif %}
   <p style="margin-top:40px"><a class="more" href="/news/">All news and seminars</a></p>
 </div>
 </div>

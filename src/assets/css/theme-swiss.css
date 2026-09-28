@@ -136,3 +136,6 @@ a.pcard:hover{box-shadow:none;background:var(--hover);transform:none}
 @media (max-width:620px){.profile-band .wrap{flex-wrap:wrap;align-items:flex-start}}
 .tbg-label{color:#0A0A0A;background:color-mix(in srgb,var(--fcup) 75%,transparent)}
 .tbg-label b{color:var(--navy)}
+.news-img{margin:0 0 6px;border-radius:0}
+.news-figure img{border-radius:0}
+.btn.outline{border:2px solid var(--rule);background:transparent}

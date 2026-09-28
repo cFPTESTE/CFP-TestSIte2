@@ -70,7 +70,8 @@
 {% endmacro %}
 
 {% macro newsCard(n) %}{% set a = (n.data.area | area) if n.data.area else {color:"fcup"} %}
-<a class="news-card" href="{{ n.url }}" data-c="{{ a.color }}">
+<a class="news-card{% if n.data.image %} has-img{% endif %}" href="{{ n.url }}" data-c="{{ a.color }}">
+  {% if n.data.image %}<span class="news-img"><img src="{{ n.data.image }}" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>{% endif %}
   <time datetime="{{ n.date | isoDate }}">{{ n.date | dateLong }}</time>
   <h3>{{ n.data.title }}</h3>
   {% if n.data.summary %}<p>{{ n.data.summary }}</p>{% endif %}
