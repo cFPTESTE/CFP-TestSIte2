@@ -51,5 +51,6 @@
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1400)}).catch(()=>{});});
 </script>
+<script src="/assets/js/motion.js" defer></script>
 </body>
 </html>

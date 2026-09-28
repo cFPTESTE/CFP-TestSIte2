@@ -14,10 +14,10 @@ layout: base.njk
         <a class="btn ghost" href="/people/">Meet the people</a>
       </div>
       <ul class="facts">
-        <li><b>{{ people | senior | length }}</b><span>Faculty &amp; researchers</span></li>
-        <li><b>{{ people | students | length }}</b><span>PhD &amp; MSc students</span></li>
-        <li><b>3</b><span>Core research areas</span></li>
-        <li><b>{{ site.fct_recognised }}</b><span>Recognised by FCT</span></li>
+        <li><b data-count-up>{{ people | senior | length }}</b><span>Faculty &amp; researchers</span></li>
+        <li><b data-count-up>{{ people | students | length }}</b><span>PhD &amp; MSc students</span></li>
+        <li><b data-count-up>3</b><span>Core research areas</span></li>
+        <li><b data-count-up>{{ site.fct_recognised }}</b><span>Recognised by FCT</span></li>
       </ul>
     </div>
   </div>
@@ -68,7 +68,9 @@ layout: base.njk
   const still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css=getComputedStyle(document.documentElement);
   const A=css.getPropertyValue("--art-a").trim()||"#6FA8C7", B=css.getPropertyValue("--art-b").trim()||"#F0A35E";
-  let W=0,H=0,dpr=1,visible=true,t0=performance.now();
+  let W=0,H=0,dpr=1,visible=true,t0=performance.now(),mx=0,my=0,tx=0,ty=0;
+  cv.parentElement.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;});
+  cv.parentElement.addEventListener("pointerleave",()=>{tx=0;ty=0;});
   function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;}
   function lattice(theta,color,cx,cy,a,r){
     ctx.fillStyle=color;
@@ -83,8 +85,9 @@ layout: base.njk
   function draw(now){
     const t=(now-t0)/1000;
     ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
-    const cx=W*0.78, cy=H*0.5, a=W<700?11:13;
-    const twist=(3.2+2.2*Math.sin(t*0.12))*Math.PI/180;
+    mx+=(tx-mx)*0.05; my+=(ty-my)*0.05;
+    const cx=W*(0.78+mx*0.08), cy=H*(0.5+my*0.12), a=W<700?11:13;
+    const twist=(3.2+2.2*Math.sin(t*0.12)+mx*3)*Math.PI/180;
     ctx.globalAlpha=.65; lattice(t*0.01,A,cx,cy,a,1.4);
     ctx.globalAlpha=.7;  lattice(t*0.01+twist,B,cx,cy,a,1.4);
     ctx.globalAlpha=1;

@@ -20,7 +20,9 @@ a=9.0; h=a*math.sqrt(3)
 def lat(id,ang,color):
     return (f'<pattern id="{id}" width="{a}" height="{f(h)}" patternUnits="userSpaceOnUse" patternTransform="rotate({ang} 200 200)">'
             f'<circle cx="0" cy="0" r="2.1" fill="{color}"/><circle cx="{a}" cy="0" r="2.1" fill="{color}"/><circle cx="0" cy="{f(h)}" r="2.1" fill="{color}"/>'
-            f'<circle cx="{a}" cy="{f(h)}" r="2.1" fill="{color}"/><circle cx="{a/2}" cy="{f(h/2)}" r="2.1" fill="{color}"/></pattern>')
+            f'<circle cx="{a}" cy="{f(h)}" r="2.1" fill="{color}"/><circle cx="{a/2}" cy="{f(h/2)}" r="2.1" fill="{color}"/>'
+            + (f'<animateTransform attributeName="patternTransform" type="rotate" values="{ang} 200 200;{ang+4} 200 200;{ang} 200 200" dur="26s" repeatCount="indefinite"/>' if ang else '')
+            + '</pattern>')
 moire=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs>{lat("cm-l1",0,"var(--art-a)")}{lat("cm-l2",5.2,"var(--art-b)")}</defs>'
  f'<circle cx="200" cy="200" r="190" fill="url(#cm-l1)" opacity=".9"/><circle cx="200" cy="200" r="190" fill="url(#cm-l2)" opacity=".8"/>'
  f'<circle cx="200" cy="200" r="190" fill="none" stroke="var(--art-a)" stroke-width="1.5" opacity=".5"/></svg>')
@@ -41,9 +43,11 @@ for k in range(n):
     t=2*math.pi*k/n
     for m,op in [(3,'.9'),(5,'.55'),(8,'.3')]:
         paths.append(f'<path d="{geodesic(t,t+2*math.pi*m/n)}" opacity="{op}"/>')
-ads=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1.1">{"".join(paths)}</g>'
+ads=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1.1">{"".join(paths)}'
+     f'<animateTransform attributeName="transform" type="rotate" from="0 {C} {C}" to="360 {C} {C}" dur="140s" repeatCount="indefinite"/></g>'
      f'<circle cx="{C}" cy="{C}" r="{R}" fill="none" stroke="var(--art-b)" stroke-width="2.5"/>'
-     f'<circle cx="{C}" cy="{C}" r="4" fill="var(--art-b)"/></svg>')
+     f'<circle cx="{C}" cy="{C}" r="4" fill="var(--art-b)"/>'
+     f'<circle cx="{C}" cy="{C}" r="6" fill="none" stroke="var(--art-b)"><animate attributeName="r" values="6;60" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="4s" repeatCount="indefinite"/></circle></svg>')
 
 # 3. Gravitation: warped spacetime grid (embedding diagram) in oblique projection
 def z(x,y): return -95/math.sqrt((x*x+y*y)/900+1)
@@ -61,9 +65,10 @@ bx,by=proj(0,0)
 grav=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs><radialGradient id="gv-fade" cx="50%" cy="55%" r="55%"><stop offset="60%" stop-color="#fff"/><stop offset="100%" stop-color="#000"/></radialGradient>'
       f'<mask id="gv-mask"><rect width="{S}" height="{S}" fill="url(#gv-fade)"/></mask></defs>'
       f'<g mask="url(#gv-mask)"><path d="{"".join(lines)}" fill="none" stroke="var(--art-a)" stroke-width="1" opacity=".8"/></g>'
+      + ''.join(f'<ellipse cx="{f(bx)}" cy="{f(by-24)}" rx="16" ry="7" fill="none" stroke="var(--art-b)" opacity="0"><animate attributeName="rx" values="18;150" dur="6s" begin="{k*2}s" repeatCount="indefinite"/><animate attributeName="ry" values="8;66" dur="6s" begin="{k*2}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="6s" begin="{k*2}s" repeatCount="indefinite"/></ellipse>' for k in range(3))
+      + f'<ellipse cx="{f(bx)}" cy="{f(by-24)}" rx="92" ry="36" fill="none" stroke="var(--art-a)" stroke-dasharray="2 5" opacity=".6"/>'
       f'<circle cx="{f(bx)}" cy="{f(by-24)}" r="16" fill="var(--art-b)"/>'
-      f'<circle cx="{f(bx)}" cy="{f(by-24)}" r="30" fill="none" stroke="var(--art-b)" opacity=".35"/>'
-      f'<circle cx="{f(bx)}" cy="{f(by-24)}" r="46" fill="none" stroke="var(--art-b)" opacity=".18"/></svg>')
+      f'<circle r="6" fill="var(--art-a)"><animateMotion dur="9s" repeatCount="indefinite" path="M{f(bx+92)} {f(by-24)}A92 36 0 1 1 {f(bx-92)} {f(by-24)}A92 36 0 1 1 {f(bx+92)} {f(by-24)}"/></circle></svg>')
 
 # 4. Quantum computation: small circuit
 wires=[90,160,230,300]
@@ -74,6 +79,8 @@ def cnot(x,c,t): return (f'<path d="M{x} {c}V{t+16 if t>c else t-16}" stroke="va
 for y in wires: el.append(box(75,y,'H'))
 el.append(cnot(145,90,160)); el.append(cnot(205,160,230)); el.append(cnot(265,230,300))
 el.append(box(325,90,'R')); el.append(box(325,300,'U'))
+for k,y in enumerate(wires):
+    el.append(f'<circle r="4.5" fill="var(--art-a)"><animateMotion path="M30 {y}H370" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/></circle>')
 qc=f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true">{"".join(el)}</svg>'
 
 for n,s in [('quantum-materials',moire),('qft-holography',ads),('gravitation-cosmology',grav),('quantum-computation',qc)]:
