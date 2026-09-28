@@ -3,14 +3,37 @@ layout: base.njk
 title: Publications
 permalink: /publications/
 ---
-{% from "macros.njk" import pubItem, pageBand %}
-{{ pageBand((publications | length) + " papers", "Selected <em>publications</em>", "Papers chosen by each member as representative of their work. For complete lists, see the ORCID, INSPIRE or Google Scholar links on each profile.") }}
+{% from "macros.njk" import pubItem, workItem, pageBand %}
+{% if cfpWorks.length %}
+{{ pageBand((cfpWorks | length) + " papers", "Publications", "All papers where members of CFP list the centre as their affiliation, updated automatically from OpenAlex and ORCID.") }}
 <div class="wrap">
 <div class="filters">
   <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
     <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
     {% for a in areas %}<button class="chip" type="button" data-area="{{ a.id }}" data-c="{{ a.color }}" aria-pressed="false"><span class="dot"></span>{{ a.label or a.name }}</button>{% endfor %}
   </div>
+  <label class="muted" for="q" style="font-size:14px">Search by title, author or journal</label>
+  <div class="search-row"><input type="search" id="q" placeholder="e.g. graphene, bootstrap, Physical Review"><span class="muted count" id="count">{{ cfpWorks | length }} papers</span></div>
+</div>
+{% for y in cfpYears %}
+<section class="year-block" data-year>
+  <h2 class="year">{{ y }}</h2>
+  <ul class="pubs">{% for w in cfpWorks | byYear(y) %}{{ workItem(w) }}{% endfor %}</ul>
+</section>
+{% endfor %}
+<p class="empty" id="none" hidden>No papers match this filter. Choose "All" or clear the search.</p>
+<p class="note" style="margin-top:40px">A paper appears here when its CFP author is linked to the paper through ORCID and lists the centre (Centro de Física do Porto or CF-UM-UP) as affiliation. Missing a paper? Check that it is in your ORCID record with the right affiliation.</p>
+</div>
+{% else %}
+{{ pageBand((publications | length) + " papers", "Publications", "Papers chosen by each member as representative of their work. The complete list of CFP papers is generated automatically when the site is published.") }}
+<div class="wrap">
+<div class="filters">
+  <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
+    <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
+    {% for a in areas %}<button class="chip" type="button" data-area="{{ a.id }}" data-c="{{ a.color }}" aria-pressed="false"><span class="dot"></span>{{ a.label or a.name }}</button>{% endfor %}
+  </div>
+  <label class="muted" for="q" style="font-size:14px">Search by title or journal</label>
+  <div class="search-row"><input type="search" id="q" placeholder="e.g. graphene, bootstrap, Physical Review"><span class="muted count" id="count">{{ publications | length }} papers</span></div>
 </div>
 {% for y in pubYears %}
 <section class="year-block" data-year>
@@ -18,9 +41,19 @@ permalink: /publications/
   <ul class="pubs">{% for pub in publications | byYear(y) %}{{ pubItem(pub) }}{% endfor %}</ul>
 </section>
 {% endfor %}
+<p class="empty" id="none" hidden>No papers match this filter. Choose "All" or clear the search.</p>
 </div>
+{% endif %}
 <script>
-(()=>{document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const area=b.dataset.area;
- document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
- document.querySelectorAll("[data-year]").forEach(sec=>{let n=0;sec.querySelectorAll("li[data-areas]").forEach(d=>{const ok=!area||d.dataset.areas.split(" ").includes(area);d.hidden=!ok;if(ok)n++;});sec.hidden=!n;});});})();
+(()=>{let area="";const q=document.getElementById("q");
+ function apply(){const s=q.value.trim().toLowerCase();let total=0;
+  document.querySelectorAll("[data-year]").forEach(sec=>{let n=0;
+   sec.querySelectorAll("li[data-areas]").forEach(li=>{const hay=(li.dataset.search||li.textContent).toLowerCase();
+    const ok=(!area||li.dataset.areas.split(" ").includes(area))&&(!s||hay.includes(s));li.hidden=!ok;if(ok)n++;});
+   sec.hidden=!n;total+=n;});
+  document.getElementById("count").textContent=total+(total===1?" paper":" papers");
+  document.getElementById("none").hidden=!!total;}
+ document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;area=b.dataset.area;
+  document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));apply();});
+ q.addEventListener("input",apply);})();
 </script>

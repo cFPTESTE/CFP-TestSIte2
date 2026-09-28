@@ -17,5 +17,18 @@ youtube:
   url: https://www.youtube.com/@centrodefisicadoporto
   channel_id: UCgxtHgvJlk7uI6tY01xbXaA
   about: Journal clubs, seminars and colloquia of theoretical physics.
+publications:
+  # A paper counts as CFP work when the member's affiliation printed on it matches one of
+  # these patterns (regular expressions, compared in lower case and without accents).
+  affiliation_patterns:
+    - "centro de fisica do porto"
+    - "centro de fisica da universidade do porto"
+    - "fisica.{0,40}minho e (do )?porto"
+    - "physics.{0,40}minho and (of )?porto"
+    - "cent(er|re) (of|for) physics (of|at) (the )?university of porto"
+    - "cf-?um-?up"
+    - "\\bcfp\\b.*porto|porto.*\\bcfp\\b"
+  # Optional: an email for OpenAlex's "polite pool" (faster, more reliable).
+  openalex_mailto: ""
 # Contact email for the centre (fill in):
 email: ""

@@ -3,7 +3,7 @@ layout: base.njk
 title: Research
 ---
 {% from "macros.njk" import areaPanel, minorArea, pageBand %}
-{{ pageBand("Research", "Three core areas and a <em>shared toolbox</em>", "CFP brings together theorists working on quantum materials, quantum field theory and gravitation. Many projects cross these boundaries, from lattice field theory to black holes in holography.") }}
+{{ pageBand("Research", "Research areas", "CFP brings together theorists working on quantum materials, quantum field theory and gravitation. Many projects cross these boundaries, from lattice field theory to black holes in holography.") }}
 <div class="wrap">
   <section class="section">
     <div class="areas">{% for a in areas %}{% if a.core %}{{ areaPanel(a, people | inArea(a.id)) }}{% endif %}{% endfor %}</div>

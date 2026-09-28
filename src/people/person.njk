@@ -8,7 +8,7 @@ permalink: "/people/{{ p.slug }}/"
 eleventyComputed:
   title: "{{ p.name }}"
 ---
-{% from "macros.njk" import avatar, pubItem %}
+{% from "macros.njk" import avatar, pubItem, workItem %}
 {% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}
 <section class="band profile-band" data-c="{{ a0.color }}">
   <div class="wrap">
@@ -30,6 +30,15 @@ eleventyComputed:
     {% if p.publications.length %}
     <div class="eyebrow" style="margin:48px 0 8px">Selected publications</div>
     <ul class="pubs">{% for pub in p.publications %}{{ pubItem(pub, false) }}{% endfor %}</ul>
+    {% endif %}
+    {% if p.cfpPublications.length %}
+    <div class="eyebrow" style="margin:48px 0 8px">Publications with CFP affiliation · {{ p.cfpPublications | length }}</div>
+    <ul class="pubs">{% for w in p.cfpPublications | batch(10) | first %}{{ workItem(w) }}{% endfor %}</ul>
+    {% if p.cfpPublications.length > 10 %}
+    <details class="more-pubs"><summary>Show all {{ p.cfpPublications | length }}</summary>
+      <ul class="pubs">{% for w in p.cfpPublications %}{% if loop.index > 10 %}{{ workItem(w) }}{% endif %}{% endfor %}</ul>
+    </details>
+    {% endif %}
     {% endif %}
   </div>
   <aside class="sidebar" aria-label="Contact and links">

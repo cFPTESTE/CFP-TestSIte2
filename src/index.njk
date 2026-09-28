@@ -1,13 +1,13 @@
 ---
 layout: base.njk
 ---
-{% from "macros.njk" import avatar, pubItem, areaPanel, minorArea, seminarCard, newsCard, videoGrid, youtubeCta %}
+{% from "macros.njk" import avatar, pubItem, workItem, areaPanel, minorArea, seminarCard, newsCard, videoGrid, youtubeCta %}
 <section class="band hero">
   <canvas id="moire" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
       <div class="eyebrow">Centro de Física do Porto · since {{ site.founded }}</div>
-      <h1>Theoretical physics, from <em>quantum materials</em> to the <em>early Universe</em></h1>
+      <h1>Theoretical physics, from quantum materials to the early Universe</h1>
       <p class="lede">{{ site.about }}</p>
       <div class="actions">
         <a class="btn primary" href="/research/">Explore our research</a>
@@ -26,7 +26,7 @@ layout: base.njk
 <div class="wrap">
   <section class="section" aria-labelledby="areas-h">
     <div class="section-head">
-      <div><div class="eyebrow">Research</div><h2 id="areas-h" style="margin-top:8px">Three areas, one centre of <em>theorists</em></h2></div>
+      <div><div class="eyebrow">Research</div><h2 id="areas-h" style="margin-top:8px">Research areas</h2></div>
       <a class="more" href="/research/">All research</a>
     </div>
     <div class="areas">
@@ -39,7 +39,7 @@ layout: base.njk
 
   <section class="section" aria-labelledby="news-h">
     <div class="section-head">
-      <div><div class="eyebrow">News &amp; seminars</div><h2 id="news-h" style="margin-top:8px">What's <em>happening</em></h2></div>
+      <div><div class="eyebrow">News &amp; seminars</div><h2 id="news-h" style="margin-top:8px">News and seminars</h2></div>
       <a class="more" href="/news/">All news and seminars</a>
     </div>
     {% if seminars.upcoming.length %}<div class="seminar-list">{% for s in seminars.upcoming | batch(2) | first %}{{ seminarCard(s) }}{% endfor %}</div>{% endif %}
@@ -49,7 +49,7 @@ layout: base.njk
   {% if site.youtube %}
   <section class="section" aria-labelledby="watch-h">
     <div class="section-head">
-      <div><div class="eyebrow">Watch</div><h2 id="watch-h" style="margin-top:8px">Seminars and journal clubs on <em>YouTube</em></h2></div>
+      <div><div class="eyebrow">Watch</div><h2 id="watch-h" style="margin-top:8px">Seminars and journal clubs on YouTube</h2></div>
       <a class="more" href="{{ site.youtube.url }}" target="_blank" rel="noopener">Open the channel</a>
     </div>
     {% if videos.length %}{{ videoGrid(videos, 4) }}{% else %}{{ youtubeCta(site) }}{% endif %}
@@ -69,12 +69,16 @@ layout: base.njk
   <section class="section" aria-labelledby="pubs-h">
     <div class="section-head">
       <div><div class="eyebrow">Publications</div><h2 id="pubs-h" style="margin-top:8px">Recent work</h2></div>
-      <a class="more" href="/publications/">Selected publications</a>
+      <a class="more" href="/publications/">All publications</a>
     </div>
     <div class="pub-cols">
-      {% set recent = publications | batch(6) | first %}
+      {% if cfpWorks.length %}{% set recent = cfpWorks | batch(6) | first %}
+      <ul class="pubs">{% for w in recent | batch(3) | first %}{{ workItem(w) }}{% endfor %}</ul>
+      <ul class="pubs">{% for w in recent | batch(3) | last %}{{ workItem(w) }}{% endfor %}</ul>
+      {% else %}{% set recent = publications | batch(6) | first %}
       <ul class="pubs">{% for pub in recent | batch(3) | first %}{{ pubItem(pub) }}{% endfor %}</ul>
       <ul class="pubs">{% for pub in recent | batch(3) | last %}{{ pubItem(pub) }}{% endfor %}</ul>
+      {% endif %}
     </div>
   </section>
 </div>

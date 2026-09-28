@@ -3,6 +3,7 @@ import path from "node:path";
 import * as yaml from "js-yaml";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { fetchVideos } from "./youtube.js";
+import { loadCfpPublications } from "./publications.js";
 
 const CONTENT = "content";
 const readYaml = (f) => yaml.load(fs.readFileSync(path.join(CONTENT, f), "utf8"));
@@ -35,7 +36,7 @@ function loadPeople() {
     .sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name), "pt"));
 }
 
-export default function (eleventyConfig) {
+export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addWatchTarget(CONTENT);
@@ -65,6 +66,19 @@ export default function (eleventyConfig) {
     .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
   const pubYears = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
 
+  // Full list of CFP-affiliated works from OpenAlex (empty if it could not be fetched)
+  const { list: cfpWorks } = await loadCfpPublications(people, site.publications);
+  const memberOrcids = new Set(people.filter((p) => p.orcid).map((p) => p.orcid));
+  for (const w of cfpWorks) {
+    // Long author lists: first 6 authors, plus any CFP member further down the list
+    const all = w.authors.map((a, i) => ({ name: a.name, member: memberOrcids.has(a.orcid), i }));
+    const shown = all.length > 8 ? all.filter((a) => a.i < 6 || a.member) : all;
+    w.authorsShort = shown.map((a, k) => ({ ...a, gap: k > 0 && a.i !== shown[k - 1].i + 1 }));
+    w.moreAuthors = all.length - shown.length;
+  }
+  for (const p of people) p.cfpPublications = cfpWorks.filter((w) => w.members.some((m) => m.slug === p.slug));
+  const cfpYears = [...new Set(cfpWorks.map((w) => w.year))].filter(Boolean).sort((a, b) => b - a);
+
   eleventyConfig.addGlobalData("site", site);
   eleventyConfig.addGlobalData("people", people);
   eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
@@ -74,6 +88,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addGlobalData("videos", () => fetchVideos(site.youtube && site.youtube.channel_id, 8));
   eleventyConfig.addGlobalData("publications", publications);
   eleventyConfig.addGlobalData("pubYears", pubYears);
+  eleventyConfig.addGlobalData("cfpWorks", cfpWorks);
+  eleventyConfig.addGlobalData("cfpYears", cfpYears);
   eleventyConfig.addGlobalData("categories", CATEGORY_ORDER.map((id) => ({ id, label: CATEGORY_LABEL[id] })));
   eleventyConfig.addGlobalData("build", { year: new Date().getFullYear() });
 
@@ -89,6 +105,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("byYear", (list, y) => list.filter((p) => p.year === y));
   eleventyConfig.addFilter("area", (id) => areas.find((a) => a.id === id) || { id, name: id, color: "muted" });
   eleventyConfig.addFilter("slugify2", slugify);
+  eleventyConfig.addFilter("map", (list, key) => (list || []).map((x) => x[key]));
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
   eleventyConfig.addFilter("paragraphs", (s) => (s || "").trim().split(/\n\s*\n/).map((x) => x.trim()));
   eleventyConfig.addFilter("senior", (list) => list.filter((p) => p.category === "faculty" || p.category === "researcher"));

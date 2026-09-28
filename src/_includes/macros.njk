@@ -97,3 +97,11 @@
   <span class="more">Open the channel</span>
 </a>
 {% endmacro %}
+
+{% macro workItem(w) %}
+<li data-areas="{{ w.areas | join(' ') }}" data-search="{{ (w.title + ' ' + w.journal + ' ' + (w.authors | map('name') | join(' '))) | lower }}">
+  <a class="t" href="{{ w.url }}" target="_blank" rel="noopener">{{ w.title }}</a>
+  <span class="au">{% for a in w.authorsShort %}{% if a.gap %}… {% endif %}{% if a.member %}<b>{{ a.name }}</b>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}{% if w.moreAuthors %} (+{{ w.moreAuthors }} more){% endif %}</span>
+  <span class="j">{{ w.journal or ("Preprint" if w.type == "preprint" else "") }}{% if w.year %} ({{ w.year }}){% endif %}</span>
+</li>
+{% endmacro %}
