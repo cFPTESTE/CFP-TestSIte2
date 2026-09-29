@@ -1,4 +1,4 @@
-{% macro avatar(p, cls="") %}{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}<span class="av {{ cls }}" data-c="{{ a0.color }}" aria-hidden="true">{% if p.photo %}<img src="{{ p.photo }}" alt="">{% else %}{{ p.initials }}{% endif %}</span>{% endmacro %}
+{% macro avatar(p, cls="") %}{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}<span class="av {{ cls }}" data-c="{{ a0.color }}" aria-hidden="true">{{ p.initials }}{% if p.photo %}<img src="{{ p.photo }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">{% endif %}</span>{% endmacro %}
 
 {% macro areaTags(ids) %}<span class="tags">{% for id in ids %}{% set a = id | area %}<a class="tag" data-c="{{ a.color }}" href="/research/{{ a.id }}/">{{ a.label or a.name }}</a>{% endfor %}</span>{% endmacro %}
 

@@ -140,7 +140,8 @@ main{padding-block:0 96px}
 
 /* ---------- people ---------- */
 .av{--s:40px;width:var(--s);height:var(--s);border-radius:50%;display:grid;place-items:center;background:var(--c,var(--muted-c));color:#fff;font:600 calc(var(--s)*.36)/1 var(--display);flex:none;overflow:hidden}
-.av img{width:100%;height:100%;object-fit:cover}
+.av{position:relative}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--c,var(--muted-c))}
 .av.lg{--s:132px;box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 30%,transparent)}
 .mosaic{display:flex;flex-wrap:wrap;gap:10px}
 .mosaic a,.mosaic span{text-decoration:none}

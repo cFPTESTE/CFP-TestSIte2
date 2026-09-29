@@ -31,7 +31,11 @@ tools/import_form.py  importa respostas novas do Google Form
 
 **Editar um perfil** – abrir `content/people/<nome>.yml` (dá para editar diretamente no site do GitHub, no ícone do lápis) e gravar. O site atualiza-se em 1–2 minutos.
 
-**Adicionar fotografia** – colocar a imagem (quadrada, ~400×400 px, `.jpg`) em `src/assets/people/` e no perfil escrever:
+**Fotografias** – há duas maneiras:
+- pôr o link da imagem no perfil (`photo: https://...`); ao publicar, o GitHub descarrega-a para `src/assets/people/<nome-do-ficheiro>.jpg` (script `tools/fetch_photos.py`) e o site passa a usar a cópia local;
+- ou colocar diretamente a imagem (quadrada, ~400×400 px) em `src/assets/people/` com o mesmo nome do ficheiro do perfil, por exemplo `vasco-goncalves.jpg`. Se a foto não carregar, aparecem as iniciais.
+
+Também é possível escrever o caminho explicitamente no perfil:
 ```yaml
 photo: /assets/people/vasco-goncalves.jpg
 ```

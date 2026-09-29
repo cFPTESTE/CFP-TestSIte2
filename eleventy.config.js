@@ -30,6 +30,10 @@ function loadPeople() {
       p.links = p.links || [];
       p.publications = (p.publications || []).sort((a, b) => (b.year || 0) - (a.year || 0));
       p.categoryLabel = CATEGORY_SINGULAR[p.category] || p.category;
+      // prefer a local copy of the photo (tools/fetch_photos.py downloads remote photos before the build)
+      for (const ext of ["jpg", "jpeg", "png", "webp"]) {
+        if (fs.existsSync(path.join("src", "assets", "people", `${p.slug}.${ext}`))) { p.photo = `/assets/people/${p.slug}.${ext}`; break; }
+      }
       p.initials = p.name.split(/\s+/).filter((w) => /^\p{Lu}/u.test(w)).map((w) => w[0]).filter((_, i, a) => i === 0 || i === a.length - 1).join("");
       return p;
     })
