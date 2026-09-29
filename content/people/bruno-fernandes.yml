@@ -13,7 +13,7 @@ orcid: 0000-0003-0962-3485
 links:
 - label: INSPIRE-HEP
   url: https://inspirehep.net/authors/2747088
-photo: https://sites.google.com/sitesv-images-rt/AMxu72ttyZc5cbP1epD6XA6Wv_SqLsrhmImCnt1kf2fgaVBbdyRy16r3-q2yJ0u3NxC-bfjAEUzf7RAwrvUDeCH8T6DFgrENW8sHOwMgl40q1y-l6gaPJGufO2C4pHrTyMQ7DnwbgVt1zGLVAjZ-OwP6V8kbs8hbwA3VGnCjyEaoWTglwZuOV6pbW-5RcyTZTTxCGDsXbdCU3p0yOa6ZOiPRtyUa9JQDdrJf99RcZye8=w600   # from the old Google Site
+photo: ''
 bio: |
   Bruno Fernandes obtained his Bachelor's degree in 2020 and his Master's degree in 2022, both from the University of Porto. He is currently a PhD student whose research focuses on calculating observables in conformal gauge theories, namely N=4 Supersymmetric Yang-Mills theory, such as correlation functions of local operators and Wilson loops. His work exploits the enhanced symmetry of these theories to obtain explicit results. The calculation of these quantities gives insights into how to approach more general, non-conformal gauge theories, and in particular are important steps towards calculating scattering amplitudes which can be experimentally observed in particle colliders.
 publications:
