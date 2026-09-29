@@ -88,7 +88,7 @@
     - name: Quantum algorithms
       text: Quantum methods for data reconstruction, clustering and simulation of complex networks.
     - name: Numerical methods
-      text: Spectral and transport methods for large systems, Monte Carlo, neural-network wave functions.
+      text: Spectral and transport methods for very large systems — including the open-source KITE code, which handles tens of billions of orbitals — Monte Carlo, and neural-network wave functions.
 
 - id: physics-education
   name: Physics Education
