@@ -7,6 +7,7 @@
 <meta name="description" content="{{ description or site.tagline }}">
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
 <meta property="og:description" content="{{ description or site.tagline }}">
+<style>svg,img,canvas{max-width:100%;height:auto}.brand svg{width:34px;height:34px}.art{width:100%;height:auto}</style>
 <link rel="stylesheet" href="/assets/css/style.css">
 {% if site.theme %}<link rel="stylesheet" href="/assets/css/theme-{{ site.theme }}.css">{% endif %}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -49,7 +50,7 @@
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1400)}).catch(()=>{});});
 </script>
-<script src="/assets/js/motion.js" defer></script>
+<script src="/assets/js/motion.js"></script>
 <script src="/assets/js/witten.js" defer></script>
 </body>
 </html>

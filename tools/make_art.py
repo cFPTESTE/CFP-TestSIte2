@@ -23,7 +23,7 @@ def honey(id,ang,color,anim):
     a=(f'<animateTransform attributeName="patternTransform" type="rotate" values="{ang} 200 200;{ang-2.5} 200 200;{ang} 200 200" dur="28s" repeatCount="indefinite"/>' if anim else '')
     return (f'<pattern id="{id}" width="{f(w)}" height="{f(hh)}" patternUnits="userSpaceOnUse" patternTransform="rotate({ang} 200 200)">'
             f'<path d="{segs}" fill="none" stroke="{color}" stroke-width="1.1"/>{a}</pattern>')
-moire=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs>{honey("tbg-l1",0,"var(--art-a)",False)}{honey("tbg-l2",4.5,"var(--art-b)",True)}</defs>'
+moire=(f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true"><defs>{honey("tbg-l1",0,"var(--art-a)",False)}{honey("tbg-l2",4.5,"var(--art-b)",True)}</defs>'
  f'<circle cx="200" cy="200" r="190" fill="url(#tbg-l1)" opacity=".75"/><circle cx="200" cy="200" r="190" fill="url(#tbg-l2)" opacity=".9"/>'
  f'<circle cx="200" cy="200" r="190" fill="none" stroke="var(--art-a)" stroke-width="1.5" opacity=".5"/></svg>')
 
@@ -61,7 +61,7 @@ for g in rng:
     pts=[proj(g,t/2) for t in range(-308,309,6)]; lines.append('M'+'L'.join(f'{f(x)} {f(y)}' for x,y in pts))
     pts=[proj(t/2,g) for t in range(-308,309,6)]; lines.append('M'+'L'.join(f'{f(x)} {f(y)}' for x,y in pts))
 bx,by=proj(0,0)
-grav=(f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true"><defs><radialGradient id="gv-fade" cx="50%" cy="55%" r="55%"><stop offset="60%" stop-color="#fff"/><stop offset="100%" stop-color="#000"/></radialGradient>'
+grav=(f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true"><defs><radialGradient id="gv-fade" cx="50%" cy="55%" r="55%"><stop offset="60%" stop-color="#fff"/><stop offset="100%" stop-color="#000"/></radialGradient>'
       f'<mask id="gv-mask"><rect width="{S}" height="{S}" fill="url(#gv-fade)"/></mask></defs>'
       f'<g mask="url(#gv-mask)"><path d="{"".join(lines)}" fill="none" stroke="var(--art-a)" stroke-width="1" opacity=".8"/></g>'
       + ''.join(f'<ellipse cx="{f(bx)}" cy="{f(by-24)}" rx="16" ry="7" fill="none" stroke="var(--art-b)" opacity="0"><animate attributeName="rx" values="18;150" dur="6s" begin="{k*2}s" repeatCount="indefinite"/><animate attributeName="ry" values="8;66" dur="6s" begin="{k*2}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="6s" begin="{k*2}s" repeatCount="indefinite"/></ellipse>' for k in range(3))
@@ -80,7 +80,7 @@ el.append(cnot(145,90,160)); el.append(cnot(205,160,230)); el.append(cnot(265,23
 el.append(box(325,90,'R')); el.append(box(325,300,'U'))
 for k,y in enumerate(wires):
     el.append(f'<circle r="4.5" fill="var(--art-a)"><animateMotion path="M30 {y}H370" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/></circle>')
-qc=f'<svg class="art" viewBox="0 0 {S} {S}" aria-hidden="true">{"".join(el)}</svg>'
+qc=f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true">{"".join(el)}</svg>'
 
 for n,s in [('quantum-materials',moire),('qft-holography',ads),('gravitation-cosmology',grav),('quantum-computation',qc)]:
     open(os.path.join(OUT,n+'.njk'),'w').write(s)
