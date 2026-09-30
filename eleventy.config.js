@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as yaml from "js-yaml";
 import { HtmlBasePlugin } from "@11ty/eleventy";
+import markdownIt from "markdown-it";
 import { fetchVideos } from "./youtube.js";
 import { loadCfpPublications } from "./publications.js";
 
@@ -87,9 +88,10 @@ export default async function (eleventyConfig) {
   const cfpYears = [...new Set(cfpWorks.map((w) => w.year))].filter(Boolean).sort((a, b) => b - a);
 
   // Official logos: any file named src/assets/logos/<name>.{svg,png,webp,jpg}
-  // cfp / cfp-white (for dark backgrounds), fct / fct-white
+  // cfp (wordmark, header), cfp-white (for dark backgrounds), cfp-icon (browser tab),
+  // cfp-full (full logo), cf-um-up, lapmet, fct / fct-white
   const logos = {};
-  for (const name of ["cfp", "cfp-white", "fct", "fct-white"]) {
+  for (const name of ["cfp", "cfp-white", "cfp-icon", "cfp-full", "cf-um-up", "lapmet", "fct", "fct-white"]) {
     for (const ext of ["svg", "png", "webp", "jpg", "jpeg"]) {
       if (fs.existsSync(path.join("src", "assets", "logos", `${name}.${ext}`))) { logos[name] = `/assets/logos/${name}.${ext}`; break; }
     }
@@ -123,6 +125,9 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("area", (id) => areas.find((a) => a.id === id) || { id, name: id, color: "muted" });
   eleventyConfig.addFilter("slugify2", slugify);
   eleventyConfig.addFilter("map", (list, key) => (list || []).map((x) => x[key]));
+  const md = markdownIt({ html: true, linkify: true });
+  // Markdown text from the YAML files; external links open in a new tab
+  eleventyConfig.addFilter("md", (s) => md.render(s || "").replace(/<a href="http/g, '<a target="_blank" rel="noopener" href="http'));
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
   eleventyConfig.addFilter("paragraphs", (s) => (s || "").trim().split(/\n\s*\n/).map((x) => x.trim()));
   eleventyConfig.addFilter("senior", (list) => list.filter((p) => p.category === "faculty" || p.category === "researcher"));

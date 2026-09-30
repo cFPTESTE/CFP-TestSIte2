@@ -25,6 +25,23 @@ layout: base.njk
 </section>
 
 <div class="wrap">
+  <section class="section about" aria-labelledby="about-h">
+    <div class="about-text">
+      <div class="eyebrow">About</div>
+      <h2 id="about-h" style="margin-top:8px">About the centre</h2>
+      <div class="prose">{{ site.affiliation | md | safe }}</div>
+      <div class="partners">{% for pt in site.partners %}
+        <a class="partner" href="{{ pt.url }}" target="_blank" rel="noopener">
+          <span class="partner-logo">{% if logos[pt.logo] %}<img src="{{ logos[pt.logo] }}" alt="{{ pt.name }}" loading="lazy">{% else %}<b>{{ pt.name }}</b>{% endif %}</span>
+          <span class="partner-text">{{ pt.text }}</span>
+        </a>{% endfor %}
+      </div>
+    </div>
+    {% if logos["cfp-full"] %}<figure class="about-logo"><img src="{{ logos['cfp-full'] }}" alt="Centro de Física do Porto logo" width="814" height="496" loading="lazy"></figure>{% endif %}
+  </section>
+</div>
+
+<div class="wrap">
   <section class="section" aria-labelledby="areas-h">
     <div class="section-head">
       <div><div class="eyebrow">Research</div><h2 id="areas-h" style="margin-top:8px">Research areas</h2></div>

@@ -28,7 +28,7 @@ THEME_TO_AREA = {
     "low-dimensional materials": "quantum-materials", "quasi-periodic systems": "quantum-materials",
     "topological phases of matter": "quantum-materials", "topological materials": "quantum-materials",
     "correlated electronic systems": "quantum-materials", "non-linear optical response": "quantum-materials",
-    "quantum computing": "quantum-computation", "physics education research": "physics-education",
+    "quantum computing": "quantum-computation", "physics education research": "physics-education", "nonlinear physics": "nonlinear-physics", "non-linear physics": "nonlinear-physics",
 }
 THEME_TO_AREA = {k.lower(): v for k, v in THEME_TO_AREA.items()}
 LINK_LABELS = [("inspirehep", "INSPIRE-HEP"), ("scholar.google", "Google Scholar"), ("scopus", "Scopus"),

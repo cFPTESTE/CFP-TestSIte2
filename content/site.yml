@@ -9,6 +9,32 @@ about: >-
   devoted to research in theoretical physics: quantum physics and fields in high energy
   and condensed matter, gravitation and cosmology.
 founded: 1994
+# Shown in the "About the centre" section of the home page. Markdown: [text](link)
+affiliation: >-
+  The Centro de Física do Porto is the Porto node of the
+  [Centro de Física das Universidades do Minho e do Porto (CF-UM-UP)](https://www.cf-um-up.pt/),
+  a research unit of the [LaPMET](https://www.lapmet.org/) consortium – Laboratory of Physics
+  for Materials and Emerging Technologies – with facilities at the
+  [Department of Physics and Astronomy](https://www.fc.up.pt/dfa/) of the Faculty of Sciences
+  of the University of Porto.
+# Institutions shown next to the text above and in the footer.
+# logo: name of a file in src/assets/logos/ (without extension); leave empty to show the name.
+partners:
+  - name: CF-UM-UP
+    logo: cf-um-up
+    url: https://www.cf-um-up.pt/
+    text: >-
+      Centro de Física das Universidades do Minho e do Porto. Created in 2014 by joining two
+      research units founded in 1994 – the Centro de Física da Universidade do Minho (CFUM) and
+      the Centro de Física do Porto (CFP) – and evaluated by FCT.
+  - name: LaPMET
+    logo: lapmet
+    url: https://www.lapmet.org/
+    text: >-
+      Laboratory of Physics for Materials and Emerging Technologies. Brings together four physics
+      research units – CFP and IFIMUP (University of Porto), CFUM (University of Minho) and CeFEMA
+      (Instituto Superior Técnico) – around quantum materials, energy, communications, photonics
+      and nanotechnology.
 fct_recognised: 1997
 address:
   - Departamento de Física e Astronomia

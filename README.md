@@ -31,11 +31,14 @@ tools/import_form.py  importa respostas novas do Google Form
 
 **Editar um perfil** – abrir `content/people/<nome>.yml` (dá para editar diretamente no site do GitHub, no ícone do lápis) e gravar. O site atualiza-se em 1–2 minutos.
 
-**Logótipos** – colocar os ficheiros oficiais em `src/assets/logos/` com estes nomes (SVG de preferência, ou PNG com fundo transparente):
-- `cfp.svg` – logótipo do CFP, aparece no topo de todas as páginas e como ícone do separador;
-- `cfp-white.svg` (opcional) – versão clara, usada no topo quando o tema é o escuro;
-- `fct.svg` – logótipo da FCT, aparece no rodapé na secção "Funding", sobre fundo branco.
-O texto ao lado do logótipo da FCT e a referência do financiamento estão em `content/site.yml` (`funding:`). Enquanto não houver ficheiro, o topo mostra só o nome do centro e o rodapé mostra o nome da FCT por extenso.
+**Logótipos** – ficheiros em `src/assets/logos/` (PNG, SVG, JPG ou WebP; o site encontra-os pelo nome):
+- `cfp.png` – barra "Centro de Física do Porto", no topo de todas as páginas;
+- `cfp-icon.png` – ícone do separador do browser;
+- `cfp-full.jpg` – logótipo completo, na secção "About the centre" da página inicial;
+- `cf-um-up.png`, `lapmet.png`, `fct.png` – instituições no rodapé ("Affiliations & funding") e na secção "About"; se o ficheiro não existir, aparece o nome em texto (é o caso do LaPMET e da FCT por agora).
+Para trocar um logótipo basta substituir o ficheiro, mantendo o nome.
+
+**Texto "About the centre" e instituições** – em `content/site.yml`: `affiliation` (Markdown, com links `[texto](https://...)`), `partners` (nome, link, logótipo, frase) e `funding` (frase e referência do financiamento FCT).
 
 **Fotografias** – há duas maneiras:
 - pôr o link da imagem no perfil (`photo: https://...`); ao publicar, o GitHub descarrega-a para `src/assets/people/<nome-do-ficheiro>.jpg` (script `tools/fetch_photos.py`) e o site passa a usar a cópia local;

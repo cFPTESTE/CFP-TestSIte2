@@ -90,11 +90,27 @@
     - name: Numerical methods
       text: Spectral and transport methods for very large systems — including the open-source KITE code, which handles tens of billions of orbitals — Monte Carlo, and neural-network wave functions.
 
+- id: nonlinear-physics
+  name: Nonlinear Physics
+  label: Nonlinear Physics   # short name used on tags and filters
+  short: Other activities
+  core: false
+  art: false
+  color: nl
+  summary: >-
+    Nonlinear waves and coherent structures – solitons, discrete breathers and their
+    stability – in lattices, optical systems and Bose–Einstein condensates.
+  description: |
+    Research on nonlinear dynamics at CFP studies how nonlinearity and discreteness give rise to
+    localised, coherent structures, and how stable these structures are.
+  topics: []
+
 - id: physics-education
   name: Physics Education
   label: Physics Education   # short name used on tags and filters
   short: Other activities
   core: false
+  art: false
   color: edu
   summary: >-
     Research on how students learn physics, with a focus on metacognition and

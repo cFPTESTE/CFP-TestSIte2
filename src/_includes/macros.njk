@@ -42,8 +42,8 @@
 {% endmacro %}
 
 {% macro minorArea(a) %}
-<div class="minor{% if a.id == 'physics-education' %} noart{% endif %}" data-c="{{ a.color }}">
-  {% if a.id != 'physics-education' %}<div class="mini-art">{% include "art/" + a.id + ".njk" ignore missing %}</div>{% endif %}
+<div class="minor{% if a.art === false %} noart{% endif %}" data-c="{{ a.color }}">
+  {% if a.art !== false %}<div class="mini-art">{% include "art/" + a.id + ".njk" ignore missing %}</div>{% endif %}
   <div><div class="kicker">{{ a.short }}</div><h3><a href="/research/{{ a.id }}/">{{ a.name }}</a></h3><p>{{ a.summary }}</p></div>
 </div>
 {% endmacro %}
