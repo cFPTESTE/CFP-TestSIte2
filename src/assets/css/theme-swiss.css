@@ -33,7 +33,7 @@ h2{font-size:clamp(34px,4.6vw,60px);line-height:1.02}
 .site-header{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--rule)}
 .brand,.brand b{color:var(--ink)}
 .brand small{color:var(--muted)}
-.brand svg polygon{stroke:var(--ink)}
+
 .nav a{color:var(--ink);border-radius:0;padding:8px 10px;border-bottom:2px solid transparent}
 .nav a:hover{background:transparent;color:var(--ink);border-bottom-color:var(--fcup)}
 .nav a[aria-current="page"]{background:transparent;color:var(--ink);border-bottom-color:var(--ink)}

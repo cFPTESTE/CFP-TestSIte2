@@ -32,5 +32,10 @@ publications:
     - "\\bcfp\\b.*porto|porto.*\\bcfp\\b"
   # Optional: an email for OpenAlex's "polite pool" (faster, more reliable).
   openalex_mailto: ""
+# Funding line in the footer, next to the FCT logo (src/assets/logos/fct.png or .svg).
+funding:
+  text: Funded by national funds through FCT – Fundação para a Ciência e a Tecnologia, I.P.
+  # FCT project reference of the unit, e.g. "UIDB/xxxxx/2020" (fill in):
+  reference: ""
 # Contact email for the centre (fill in):
 email: ""

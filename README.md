@@ -31,6 +31,12 @@ tools/import_form.py  importa respostas novas do Google Form
 
 **Editar um perfil** – abrir `content/people/<nome>.yml` (dá para editar diretamente no site do GitHub, no ícone do lápis) e gravar. O site atualiza-se em 1–2 minutos.
 
+**Logótipos** – colocar os ficheiros oficiais em `src/assets/logos/` com estes nomes (SVG de preferência, ou PNG com fundo transparente):
+- `cfp.svg` – logótipo do CFP, aparece no topo de todas as páginas e como ícone do separador;
+- `cfp-white.svg` (opcional) – versão clara, usada no topo quando o tema é o escuro;
+- `fct.svg` – logótipo da FCT, aparece no rodapé na secção "Funding", sobre fundo branco.
+O texto ao lado do logótipo da FCT e a referência do financiamento estão em `content/site.yml` (`funding:`). Enquanto não houver ficheiro, o topo mostra só o nome do centro e o rodapé mostra o nome da FCT por extenso.
+
 **Fotografias** – há duas maneiras:
 - pôr o link da imagem no perfil (`photo: https://...`); ao publicar, o GitHub descarrega-a para `src/assets/people/<nome-do-ficheiro>.jpg` (script `tools/fetch_photos.py`) e o site passa a usar a cópia local;
 - ou colocar diretamente a imagem (quadrada, ~400×400 px) em `src/assets/people/` com o mesmo nome do ficheiro do perfil, por exemplo `vasco-goncalves.jpg`. Se a foto não carregar, aparecem as iniciais.

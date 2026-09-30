@@ -7,17 +7,18 @@
 <meta name="description" content="{{ description or site.tagline }}">
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
 <meta property="og:description" content="{{ description or site.tagline }}">
-<style>svg,img,canvas{max-width:100%;height:auto}.brand svg{width:34px;height:34px}.art{width:100%;height:auto}</style>
+<style>svg,img,canvas{max-width:100%;height:auto}.brand-logo{height:44px;width:auto}.art{width:100%;height:auto}</style>
 <link rel="stylesheet" href="/assets/css/style.css">
 {% if site.theme %}<link rel="stylesheet" href="/assets/css/theme-{{ site.theme }}.css">{% endif %}
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+{% if logos.cfp %}<link rel="icon" href="{{ logos.cfp }}">{% else %}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="{{ site.name }} home">
-      {% include "mark.njk" %}
+      {% set dark = not site.theme %}{% set lg = (logos["cfp-white"] if (dark and logos["cfp-white"]) else logos.cfp) %}
+      {% if lg %}<img class="brand-logo" src="{{ lg }}" alt="" height="44">{% endif %}
       <span><b>{{ site.name }}</b><small>{{ site.tagline }}</small></span>
     </a>
     <nav class="nav" aria-label="Main">
@@ -43,6 +44,13 @@
       <div class="h">Centre</div>
       <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/news/">News &amp; Seminars</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li>{% if site.youtube %}<li><a href="{{ site.youtube.url }}" target="_blank" rel="noopener">YouTube</a></li>{% endif %}</ul>
       <p style="margin-top:18px">Founded {{ site.founded }} · © {{ build.year }}</p>
+    </div>
+  </div>
+  <div class="wrap funding">
+    <div class="h">Funding</div>
+    <div class="funding-row">
+      <a class="logo-chip" href="https://www.fct.pt" target="_blank" rel="noopener" aria-label="Fundação para a Ciência e a Tecnologia">{% if logos.fct %}<img src="{{ logos.fct }}" alt="FCT – Fundação para a Ciência e a Tecnologia" height="40">{% else %}<span class="logo-text">FCT · Fundação para a Ciência e a Tecnologia</span>{% endif %}</a>
+      <p>{{ site.funding.text }}{% if site.funding.reference %} ({{ site.funding.reference }}){% endif %}</p>
     </div>
   </div>
 </footer>

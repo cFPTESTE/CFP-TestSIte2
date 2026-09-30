@@ -56,7 +56,7 @@ h1 em,h2 em{font-style:normal;color:inherit}
 .site-header{background:var(--night);color:var(--night-ink);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--night-line)}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap;padding-block:8px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--night-ink)}
-.brand svg{width:34px;height:34px;flex:none}
+.brand-logo{height:44px;width:auto;flex:none;display:block}
 .brand b{font:700 19px/1.1 var(--display);letter-spacing:-.01em;display:block}
 .brand small{font:12px var(--sans);color:var(--night-muted);letter-spacing:.06em}
 .nav{display:flex;flex-wrap:wrap;gap:2px}
@@ -338,3 +338,12 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .btn.outline{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
 .btn.outline:hover{border-color:var(--accent)}
 .av img{object-position:50% 25%}
+
+/* ---------- funding logos ---------- */
+.site-footer .funding{display:block;margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+.funding-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.funding-row p{margin:0;max-width:60ch}
+.logo-chip{display:inline-flex;align-items:center;background:#fff;border-radius:6px;padding:8px 14px;min-height:56px}
+.logo-chip img{height:40px;width:auto;display:block}
+.site-footer .logo-chip .logo-text{color:#132033;font:600 13px var(--sans)}
+.site-footer a.logo-chip:hover{text-decoration:none}

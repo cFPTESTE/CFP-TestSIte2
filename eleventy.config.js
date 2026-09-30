@@ -86,6 +86,16 @@ export default async function (eleventyConfig) {
   for (const p of people) p.cfpPublications = cfpWorks.filter((w) => w.members.some((m) => m.slug === p.slug));
   const cfpYears = [...new Set(cfpWorks.map((w) => w.year))].filter(Boolean).sort((a, b) => b - a);
 
+  // Official logos: any file named src/assets/logos/<name>.{svg,png,webp,jpg}
+  // cfp / cfp-white (for dark backgrounds), fct / fct-white
+  const logos = {};
+  for (const name of ["cfp", "cfp-white", "fct", "fct-white"]) {
+    for (const ext of ["svg", "png", "webp", "jpg", "jpeg"]) {
+      if (fs.existsSync(path.join("src", "assets", "logos", `${name}.${ext}`))) { logos[name] = `/assets/logos/${name}.${ext}`; break; }
+    }
+  }
+  eleventyConfig.addGlobalData("logos", logos);
+
   eleventyConfig.addGlobalData("site", site);
   eleventyConfig.addGlobalData("people", people);
   eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
