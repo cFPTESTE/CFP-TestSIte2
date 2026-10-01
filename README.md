@@ -58,6 +58,7 @@ photo: /assets/people/vasco-goncalves.jpg
 | `category` | sim | `faculty`, `researcher`, `phd` ou `msc` |
 | `areas` | sim | ids de `content/areas.yml`, ex. `[quantum-materials]` |
 | `keywords`, `affiliation`, `email`, `office`, `orcid`, `links`, `photo`, `bio`, `publications` | não | |
+| `member_since` | não | ano de entrada no CFP; artigos anteriores não contam como publicações do centro (preenchido a partir das listas da equipa, desde 2017) |
 | `pending: true` | não | mostra "Profile coming soon" e não cria página individual |
 
 **Remover uma pessoa** (saída do centro) – apagar o ficheiro dela em `content/people/`.

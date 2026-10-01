@@ -1,5 +1,6 @@
 name: Raul Liquito
 category: phd
+member_since: 2022   # first year in the CFP team lists; papers before this are not counted as CFP work
 areas:
 - quantum-materials
 pending: true

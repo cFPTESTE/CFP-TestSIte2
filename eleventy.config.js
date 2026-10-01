@@ -96,7 +96,10 @@ export default async function (eleventyConfig) {
       }
     }
   }
-  const publications = [...pubMap.values()].map((e) => ({ ...e, areas: [...e.areas] }))
+  // Only papers from a CFP author's time at the centre (member_since, from the team lists) count as CFP publications
+  const sinceOf = (slug) => { const p = people.find((x) => x.slug === slug); return p && p.member_since ? p.member_since : 0; };
+  const publications = [...pubMap.values()].filter((e) => !e.year || e.members.some((m) => sinceOf(m.slug) <= e.year))
+    .map((e) => ({ ...e, areas: [...e.areas] }))
     .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
   const pubYears = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
 
