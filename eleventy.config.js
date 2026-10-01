@@ -59,6 +59,28 @@ export default async function (eleventyConfig) {
   const upcoming = seminars.filter((s) => s.date >= today);
   const past = seminars.filter((s) => s.date < today).reverse();
 
+  // Author lists for the papers in the profiles (content/publication-authors.yml), with CFP members flagged
+  const pubAuthors = fs.existsSync(path.join(CONTENT, "publication-authors.yml")) ? readYaml("publication-authors.yml") || {} : {};
+  const pubKey = (u) => { const m = (u || "").match(/10\.\d{4,9}\/\S+/); return (m ? m[0].replace(/\.$/, "") : (u || "")).toLowerCase(); };
+  const toks = (s) => (s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]+/g, " ").trim().split(" ").filter(Boolean);
+  function memberFor(a) {
+    if (a.orcid) { const byO = people.find((p) => p.orcid === a.orcid); if (byO) return byO; }
+    const t = toks(a.name); if (!t.length) return null;
+    return people.find((p) => {
+      if (a.orcid && p.orcid) return false;          // both have ORCIDs and they differ
+      const pt = toks(p.name);
+      return t[t.length - 1] === pt[pt.length - 1] && t[0][0] === pt[0][0];
+    }) || null;
+  }
+  for (const p of people) for (const pub of p.publications) {
+    const d = pubAuthors[pubKey(pub.url || pub.title)];
+    if (!d || !d.authors || !d.authors.length) continue;
+    pub.authorsAll = d.authors.map((a, i) => {
+      const m = memberFor(a);
+      return { name: a.name, member: !!m, slug: m && !m.pending ? m.slug : "", person: m, i };
+    });
+  }
+
   // Publications: merge duplicates across members (same URL)
   const pubMap = new Map();
   for (const p of people) {
@@ -66,8 +88,12 @@ export default async function (eleventyConfig) {
       const key = (pub.url || pub.title).toLowerCase();
       if (!pubMap.has(key)) pubMap.set(key, { ...pub, members: [], areas: new Set() });
       const e = pubMap.get(key);
-      e.members.push({ name: p.name, slug: p.slug });
+      if (!e.members.some((m) => m.slug === p.slug)) e.members.push({ name: p.name, slug: p.slug });
       p.areas.forEach((a) => e.areas.add(a));
+      // co-authors from CFP who did not list the paper themselves
+      for (const a of pub.authorsAll || []) if (a.person && !e.members.some((m) => m.slug === a.person.slug)) {
+        e.members.push({ name: a.person.name, slug: a.person.slug }); a.person.areas.forEach((x) => e.areas.add(x));
+      }
     }
   }
   const publications = [...pubMap.values()].map((e) => ({ ...e, areas: [...e.areas] }))

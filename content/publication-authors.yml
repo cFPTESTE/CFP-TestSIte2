@@ -1,0 +1,511 @@
+# Author lists of the papers in the member profiles (publications: in content/people/*.yml),
+# keyed by DOI or arXiv link (lower case). Collected from Crossref / INSPIRE / publisher pages.
+# Used for the 'Selected publications' and as fallback list when OpenAlex is unavailable.
+10.1007/jhep04(2015)150:
+  authors:
+  - name: Vasco Gonçalves
+  source: inspire
+10.1007/jhep04(2016)091:
+  authors:
+  - name: Marco Billò
+  - name: Vasco Gonçalves
+  - name: Edoardo Lauria
+  - name: Marco Meineri
+  source: crossref
+10.1007/jhep05(2024)007:
+  authors:
+  - name: Ricardo Rodrigues
+    orcid: 0009-0009-8894-9854
+  source: inspire
+10.1007/jhep05(2024)140:
+  authors:
+  - name: Marco Calzà
+  - name: João G. Rosa
+    orcid: 0000-0001-8257-016X
+  - name: Filipe Serrano
+  source: crossref
+10.1007/jhep05(2024)161:
+  authors:
+  - name: Gabriel Cuomo
+    orcid: 0000-0003-4668-9010
+  - name: J.M. Viana Parente Lopes
+    orcid: 0000-0002-3936-5109
+  - name: José Matos
+    orcid: 0000-0003-0951-9995
+  - name: Júlio Oliveira
+    orcid: 0000-0001-6446-8938
+  - name: João Penedones
+    orcid: 0000-0003-0345-4836
+  source: inspire
+10.1007/jhep09(2025)076:
+  authors:
+  - name: Lucía Cordova
+    orcid: 0000-0003-2312-2716
+  - name: Ricardo Rodrigues
+    orcid: 0009-0009-8894-9854
+  source: inspire
+10.1007/jhep10(2019)247:
+  authors:
+  - name: Vasco Gonçalves
+  - name: Raul Pereira
+  - name: Xinan Zhou
+    orcid: 0000-0002-7275-9812
+  source: inspire
+10.1007/jhep10(2024)242:
+  authors:
+  - name: Carlos Bercini
+    orcid: 0000-0003-2591-504X
+  - name: Bruno Fernandes
+    orcid: 0000-0003-0962-3485
+  - name: Vasco Gonçalves
+    orcid: 0000-0001-8091-7959
+  source: crossref
+10.1007/s42484-022-00090-0:
+  authors:
+  - name: Duarte Magano
+  - name: Lorenzo Buffoni
+  - name: Yasser Omar
+  source: crossref
+10.1016/j.dark.2026.102232:
+  authors:
+  - name: Miguel Barroso Varela
+    orcid: 0009-0006-9844-7661
+  - name: Álvaro de la Cruz-Dombriz
+    orcid: 0000-0002-7072-9396
+  source: inspire
+10.1038/ncomms14231:
+  authors:
+  - name: Yujing Ma
+  - name: Horacio Coy Diaz
+  - name: José Avila
+  - name: Chaoyu Chen
+  - name: Vijaysankar Kalappattil
+  - name: Raja Das
+  - name: Manh-Huong Phan
+  - name: Tilen Čadež
+  - name: José M. P. Carmelo
+  - name: Maria C. Asensio
+  - name: Matthias Batzill
+  source: nature.com
+10.1038/s41563-019-0600-4:
+  authors:
+  - name: Peng Song
+    orcid: 0000-0003-2193-9650
+  - name: Chuang-Han Hsu
+    orcid: 0000-0002-2394-8537
+  - name: Giovanni Vignale
+  - name: Meng Zhao
+  - name: Jiawei Liu
+  - name: Yujun Deng
+  - name: Wei Fu
+    orcid: 0000-0001-5018-1960
+  - name: Yanpeng Liu
+    orcid: 0000-0002-5265-2735
+  - name: Yuanbo Zhang
+  - name: Hsin Lin
+    orcid: 0000-0002-4688-2315
+  - name: Vitor M. Pereira
+    orcid: 0000-0002-3462-524X
+  - name: Kian Ping Loh
+    orcid: 0000-0002-1491-743X
+  source: crossref
+10.1038/s41567-021-01466-y:
+  authors:
+  - name: Vitor M. Pereira
+    orcid: 0000-0002-3462-524X
+  source: crossref
+10.1038/s41567-024-02662-2:
+  authors:
+  - name: Miguel Gonçalves
+    orcid: 0000-0002-4786-539X
+  - name: Bruno Amorim
+    orcid: 0000-0001-8566-0718
+  - name: Flavio Riche
+  - name: Eduardo V. Castro
+    orcid: 0000-0002-0993-3734
+  - name: Pedro Ribeiro
+    orcid: 0000-0001-7630-2054
+  source: crossref
+10.1038/s42005-024-01801-8:
+  authors:
+  - name: L. M. Martelo
+    orcid: 0000-0001-8065-5979
+  - name: Aires Ferreira
+    orcid: 0000-0001-6017-8669
+  source: crossref
+10.1088/1361-6382/ae5b18:
+  authors:
+  - name: Luís Felipe Reis
+    orcid: 0000-0002-7773-3320
+  - name: Mario C Baldiotti
+    orcid: 0000-0003-0838-7468
+  - name: Orfeu Bertolami
+    orcid: 0000-0002-7672-0560
+  source: crossref
+10.1088/1361-6633/ae5072:
+  authors:
+  - name: J M P Carmelo
+    orcid: 0000-0001-5624-6294
+  source: crossref
+10.1088/1475-7516/2024/06/025:
+  authors:
+  - name: Miguel Barroso Varela
+    orcid: 0009-0006-9844-7661
+  - name: Orfeu Bertolami
+    orcid: 0000-0002-7672-0560
+  source: crossref
+10.1088/1475-7516/2026/01/061:
+  authors:
+  - name: Miguel Barroso Varela
+    orcid: 0009-0006-9844-7661
+  - name: Orfeu Bertolami
+    orcid: 0000-0002-7672-0560
+  - name: Andreas Mantziris
+    orcid: 0000-0001-5899-670X
+  source: inspire
+10.1088/1751-8113/44/42/425402:
+  authors:
+  - name: C dos Santos
+  - name: D Rubiera-Garcia
+  source: crossref
+10.1088/2053-1583/ac3259:
+  authors:
+  - name: Miguel Gonçalves
+    orcid: 0000-0002-4786-539X
+  - name: Hadi Z Olyaei
+  - name: Bruno Amorim
+    orcid: 0000-0001-8566-0718
+  - name: Rubem Mondaini
+    orcid: 0000-0001-8005-2297
+  - name: Pedro Ribeiro
+    orcid: 0000-0001-7630-2054
+  - name: Eduardo V Castro
+    orcid: 0000-0002-0993-3734
+  source: crossref
+10.1103/3qyd-n621:
+  authors:
+  - name: Bruno Fernandes
+    orcid: 0000-0003-0962-3485
+  - name: Vasco Gonçalves
+    orcid: 0000-0001-8091-7959
+  - name: Zhongjie Huang
+    orcid: 0000-0002-8888-4212
+  - name: Yichao Tang
+    orcid: 0000-0002-7359-5020
+  - name: João Vilas Boas
+    orcid: 0000-0002-6948-0968
+  - name: Ellis Ye Yuan
+    orcid: 0000-0002-6624-3908
+  source: inspire
+10.1103/8m17-s2y8:
+  authors:
+  - name: Alessandro Georgoudis
+    orcid: 0000-0002-1601-4218
+  - name: Vasco Gonçalves
+    orcid: 0000-0001-8091-7959
+  - name: Carlo Heissenberg
+    orcid: 0000-0001-5775-9526
+  - name: Julio Parra-Martinez
+    orcid: 0000-0003-0178-1569
+  source: inspire
+10.1103/p1sc-sx2d:
+  authors:
+  - name: J. M. P. Carmelo
+    orcid: 0000-0001-5624-6294
+  source: crossref
+10.1103/physreva.106.062419:
+  authors:
+  - name: Duarte Magano
+    orcid: 0000-0001-5015-4217
+  - name: Miguel Murça
+    orcid: 0000-0003-0651-7847
+  source: crossref
+10.1103/physreva.108.012618:
+  authors:
+  - name: Diogo Cruz
+    orcid: 0000-0002-8678-5456
+  - name: Duarte Magano
+    orcid: 0000-0001-5015-4217
+  source: crossref
+10.1103/physrevb.100.174517:
+  authors:
+  - name: B. Hetényi
+    orcid: 0000-0002-3680-1147
+  - name: L. M. Martelo
+    orcid: 0000-0001-8065-5979
+  - name: B. Tanatar
+    orcid: 0000-0002-5246-0119
+  source: crossref
+10.1103/physrevb.107.045146:
+  authors:
+  - name: João S. Silva
+    orcid: 0000-0002-9982-8419
+  - name: Miguel A. N. Araújo
+    orcid: 0000-0001-6599-4147
+  - name: Miguel Gonçalves
+    orcid: 0000-0002-4786-539X
+  - name: Pedro Ribeiro
+  - name: Eduardo V. Castro
+  source: crossref
+10.1103/physrevb.109.125145:
+  authors:
+  - name: João S. Silva
+    orcid: 0000-0002-9982-8419
+  - name: Eduardo V. Castro
+  - name: Rubem Mondaini
+  - name: María A. H. Vozmediano
+    orcid: 0000-0003-2574-2310
+  - name: M. Pilar López-Sancho
+    orcid: 0000-0002-7603-5811
+  source: crossref
+10.1103/physrevb.111.l041116:
+  authors:
+  - name: João S. Silva
+    orcid: 0000-0002-9982-8419
+  - name: Miguel Gonçalves
+    orcid: 0000-0002-4786-539X
+  - name: Eduardo V. Castro
+    orcid: 0000-0002-0993-3734
+  - name: Pedro Ribeiro
+    orcid: 0000-0001-7630-2054
+  - name: Miguel A. N. Araújo
+    orcid: 0000-0001-6599-4147
+  source: crossref
+10.1103/physrevb.37.7541:
+  authors:
+  - name: José Carmelo
+  - name: Dionys Baeriswyl
+  source: crossref
+10.1103/physrevb.68.125111:
+  authors:
+  - name: M. Sing
+  - name: U. Schwingenschlögl
+  - name: R. Claessen
+  - name: P. Blaha
+  - name: J. M. P. Carmelo
+  - name: L. M. Martelo
+  - name: P. D. Sacramento
+  - name: M. Dressel
+  - name: C. S. Jacobsen
+  source: crossref
+10.1103/physrevd.105.076012:
+  authors:
+  - name: D. Magano
+    orcid: 0000-0001-5015-4217
+  - name: A. Kumar
+  - name: M. Kālis
+    orcid: 0000-0001-9426-9497
+  - name: A. Locāns
+  - name: A. Glos
+  - name: S. Pratapsi
+  - name: G. Quinta
+  - name: M. Dimitrijevs
+    orcid: 0000-0002-4225-7889
+  - name: A. Rivošs
+  - name: P. Bargassa
+    orcid: 0000-0001-8612-3332
+  - name: J. Seixas
+  - name: A. Ambainis
+  - name: Y. Omar
+  source: crossref
+10.1103/physrevd.107.044017:
+  authors:
+  - name: Matheus F. S. Alves
+    orcid: 0000-0003-2634-1850
+  - name: Luís F. M. A. M. Reis
+    orcid: 0000-0002-7773-3320
+  - name: L. G. Medeiros
+    orcid: 0000-0003-1483-6151
+  source: crossref
+10.1103/physrevd.111.024014:
+  authors:
+  - name: Miguel Barroso Varela
+    orcid: 0009-0006-9844-7661
+  - name: Orfeu Bertolami
+    orcid: 0000-0002-7672-0560
+  source: inspire
+10.1103/physrevd.81.125016:
+  authors:
+  - name: D. Bazeia
+  - name: E. da Hora
+  - name: R. Menezes
+  - name: H. P. de Oliveira
+  - name: C. dos Santos
+  source: crossref
+10.1103/physrevd.82.125009:
+  authors:
+  - name: C. dos Santos
+  source: crossref
+10.1103/physrevd.97.104061:
+  authors:
+  - name: Cláudio Gomes
+  - name: Orfeu Bertolami
+  - name: João G. Rosa
+  source: crossref
+10.1103/physrevlett.105.266601:
+  authors:
+  - name: Eduardo V. Castro
+  - name: H. Ochoa
+  - name: M. I. Katsnelson
+  - name: R. V. Gorbachev
+  - name: D. C. Elias
+  - name: K. S. Novoselov
+  - name: A. K. Geim
+  - name: F. Guinea
+  source: crossref
+10.1103/physrevlett.121.226602:
+  authors:
+  - name: Chuan Chen
+  - name: Bahadur Singh
+  - name: Hsin Lin
+  - name: Vitor M. Pereira
+  source: crossref
+10.1103/physrevlett.122.126601:
+  authors:
+  - name: Miguel Gonçalves
+  - name: Pedro Ribeiro
+  - name: Rubem Mondaini
+  - name: Eduardo V. Castro
+  source: crossref
+10.1103/physrevlett.125.256603:
+  authors:
+  - name: Jose H. Garcia
+    orcid: 0000-0002-5752-4759
+  - name: Marc Vila
+    orcid: 0000-0001-9118-421X
+  - name: Chuang-Han Hsu
+  - name: Xavier Waintal
+    orcid: 0000-0003-3816-8290
+  - name: Vitor M. Pereira
+    orcid: 0000-0002-3462-524X
+  - name: Stephan Roche
+    orcid: 0000-0003-0323-4665
+  source: crossref
+10.1103/physrevlett.126.121603:
+  authors:
+  - name: Carlos Bercini
+  - name: Vasco Gonçalves
+  - name: Pedro Vieira
+  source: inspire
+10.1103/physrevlett.134.141601:
+  authors:
+  - name: Till Bargheer
+    orcid: 0000-0002-3590-0899
+  - name: Carlos Bercini
+    orcid: 0000-0003-2591-504X
+  - name: Bruno Fernandes
+    orcid: 0000-0003-0962-3485
+  - name: Vasco Gonçalves
+    orcid: 0000-0001-8091-7959
+  - name: Jeremy Mann
+    orcid: 0000-0001-9521-7285
+  source: inspire
+10.1103/physrevlett.99.216802:
+  authors:
+  - name: Eduardo V. Castro
+  - name: K. S. Novoselov
+  - name: S. V. Morozov
+  - name: N. M. R. Peres
+  - name: J. M. B. Lopes dos Santos
+  - name: Johan Nilsson
+  - name: F. Guinea
+  - name: A. K. Geim
+  - name: A. H. Castro Neto
+  source: crossref
+10.1103/physrevphyseducres.15.010136:
+  authors:
+  - name: Ana Rita Mota
+  - name: Nilüfer Didis Körhasan
+  - name: Kelly Miller
+  - name: Eric Mazur
+  source: crossref
+10.1103/revmodphys.84.1067:
+  authors:
+  - name: Valeri N. Kotov
+  - name: Bruno Uchoa
+  - name: Vitor M. Pereira
+  - name: F. Guinea
+  - name: A. H. Castro Neto
+  source: crossref
+10.1140/epjc/s10052-010-1519-8:
+  authors:
+  - name: C. dos Santos
+  - name: E. da Hora
+  source: crossref
+10.1140/epjc/s10052-011-1833-9:
+  authors:
+  - name: D. Bazeia
+  - name: E. da Hora
+  - name: C. dos Santos
+  - name: R. Menezes
+  source: crossref
+10.1140/epjc/s10052-020-8189-y:
+  authors:
+  - name: Cláudio Gomes
+  source: crossref
+10.1140/epjc/s10052-025-15085-x:
+  authors:
+  - name: Cláudio Gomes
+    orcid: 0000-0001-6022-459X
+  - name: João Luís Rosa
+    orcid: 0000-0003-4148-7372
+  - name: Miguel A. S. Pinto
+    orcid: 0000-0002-1327-0996
+  source: crossref
+10.1140/epjc/s10052-026-16006-2:
+  authors:
+  - name: Cláudio Gomes
+    orcid: 0000-0001-6022-459X
+  - name: Margarida Lima
+    orcid: 0000-0003-2231-4978
+  - name: Francisco S. N. Lobo
+    orcid: 0000-0002-9388-8373
+  - name: Luís F. Dias da Silva
+    orcid: 0009-0009-4322-6484
+  source: crossref
+10.21468/scipostphyscore.6.3.058:
+  authors:
+  - name: Duarte Magano
+  - name: João Moutinho
+  - name: Bruno Coutinho
+  source: crossref
+10.22600/1518-8795.ienci2024v29n2p515:
+  authors:
+  - name: Ana Rita Mota
+    orcid: 0000-0002-3517-7821
+  - name: Fernando César Silva
+    orcid: 0000-0002-8593-3090
+  - name: Cleci Teresinha Werner da Rosa
+    orcid: 0000-0001-9933-8834
+  - name: Lúcia Helena Sasseron
+    orcid: 0000-0001-5657-9590
+  source: publisher
+10.22600/1518-8795.ienci2024v29n3p153:
+  authors:
+  - name: Ana Rita Lopes Mota
+    orcid: 0000-0002-3517-7821
+  - name: Patrício Costa
+    orcid: 0000-0002-2943-4270
+  source: crossref
+10.3390/universe10110433:
+  authors:
+  - name: Maria Margarida Lima
+    orcid: 0000-0003-2231-4978
+  - name: Cláudio Gomes
+    orcid: 0000-0001-6022-459X
+  source: crossref
+https://arxiv.org/abs/2510.20575:
+  authors:
+  - name: Ricardo Oliveira
+  - name: Nicolau Sobrosa
+  - name: Pedro Ribeiro
+  - name: Bruno Amorim
+  - name: Eduardo V. Castro
+  source: datacite
+https://arxiv.org/abs/2607.27193:
+  authors:
+  - name: Miguel Barroso Varela
+  - name: Orfeu Bertolami
+  - name: Katherine Freese
+  - name: Evangelos Sfakianakis
+  source: inspire

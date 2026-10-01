@@ -1,3 +1,5 @@
+{% macro authorName(a) %}{% if a.member %}{% if a.slug %}<a class="cfp-author" href="/people/{{ a.slug }}/">{{ a.name }}</a>{% else %}<b class="cfp-author">{{ a.name }}</b>{% endif %}{% else %}{{ a.name }}{% endif %}{% endmacro %}
+
 {% macro avatar(p, cls="") %}{% set a0 = (p.areas[0] | area) if p.areas.length else {color:"muted"} %}<span class="av {{ cls }}" data-c="{{ a0.color }}" aria-hidden="true">{{ p.initials }}{% if p.photo %}<img src="{{ p.photo }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">{% endif %}</span>{% endmacro %}
 
 {% macro areaTags(ids) %}<span class="tags">{% for id in ids %}{% set a = id | area %}<a class="tag" data-c="{{ a.color }}" href="/research/{{ a.id }}/">{{ a.label or a.name }}</a>{% endfor %}</span>{% endmacro %}
@@ -20,8 +22,9 @@
 {% macro pubItem(pub, showWho=true) %}
 <li data-areas="{{ (pub.areas or []) | join(' ') }}">
   <a class="t" href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title or pub.url }}</a>
+  {% if pub.authorsAll %}<span class="au">{% for a in pub.authorsAll %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+  {% elif showWho and pub.members %}<span class="who">{% for m in pub.members %}<a href="/people/{{ m.slug }}/">{{ m.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
   <span class="j">{{ pub.journal }}{% if pub.year and (pub.journal | string).indexOf(pub.year | string) == -1 %} ({{ pub.year }}){% endif %}</span>
-  {% if showWho and pub.members %}<span class="who">{% for m in pub.members %}<a href="/people/{{ m.slug }}/">{{ m.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
 </li>
 {% endmacro %}
 
@@ -99,7 +102,7 @@
 </a>
 {% endmacro %}
 
-{% macro authorName(a) %}{% if a.member %}{% if a.slug %}<a class="cfp-author" href="/people/{{ a.slug }}/">{{ a.name }}</a>{% else %}<b class="cfp-author">{{ a.name }}</b>{% endif %}{% else %}{{ a.name }}{% endif %}{% endmacro %}
+
 
 {% macro workItem(w) %}
 <li data-areas="{{ w.areas | join(' ') }}" data-search="{{ (w.title + ' ' + w.journal + ' ' + (w.authors | map('name') | join(' '))) | lower }}">
