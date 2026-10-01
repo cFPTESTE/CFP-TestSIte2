@@ -99,10 +99,13 @@
 </a>
 {% endmacro %}
 
+{% macro authorName(a) %}{% if a.member %}{% if a.slug %}<a class="cfp-author" href="/people/{{ a.slug }}/">{{ a.name }}</a>{% else %}<b class="cfp-author">{{ a.name }}</b>{% endif %}{% else %}{{ a.name }}{% endif %}{% endmacro %}
+
 {% macro workItem(w) %}
 <li data-areas="{{ w.areas | join(' ') }}" data-search="{{ (w.title + ' ' + w.journal + ' ' + (w.authors | map('name') | join(' '))) | lower }}">
   <a class="t" href="{{ w.url }}" target="_blank" rel="noopener">{{ w.title }}</a>
-  <span class="au">{% for a in w.authorsShort %}{% if a.gap %}… {% endif %}{% if a.member %}<b>{{ a.name }}</b>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}{% if w.moreAuthors %} (+{{ w.moreAuthors }} more){% endif %}</span>
+  {% if w.longList %}<details class="au"><summary>{% for a in w.authorsShort %}{% if a.gap %}… {% endif %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %} <span class="more-au">… show all {{ w.authorsAll | length }} authors</span></summary>{% for a in w.authorsAll %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %}</details>
+  {% else %}<span class="au">{% for a in w.authorsAll %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
   <span class="j">{{ w.journal or ("Preprint" if w.type == "preprint" else "") }}{% if w.year %} ({{ w.year }}){% endif %}</span>
 </li>
 {% endmacro %}

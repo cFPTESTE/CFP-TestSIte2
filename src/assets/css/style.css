@@ -1,3 +1,5 @@
+/* no cross-page transition: it overlays a snapshot of the old page, which looks like a stretched image */
+@view-transition{navigation:none}
 /* Centro de Física do Porto — site styles */
 :root{
   --bg:#F4F6F9; --surface:#FFFFFF; --ink:#0E1726; --ink-2:#34425A; --muted:#5C6778; --line:#DDE3EB;
@@ -239,15 +241,15 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .hero-copy>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-  .hero-copy>*:nth-child(2){animation-delay:.08s}
-  .hero-copy>*:nth-child(3){animation-delay:.18s}
-  .hero-copy>*:nth-child(4){animation-delay:.28s}
-  .hero-copy>*:nth-child(5){animation-delay:.38s}
-  .page-band .head>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-  .page-band .head>*:nth-child(2){animation-delay:.07s}
-  .page-band .head>*:nth-child(3){animation-delay:.14s}
-  .page-band .art,.profile-band .av{animation:fadeScale 1.1s cubic-bezier(.2,.7,.2,1) both .1s}
+  html:not(.seen) .hero-copy>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  html:not(.seen) .hero-copy>*:nth-child(2){animation-delay:.08s}
+  html:not(.seen) .hero-copy>*:nth-child(3){animation-delay:.18s}
+  html:not(.seen) .hero-copy>*:nth-child(4){animation-delay:.28s}
+  html:not(.seen) .hero-copy>*:nth-child(5){animation-delay:.38s}
+  html:not(.seen) .page-band .head>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  html:not(.seen) .page-band .head>*:nth-child(2){animation-delay:.07s}
+  html:not(.seen) .page-band .head>*:nth-child(3){animation-delay:.14s}
+  html:not(.seen) .page-band .art,html:not(.seen) .profile-band .av{animation:fadeScale 1.1s cubic-bezier(.2,.7,.2,1) both .1s}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
   .reveal.in{opacity:1;transform:none}
   .area .art{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
@@ -343,15 +345,14 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .site-footer .funding{display:block;margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
 .funding-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .funding-row p{margin:0;max-width:60ch}
-.logo-chip{display:inline-flex;align-items:center;background:#fff;border-radius:6px;padding:8px 14px;min-height:56px}
+.logo-chip{display:inline-flex;align-items:center;min-height:56px;padding:6px 0}
 .logo-chip img{height:40px;width:auto;display:block}
-.site-footer .logo-chip .logo-text{color:#132033;font:600 13px var(--sans)}
+.site-footer .logo-chip .logo-text{color:inherit;font:600 14px var(--sans);border:1px solid currentColor;border-radius:6px;padding:10px 14px;opacity:.85}
 .site-footer a.logo-chip:hover{text-decoration:none}
 
 /* ---------- logos, about ---------- */
-.brand.has-logo{background:#fff;border-radius:6px;padding:6px 10px}
 .brand-logo{height:36px;width:auto;max-width:100%}
-.site-footer .funding-row{gap:14px}
+.site-footer .funding-row{gap:28px}
 .funding-text{margin:14px 0 0;max-width:70ch}
 .about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
 .about .prose p{font-size:18px;line-height:1.6;color:var(--ink-2);margin:12px 0 0}
@@ -359,9 +360,9 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .partners{display:grid;gap:14px;margin-top:24px}
 .partner{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);text-decoration:none;color:var(--ink-2);font-size:14.5px;line-height:1.5}
 .partner:hover{border-color:var(--fcup-deep)}
-.partner-logo{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:6px;min-height:56px;padding:8px}
+.partner-logo{display:flex;align-items:center;justify-content:center;min-height:56px;padding:8px}
 .partner-logo img{max-height:44px;width:auto}
-.partner-logo b{color:#132033;font:700 20px var(--sans);letter-spacing:.02em}
+.partner-logo b{color:var(--ink);font:700 20px var(--sans);letter-spacing:.02em}
 .about-logo{margin:0;background:#fff;border-radius:var(--radius);padding:18px;border:1px solid var(--line)}
 .about-logo img{display:block;width:100%;height:auto}
 @media (max-width:900px){.about{grid-template-columns:1fr;gap:28px}.about-logo{order:-1;max-width:520px}}
@@ -371,3 +372,15 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
   .minor-areas .minor:not(.noart){grid-template-columns:1fr;align-content:start;gap:18px}
   .minor-areas .minor .mini-art{width:150px}
 }
+
+/* ---------- justified text (descriptions and bios) ---------- */
+.prose p,.area-body>p,.minor p,.topics-grid p,.partner-text,.page-band .lede{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+
+/* ---------- authors: CFP members highlighted ---------- */
+.pubs .cfp-author{font-weight:700;color:var(--fcup-deep);text-decoration:none}
+.pubs a.cfp-author:hover{text-decoration:underline}
+.pubs details.au{font-size:14px;color:var(--ink-2)}
+.pubs details.au summary{cursor:pointer;list-style:none}
+.pubs details.au summary::-webkit-details-marker{display:none}
+.pubs details.au[open] summary{display:none}
+.pubs .more-au{color:var(--fcup-deep);white-space:nowrap}

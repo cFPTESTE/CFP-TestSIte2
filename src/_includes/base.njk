@@ -8,17 +8,19 @@
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
 <meta property="og:description" content="{{ description or site.tagline }}">
 <style>svg,img,canvas{max-width:100%;height:auto}.brand-logo{height:36px;width:auto}.art{width:100%;height:auto}</style>
-<link rel="stylesheet" href="/assets/css/style.css">
-{% if site.theme %}<link rel="stylesheet" href="/assets/css/theme-{{ site.theme }}.css">{% endif %}
+<link rel="expect" href="#page-end" blocking="render">
+<script>try{if(sessionStorage.getItem("cfp-seen"))document.documentElement.classList.add("seen");else sessionStorage.setItem("cfp-seen","1")}catch(e){}</script>
+<style>{{ "style.css" | inlineCss | safe }}</style>
+{% if site.theme %}<style>{{ ("theme-" + site.theme + ".css") | inlineCss | safe }}</style>{% endif %}
 {% if logos["cfp-icon"] %}<link rel="icon" href="{{ logos['cfp-icon'] }}">{% else %}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand{% if logos.cfp %} has-logo{% endif %}" href="/" aria-label="{{ site.name }} home">
-      {% set dark = not site.theme %}{% set lg = (logos["cfp-white"] if (dark and logos["cfp-white"]) else logos.cfp) %}
-      {% if lg %}<img class="brand-logo" src="{{ lg }}" alt="{{ site.name }}" width="438" height="36">
+    <a class="brand" href="/" aria-label="{{ site.name }} home">
+      {% if logos.cfp %}{% if not site.theme and logos["cfp-white"] %}<img class="brand-logo" src="{{ logos['cfp-white'] }}" alt="{{ site.name }}" width="438" height="36">
+      {% else %}<picture>{% if logos["cfp-white"] %}<source srcset="{{ logos['cfp-white'] }}" media="(prefers-color-scheme: dark)">{% endif %}<img class="brand-logo" src="{{ logos.cfp }}" alt="{{ site.name }}" width="438" height="36"></picture>{% endif %}
       {% else %}<span><b>{{ site.name }}</b><small>{{ site.tagline }}</small></span>{% endif %}
     </a>
     <nav class="nav" aria-label="Main">
@@ -49,8 +51,8 @@
   <div class="wrap funding">
     <div class="h">Affiliations &amp; funding</div>
     <div class="funding-row">
-      {% for pt in site.partners %}<a class="logo-chip" href="{{ pt.url }}" target="_blank" rel="noopener" title="{{ pt.name }}">{% if logos[pt.logo] %}<img src="{{ logos[pt.logo] }}" alt="{{ pt.name }}" height="40">{% else %}<span class="logo-text">{{ pt.name }}</span>{% endif %}</a>{% endfor %}
-      <a class="logo-chip" href="https://www.fct.pt" target="_blank" rel="noopener" title="FCT – Fundação para a Ciência e a Tecnologia">{% if logos.fct %}<img src="{{ logos.fct }}" alt="FCT – Fundação para a Ciência e a Tecnologia" height="40">{% else %}<span class="logo-text">FCT · Fundação para a Ciência e a Tecnologia</span>{% endif %}</a>
+      {% for pt in site.partners %}{% set lw = logos[pt.logo + "-white"] %}<a class="logo-chip" href="{{ pt.url }}" target="_blank" rel="noopener" title="{{ pt.name }}">{% if lw %}<img src="{{ lw }}" alt="{{ pt.name }}" height="40">{% else %}<span class="logo-text">{{ pt.name }}</span>{% endif %}</a>{% endfor %}
+      <a class="logo-chip" href="https://www.fct.pt" target="_blank" rel="noopener" title="FCT – Fundação para a Ciência e a Tecnologia">{% if logos["fct-white"] %}<img src="{{ logos['fct-white'] }}" alt="FCT – Fundação para a Ciência e a Tecnologia" height="40">{% else %}<span class="logo-text">FCT · Fundação para a Ciência e a Tecnologia</span>{% endif %}</a>
     </div>
     <p class="funding-text">{{ site.funding.text }}{% if site.funding.reference %} ({{ site.funding.reference }}){% endif %}</p>
   </div>
@@ -59,6 +61,7 @@
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1400)}).catch(()=>{});});
 </script>
+<span id="page-end" hidden></span>
 <script src="/assets/js/motion.js"></script>
 <script src="/assets/js/witten.js" defer></script>
 </body>

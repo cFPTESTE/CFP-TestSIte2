@@ -36,6 +36,7 @@ tools/import_form.py  importa respostas novas do Google Form
 - `cfp-icon.png` – ícone do separador do browser;
 - `cfp-full.jpg` – logótipo completo, na secção "About the centre" da página inicial;
 - `cf-um-up.png`, `lapmet.png`, `fct.png` – instituições no rodapé ("Affiliations & funding") e na secção "About"; se o ficheiro não existir, aparece o nome em texto (é o caso do LaPMET e da FCT por agora).
+Para fundos escuros (topo do tema escuro, rodapé, modo escuro do sistema) o site usa a versão `<nome>-white.png` quando existe (fundo transparente, letras claras): já há `cfp-white.png` e `cf-um-up-white.png`; para o LaPMET e a FCT, juntar `lapmet-white.png` e `fct-white.png`.
 Para trocar um logótipo basta substituir o ficheiro, mantendo o nome.
 
 **Texto "About the centre" e instituições** – em `content/site.yml`: `affiliation` (Markdown, com links `[texto](https://...)`), `partners` (nome, link, logótipo, frase) e `funding` (frase e referência do financiamento FCT).

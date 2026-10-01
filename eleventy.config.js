@@ -76,11 +76,17 @@ export default async function (eleventyConfig) {
 
   // Full list of CFP-affiliated works from OpenAlex (empty if it could not be fetched)
   const { list: cfpWorks } = await loadCfpPublications(people, site.publications);
-  const memberOrcids = new Set(people.filter((p) => p.orcid).map((p) => p.orcid));
+  // Authors: full list, CFP members highlighted and linked to their profile.
+  // Very long lists (collaborations) show the first authors plus the CFP members, with the rest behind "show all".
+  const memberByOrcid = new Map(people.filter((p) => p.orcid).map((p) => [p.orcid, p]));
   for (const w of cfpWorks) {
-    // Long author lists: first 6 authors, plus any CFP member further down the list
-    const all = w.authors.map((a, i) => ({ name: a.name, member: memberOrcids.has(a.orcid), i }));
-    const shown = all.length > 8 ? all.filter((a) => a.i < 6 || a.member) : all;
+    const all = w.authors.map((a, i) => {
+      const m = memberByOrcid.get(a.orcid);
+      return { name: a.name, member: !!m, slug: m && !m.pending ? m.slug : "", i };
+    });
+    w.authorsAll = all;
+    w.longList = all.length > 25;
+    const shown = w.longList ? all.filter((a) => a.i < 10 || a.member) : all;
     w.authorsShort = shown.map((a, k) => ({ ...a, gap: k > 0 && a.i !== shown[k - 1].i + 1 }));
     w.moreAuthors = all.length - shown.length;
   }
@@ -91,7 +97,7 @@ export default async function (eleventyConfig) {
   // cfp (wordmark, header), cfp-white (for dark backgrounds), cfp-icon (browser tab),
   // cfp-full (full logo), cf-um-up, lapmet, fct / fct-white
   const logos = {};
-  for (const name of ["cfp", "cfp-white", "cfp-icon", "cfp-full", "cf-um-up", "lapmet", "fct", "fct-white"]) {
+  for (const name of ["cfp", "cfp-white", "cfp-icon", "cfp-full", "cf-um-up", "cf-um-up-white", "lapmet", "lapmet-white", "fct", "fct-white"]) {
     for (const ext of ["svg", "png", "webp", "jpg", "jpeg"]) {
       if (fs.existsSync(path.join("src", "assets", "logos", `${name}.${ext}`))) { logos[name] = `/assets/logos/${name}.${ext}`; break; }
     }
@@ -125,6 +131,9 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("area", (id) => areas.find((a) => a.id === id) || { id, name: id, color: "muted" });
   eleventyConfig.addFilter("slugify2", slugify);
   eleventyConfig.addFilter("map", (list, key) => (list || []).map((x) => x[key]));
+  // Stylesheets are inlined in every page, so a new page paints with its final look straight away
+  eleventyConfig.addFilter("inlineCss", (name) => fs.readFileSync(path.join("src", "assets", "css", name), "utf8"));
+  eleventyConfig.addWatchTarget("src/assets/css/");
   const md = markdownIt({ html: true, linkify: true });
   // Markdown text from the YAML files; external links open in a new tab
   eleventyConfig.addFilter("md", (s) => md.render(s || "").replace(/<a href="http/g, '<a target="_blank" rel="noopener" href="http'));

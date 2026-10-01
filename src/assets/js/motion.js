@@ -18,7 +18,8 @@
   } else els.forEach(el => el.classList.add("in"));
 
   // Count-up for the hero numbers (final value is already in the HTML)
-  document.querySelectorAll("[data-count-up]").forEach(el => {
+  // only on the first page of a visit, so numbers don't reset on every return to the home page
+  if (!document.documentElement.classList.contains("seen")) document.querySelectorAll("[data-count-up]").forEach(el => {
     const end = parseInt(el.textContent, 10); if (!end) return;
     const from = end > 1900 ? end - 40 : 0, t0 = performance.now(), dur = 1400;
     const step = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);

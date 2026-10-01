@@ -32,7 +32,7 @@ layout: base.njk
       <div class="prose">{{ site.affiliation | md | safe }}</div>
       <div class="partners">{% for pt in site.partners %}
         <a class="partner" href="{{ pt.url }}" target="_blank" rel="noopener">
-          <span class="partner-logo">{% if logos[pt.logo] %}<img src="{{ logos[pt.logo] }}" alt="{{ pt.name }}" loading="lazy">{% else %}<b>{{ pt.name }}</b>{% endif %}</span>
+          <span class="partner-logo">{% if logos[pt.logo] %}<picture>{% if logos[pt.logo + "-white"] %}<source srcset="{{ logos[pt.logo + '-white'] }}" media="(prefers-color-scheme: dark)">{% endif %}<img src="{{ logos[pt.logo] }}" alt="{{ pt.name }}" loading="lazy"></picture>{% else %}<b>{{ pt.name }}</b>{% endif %}</span>
           <span class="partner-text">{{ pt.text }}</span>
         </a>{% endfor %}
       </div>
