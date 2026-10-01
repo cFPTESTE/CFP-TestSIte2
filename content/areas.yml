@@ -95,7 +95,6 @@
   label: Nonlinear Physics   # short name used on tags and filters
   short: Other activities
   core: false
-  art: false
   color: nl
   summary: >-
     Nonlinear waves and coherent structures – solitons, discrete breathers and their
@@ -110,7 +109,6 @@
   label: Physics Education   # short name used on tags and filters
   short: Other activities
   core: false
-  art: false
   color: edu
   summary: >-
     Research on how students learn physics, with a focus on metacognition and

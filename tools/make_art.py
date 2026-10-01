@@ -45,7 +45,7 @@ for k in range(n):
         paths.append(f'<path d="{geodesic(t,t+2*math.pi*m/n)}" opacity="{op}"/>')
 # static background (faint geodesics + boundary) with a canvas on top where
 # src/assets/js/witten.js animates a Witten exchange diagram
-ads=(f'<div class="art art-stack" data-art="witten"><svg viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1" opacity=".35">{"".join(paths)}</g>'
+ads=(f'<div class="art art-stack" data-art="witten"><svg width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true"><g fill="none" stroke="var(--art-a)" stroke-width="1" opacity=".35">{"".join(paths)}</g>'
      f'<circle cx="{C}" cy="{C}" r="{R}" fill="none" stroke="var(--art-b)" stroke-width="2.5"/></svg><canvas aria-hidden="true"></canvas></div>')
 
 # 3. Gravitation: warped spacetime grid (embedding diagram) in oblique projection
@@ -82,6 +82,64 @@ for k,y in enumerate(wires):
     el.append(f'<circle r="4.5" fill="var(--art-a)"><animateMotion path="M30 {y}H370" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="5s" begin="{k*0.45}s" repeatCount="indefinite"/></circle>')
 qc=f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true">{"".join(el)}</svg>'
 
-for n,s in [('quantum-materials',moire),('qft-holography',ads),('gravitation-cosmology',grav),('quantum-computation',qc)]:
+# 5. Nonlinear physics: two KdV solitons passing through each other (top) and a
+# discrete breather, an oscillation localised on a few sites of a lattice (bottom)
+def kdv2(x,t,k1=0.11,k2=0.07,x1=0,x2=0,C=54000):
+    def F(xx):
+        e1=math.exp(k1*(xx-x1)-k1**3*t*C); e2=math.exp(k2*(xx-x2)-k2**3*t*C)
+        A=((k1-k2)/(k1+k2))**2
+        return 1+e1+e2+A*e1*e2
+    h=0.5
+    return 2*(math.log(F(x+h))-2*math.log(F(x))+math.log(F(x-h)))/(h*h)
+base=150; amp=7200
+frames=[]
+NF=60
+for i in range(NF):
+    t=-0.26+0.52*i/(NF-1)
+    pts=[(x, base-amp*kdv2(x-200,t)) for x in range(20,381,6)]
+    frames.append('M'+'L'.join(f'{f(x)} {f(y)}' for x,y in pts))
+sol=(f'<path d="{frames[0]}" fill="none" stroke="var(--art-b)" stroke-width="3" stroke-linejoin="round">'
+     f'<animate attributeName="d" values="{";".join(frames)}" dur="7s" repeatCount="indefinite"/>'
+     f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="7s" repeatCount="indefinite"/></path>'
+     f'<path d="M20 {base}H380" stroke="var(--art-a)" stroke-width="1" opacity=".35"/>')
+sites=list(range(-8,9)); sp=20; y0=300; NB=24
+def by(n,i): return y0-34/math.cosh(n/1.4)*math.cos(2*math.pi*i/NB)*(-1)**0
+lat=[]
+pf=[' '.join(f'{f(200+n*sp)},{f(by(n,i))}' for n in sites) for i in range(NB+1)]
+lat.append(f'<polyline points="{pf[0]}" fill="none" stroke="var(--art-a)" stroke-width="1.2" opacity=".6"><animate attributeName="points" values="{";".join(pf)}" dur="1.8s" repeatCount="indefinite"/></polyline>')
+for n in sites:
+    vals=';'.join(f(by(n,i)) for i in range(NB+1))
+    r=5.5 if abs(n)<3 else 4.5
+    col='var(--art-b)' if abs(n)<3 else 'var(--art-a)'
+    lat.append(f'<circle cx="{200+n*sp}" cy="{y0}" r="{r}" fill="{col}"><animate attributeName="cy" values="{vals}" dur="1.8s" repeatCount="indefinite"/></circle>')
+lat.append(f'<path d="M30 {y0+52}H370" stroke="var(--art-a)" stroke-width="1" stroke-dasharray="2 5" opacity=".4"/>')
+nl=f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true">{sol}{"".join(lat)}</svg>'
+
+# 6. Physics education: a pendulum drawing its own x(t) on a moving strip of paper,
+# linking the phenomenon to its graph
+T=2.4; L=118; th0=math.radians(26); px,py=200,36; v=36; y0=py+L+34
+NS=48
+def th(t): return th0*math.cos(2*math.pi*t/T)
+rot=';'.join(f(-math.degrees(th(T*i/NS))) for i in range(NS+1))
+trace=[]
+tau=-T
+while tau<=(380-y0)/v+0.05:
+    trace.append((px+L*math.sin(th(-tau)), y0+v*tau)); tau+=T/60
+tp='M'+'L'.join(f'{f(x)} {f(y)}' for x,y in trace)
+grid=''.join(f'<path d="M110 {f(y0+k*v*T/2)}H290" stroke="var(--art-a)" stroke-width="1" opacity=".18"/>' for k in range(-2,int((380-y0)/(v*T/2))+2))
+head=';'.join(f(px+L*math.sin(th(T*i/NS))) for i in range(NS+1))
+edu=(f'<svg class="art" width="{S}" height="{S}" viewBox="0 0 {S} {S}" aria-hidden="true">'
+     f'<defs><clipPath id="edu-paper"><rect x="110" y="{y0}" width="180" height="{380-y0}"/></clipPath></defs>'
+     f'<rect x="110" y="{y0}" width="180" height="{380-y0}" fill="none" stroke="var(--art-a)" stroke-width="1.2" opacity=".5"/>'
+     f'<path d="M{px} {y0}V380" stroke="var(--art-a)" stroke-width="1" stroke-dasharray="3 5" opacity=".35"/>'
+     f'<g clip-path="url(#edu-paper)"><g>{grid}<path d="{tp}" fill="none" stroke="var(--art-b)" stroke-width="2.5" stroke-linejoin="round"/>'
+     f'<animateTransform attributeName="transform" type="translate" values="0 0;0 {f(v*T)}" dur="{T}s" repeatCount="indefinite"/></g></g>'
+     f'<path d="M150 {py}H250" stroke="var(--art-a)" stroke-width="2.5" opacity=".8"/>'
+     f'<g><path d="M{px} {py}V{py+L}" stroke="var(--art-a)" stroke-width="1.8"/><circle cx="{px}" cy="{py+L}" r="15" fill="var(--art-b)"/>'
+     f'<animateTransform attributeName="transform" type="rotate" values="{";".join(r+f" {px} {py}" for r in rot.split(";"))}" dur="{T}s" repeatCount="indefinite"/></g>'
+     f'<circle cx="{px}" cy="{y0}" r="4.5" fill="var(--art-b)"><animate attributeName="cx" values="{head}" dur="{T}s" repeatCount="indefinite"/></circle>'
+     f'</svg>')
+
+for n,s in [('quantum-materials',moire),('qft-holography',ads),('gravitation-cosmology',grav),('quantum-computation',qc),('nonlinear-physics',nl),('physics-education',edu)]:
     open(os.path.join(OUT,n+'.njk'),'w').write(s)
 print('ok')

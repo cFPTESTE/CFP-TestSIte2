@@ -367,6 +367,7 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 @media (max-width:900px){.about{grid-template-columns:1fr;gap:28px}.about-logo{order:-1;max-width:520px}}
 @media (max-width:560px){.partner{grid-template-columns:1fr}.partner-logo{justify-self:start}}
 @media (min-width:1000px){
-  .minor-areas{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .minor-areas .minor:not(.noart){grid-column:span 2}
+  .minor-areas{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .minor-areas .minor:not(.noart){grid-template-columns:1fr;align-content:start;gap:18px}
+  .minor-areas .minor .mini-art{width:150px}
 }
