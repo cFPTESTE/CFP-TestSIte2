@@ -1,6 +1,19 @@
 # Author lists of the papers in the member profiles (publications: in content/people/*.yml),
 # keyed by DOI or arXiv link (lower case). Collected from Crossref / INSPIRE / publisher pages.
 # Used for the 'Selected publications' and as fallback list when OpenAlex is unavailable.
+10.1007/jhep03(2022)139:
+  authors:
+  - name: António Antunes
+    orcid: 0000-0002-1082-6979
+  - &id003
+    name: Miguel S. Costa
+  - &id002
+    name: Vasco Gonçalves
+    orcid: 0000-0001-8091-7959
+  - &id001
+    name: João Vilas Boas
+    orcid: 0000-0002-6948-0968
+  source: inspire
 10.1007/jhep04(2015)150:
   authors:
   - name: Vasco Gonçalves
@@ -36,6 +49,26 @@
     orcid: 0000-0001-6446-8938
   - name: João Penedones
     orcid: 0000-0003-0345-4836
+  source: inspire
+10.1007/jhep05(2026)045:
+  authors:
+  - *id001
+  source: inspire
+10.1007/jhep08(2023)067:
+  authors:
+  - *id002
+  - name: Carlo Meneghelli
+  - name: Raul Pereira
+  - *id001
+  - name: Xinan Zhou
+  source: inspire
+10.1007/jhep09(2023)155:
+  authors:
+  - *id003
+  - *id002
+  - name: Aaditya Salgarkar
+    orcid: 0000-0001-7056-1602
+  - *id001
   source: inspire
 10.1007/jhep09(2025)076:
   authors:

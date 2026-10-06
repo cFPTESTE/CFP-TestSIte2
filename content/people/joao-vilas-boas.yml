@@ -1,0 +1,46 @@
+name: João Vilas Boas
+category: researcher
+member_since: 2026   # joined CFP in October 2026
+areas:
+- qft-holography
+keywords:
+- AdS/CFT
+- Conformal field theory
+- Holography
+- Quantum field theory
+- Gravity
+affiliation: FCUP
+email: j.vilasboas@fc.up.pt
+office: FC3 – 325
+orcid: 0000-0002-6948-0968
+links:
+- label: INSPIRE-HEP
+  url: https://inspirehep.net/authors/1969294
+- label: Google Scholar
+  url: https://scholar.google.com/citations?hl=pt-PT&user=nEj2HKIAAAAJ
+photo: ''
+bio: |
+  João Vilas Boas received his PhD from the University of Porto in 2024, following undergraduate studies at the same institution and a master's degree at École Normale Supérieure de Paris. He joined the CFP in October 2026, following two years as a postdoctoral researcher at the School of Mathematical Sciences at Queen Mary University of London.
+
+  His research focuses on holography and the AdS/CFT correspondence, with a particular interest in the structure and dynamics of strongly coupled quantum field theories and their gravitational duals. His research draws on conformal field theory (CFT) techniques, including the analytic conformal bootstrap, to develop non-perturbative approaches to understanding CFTs and holographic theories.
+publications:
+- title: "20′ five-point function of N=4 SYM and stringy corrections"
+  journal: JHEP 05 (2026) 045
+  year: 2026
+  url: https://doi.org/10.1007/JHEP05(2026)045
+- title: AdS×S Mellin Bootstrap, Hidden 10D Symmetry and Five-Point Kaluza-Klein Functions in N=4 Supersymmetric Yang-Mills Theory
+  journal: Phys. Rev. Lett. 136, 081602
+  year: 2026
+  url: https://doi.org/10.1103/3qyd-n621
+- title: Kaluza-Klein Five-Point Functions from AdS5×S5 Supergravity
+  journal: JHEP 08 (2023) 067
+  year: 2023
+  url: https://doi.org/10.1007/JHEP08(2023)067
+- title: Conformal multi-Regge theory
+  journal: JHEP 09 (2023) 155
+  year: 2023
+  url: https://doi.org/10.1007/JHEP09(2023)155
+- title: Lightcone Bootstrap at Higher Points
+  journal: JHEP 03 (2022) 139
+  year: 2022
+  url: https://doi.org/10.1007/JHEP03(2022)139
