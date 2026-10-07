@@ -109,10 +109,13 @@ export default async function (eleventyConfig) {
   // Very long lists (collaborations) show the first authors plus the CFP members, with the rest behind "show all".
   const memberByOrcid = new Map(people.filter((p) => p.orcid).map((p) => [p.orcid, p]));
   for (const w of cfpWorks) {
-    const all = w.authors.map((a, i) => {
-      const m = memberByOrcid.get(a.orcid);
-      return { name: a.name, member: !!m, slug: m && !m.pending ? m.slug : "", i };
-    });
+    // CFP members are shown with the name from their profile (OpenAlex sometimes merges
+    // author records and shows someone else's name); placeholder authors are dropped.
+    const all = w.authors.filter((a) => !/^(anonymous|unknown|n\/a)$/i.test((a.name || "").trim()))
+      .map((a, i) => {
+        const m = memberByOrcid.get(a.orcid);
+        return { name: m ? m.name : a.name, member: !!m, slug: m && !m.pending ? m.slug : "", i };
+      });
     w.authorsAll = all;
     w.longList = all.length > 25;
     const shown = w.longList ? all.filter((a) => a.i < 10 || a.member) : all;

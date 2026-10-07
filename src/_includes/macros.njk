@@ -105,7 +105,7 @@
 
 
 {% macro workItem(w) %}
-<li data-areas="{{ w.areas | join(' ') }}" data-search="{{ (w.title + ' ' + w.journal + ' ' + (w.authors | map('name') | join(' '))) | lower }}">
+<li data-areas="{{ w.areas | join(' ') }}" data-search="{{ (w.title + ' ' + w.journal + ' ' + (w.authorsAll | map('name') | join(' '))) | lower }}">
   <a class="t" href="{{ w.url }}" target="_blank" rel="noopener">{{ w.title }}</a>
   {% if w.longList %}<details class="au"><summary>{% for a in w.authorsShort %}{% if a.gap %}… {% endif %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %} <span class="more-au">… show all {{ w.authorsAll | length }} authors</span></summary>{% for a in w.authorsAll %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %}</details>
   {% else %}<span class="au">{% for a in w.authorsAll %}{{ authorName(a) }}{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
