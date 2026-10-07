@@ -125,10 +125,15 @@ export default async function (eleventyConfig) {
     // author records and shows someone else's name); placeholder authors are dropped.
     const all = w.authors.filter((a) => !/^(anonymous|unknown|n\/a)$/i.test((a.name || "").trim()))
       .map((a, i) => {
-        const m = memberByOrcid.get(a.orcid) || a.fixMember;
-        return { name: m ? m.name : a.name, member: !!m, slug: m && !m.pending ? m.slug : "", i };
+        // by ORCID; else a manual fix; else an author with CFP affiliation whose name matches a member
+        const m = memberByOrcid.get(a.orcid) || a.fixMember || (a.cfp && !memberByOrcid.has(a.orcid) ? memberFor({ name: a.name.includes(",") ? a.name.split(",").reverse().join(" ") : a.name }) : null);
+        return { name: m ? m.name : a.name, member: !!m, slug: m && !m.pending ? m.slug : "", person: m, i };
       });
     w.authorsAll = all;
+    for (const a of all) if (a.person && !w.members.some((x) => x.slug === a.person.slug)) {
+      w.members.push({ name: a.person.name, slug: a.person.slug, pending: !!a.person.pending });
+      for (const ar of a.person.areas) if (!w.areas.includes(ar)) w.areas.push(ar);
+    }
     w.longList = all.length > 25;
     const shown = w.longList ? all.filter((a) => a.i < 10 || a.member) : all;
     w.authorsShort = shown.map((a, k) => ({ ...a, gap: k > 0 && a.i !== shown[k - 1].i + 1 }));

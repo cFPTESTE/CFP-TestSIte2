@@ -60,7 +60,7 @@ function affiliationsOf(authorship) {
   return a;
 }
 
-function toEntry(w) {
+function toEntry(w, res = []) {
   const src = (w.primary_location && w.primary_location.source) || {};
   const b = w.biblio || {};
   let journal = src.display_name || "";
@@ -75,7 +75,13 @@ function toEntry(w) {
     type: w.type,
     journal: journal.trim(),
     url: doi ? `https://doi.org/${doi}` : (w.primary_location && w.primary_location.landing_page_url) || w.id,
-    authors: (w.authorships || []).map((a) => ({ name: (a.author && a.author.display_name) || "", orcid: orcidOf(a.author && a.author.orcid) })),
+    // cfp: this author's printed affiliation matches the CFP patterns (used to recognise members
+    // whose authorship OpenAlex did not link to their ORCID)
+    authors: (w.authorships || []).map((a) => ({
+      name: (a.author && a.author.display_name) || a.raw_author_name || "",
+      orcid: orcidOf(a.author && a.author.orcid),
+      cfp: res.length > 0 && affiliationsOf(a).map(normalize).some((s) => res.some((r) => r.test(s))),
+    })),
   };
 }
 
@@ -87,7 +93,7 @@ export function filterCfp(works, orcid, patterns) {
     const me = (w.authorships || []).find((a) => orcidOf(a.author && a.author.orcid) === orcid);
     if (!me) continue;
     const affs = affiliationsOf(me).map(normalize);
-    (affs.some((s) => res.some((r) => r.test(s))) ? kept : rejected).push(toEntry(w));
+    (affs.some((s) => res.some((r) => r.test(s))) ? kept : rejected).push(toEntry(w, res));
   }
   return { kept, rejected };
 }
