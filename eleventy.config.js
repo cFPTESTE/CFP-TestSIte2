@@ -108,12 +108,24 @@ export default async function (eleventyConfig) {
   // Authors: full list, CFP members highlighted and linked to their profile.
   // Very long lists (collaborations) show the first authors plus the CFP members, with the rest behind "show all".
   const memberByOrcid = new Map(people.filter((p) => p.orcid).map((p) => [p.orcid, p]));
+  // Manual corrections (content/author-fixes.yml): OpenAlex sometimes attributes a member's
+  // authorship to someone else. Each fix says: in this paper, the author shown as X is member Y.
+  const authorFixes = fs.existsSync(path.join(CONTENT, "author-fixes.yml")) ? readYaml("author-fixes.yml") || [] : [];
+  const idOf = (s) => String(s || "").toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//, "").trim();
+  for (const w of cfpWorks) for (const f of authorFixes) {
+    if (!f || !f.work || ![w.url, w.doi].some((u) => u && idOf(u) === idOf(f.work))) continue;
+    const m = people.find((p) => p.slug === f.member); if (!m) continue;
+    const a = w.authors.find((x) => (x.name || "").trim().toLowerCase() === String(f.openalex_name || "").trim().toLowerCase());
+    if (a) a.fixMember = m;
+    if (!w.members.some((x) => x.slug === m.slug)) w.members.push({ name: m.name, slug: m.slug, pending: !!m.pending });
+    for (const ar of m.areas) if (!w.areas.includes(ar)) w.areas.push(ar);
+  }
   for (const w of cfpWorks) {
     // CFP members are shown with the name from their profile (OpenAlex sometimes merges
     // author records and shows someone else's name); placeholder authors are dropped.
     const all = w.authors.filter((a) => !/^(anonymous|unknown|n\/a)$/i.test((a.name || "").trim()))
       .map((a, i) => {
-        const m = memberByOrcid.get(a.orcid);
+        const m = memberByOrcid.get(a.orcid) || a.fixMember;
         return { name: m ? m.name : a.name, member: !!m, slug: m && !m.pending ? m.slug : "", i };
       });
     w.authorsAll = all;

@@ -1,0 +1,10 @@
+# Corrections to the automatic publication list (OpenAlex).
+# OpenAlex sometimes attributes a CFP member's authorship to a different person (wrong name,
+# not linked to the member's ORCID). Each entry says: in this paper, the author that OpenAlex
+# shows as "openalex_name" is the CFP member "member" (file name of the profile, without .yml).
+# The paper then shows the member's name, is highlighted, and appears on the member's profile.
+#
+# work: the paper's DOI (for arXiv papers, the DOI 10.48550/arxiv.XXXX.XXXXX)
+- work: 10.48550/arxiv.2609.37806
+  openalex_name: F.J. Alcalá Serrano
+  member: filipe-serrano

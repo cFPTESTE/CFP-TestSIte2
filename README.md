@@ -87,6 +87,8 @@ Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-"
 
 **Lista completa de publicações** – é gerada sozinha a cada compilação (todas as noites) a partir do [OpenAlex](https://openalex.org), que liga os artigos aos ORCID. Entra um artigo quando o membro do CFP está identificado pelo ORCID e a afiliação impressa no artigo corresponde a um dos padrões em `content/site.yml` (`publications.affiliation_patterns`): Centro de Física do Porto, CF-UM-UP, etc. Artigos só com "Departamento de Física e Astronomia, FCUP" não entram; para os incluir, acrescentar um padrão como `"faculdade de ciencias.{0,40}universidade do porto"`. Quem não tem ORCID no perfil (campo `orcid:`) não aparece nesta lista. O relatório de quantos artigos entraram por pessoa aparece no registo da compilação (separador Actions do GitHub).
 
+**Corrigir um autor trocado pelo OpenAlex** – às vezes o OpenAlex atribui a autoria de um membro a outra pessoa (nome errado e artigo ausente do perfil). Acrescentar uma entrada em `content/author-fixes.yml` com o DOI do artigo (para arXiv, `10.48550/arxiv.XXXX.XXXXX`), o nome tal como aparece no site (`openalex_name`) e o nome do ficheiro do perfil (`member`). A correção definitiva é o membro confirmar o artigo no seu registo ORCID.
+
 **Vídeos do YouTube** – os vídeos mais recentes do canal aparecem sozinhos na página inicial e em News & Seminars (o site lê o canal cada vez que é compilado, todas as noites). O canal está definido em `content/site.yml`. Para ligar um seminário à gravação, acrescentar `video: https://www.youtube.com/watch?v=...` à entrada em `content/seminars.yml`.
 
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
