@@ -384,3 +384,4 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .pubs details.au summary::-webkit-details-marker{display:none}
 .pubs details.au[open] summary{display:none}
 .pubs .more-au{color:var(--fcup-deep);white-space:nowrap}
+.seminar .stype{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--fcup-deep));margin-bottom:4px}

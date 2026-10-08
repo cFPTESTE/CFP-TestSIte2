@@ -65,3 +65,9 @@ funding:
   reference: ""
 # Contact email for the centre (fill in):
 email: ""
+
+# Seminars & journal clubs. Besides content/seminars.yml and content/seminars.csv, the site reads a
+# Google Sheet published as CSV (File > Share > Publish to web > choose the sheet > CSV > Publish).
+# Paste the link here; leave empty while there is no sheet.
+seminars:
+  sheet_csv: ""

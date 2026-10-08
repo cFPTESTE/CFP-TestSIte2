@@ -72,7 +72,7 @@ Só cria perfis novos ou substitui os que ainda estão `pending: true`; perfis j
 Se o nome no formulário for diferente do nome do ficheiro provisório (ex. "José Guilherme Matos" vs `jose-matos.yml`), apagar o provisório.
 Depois, rever o ficheiro criado: traduzir a bio se vier em português e acrescentar `title`/`journal` aos artigos.
 
-**Adicionar um seminário** – acrescentar uma entrada em `content/seminars.yml` (há um exemplo comentado no próprio ficheiro). O site separa sozinho os próximos seminários dos passados; é recompilado todas as noites para isso.
+**Seminários e journal clubs** – o site junta três fontes: `content/seminars.yml`, a tabela `content/seminars.csv` (editável no GitHub, uma linha por sessão) e uma Google Sheet publicada em CSV, cujo link fica em `content/site.yml` (`seminars: sheet_csv:`). Colunas: `date` (AAAA-MM-DD), `time`, `type` (Journal club, Seminar, Colloquium), `speaker`, `affiliation`, `title`, `abstract`, `room`, `online`, `area`, `paper`, `slides`, `video`. O site separa sozinho os próximos dos passados e, se `video` estiver vazio, procura no canal de YouTube a gravação (título com o apelido do orador, até 45 dias depois). A última cópia da folha fica guardada, por isso uma folha apagada ou offline não esvazia a lista.
 
 **Publicar uma notícia** – criar um ficheiro em `src/news/`, por exemplo `2026-10-premio.md`:
 ```markdown

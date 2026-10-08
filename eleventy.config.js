@@ -4,6 +4,7 @@ import * as yaml from "js-yaml";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import markdownIt from "markdown-it";
 import { fetchVideos } from "./youtube.js";
+import { loadSeminars } from "./seminars.js";
 import { loadCfpPublications } from "./publications.js";
 
 const CONTENT = "content";
@@ -54,10 +55,10 @@ export default async function (eleventyConfig) {
   if (process.env.SITE_THEME !== undefined) site.theme = process.env.SITE_THEME;
   const projects = (readYaml("projects.yml") || []).filter((p) => !p.hidden);
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const seminars = (readYaml("seminars.yml") || []).map((s) => ({ ...s, date: new Date(s.date) }))
-    .sort((a, b) => a.date - b.date);
-  const upcoming = seminars.filter((s) => s.date >= today);
-  const past = seminars.filter((s) => s.date < today).reverse();
+  // YouTube: read once (more than shown, so recordings of older seminars can be matched)
+  const allVideos = await fetchVideos(site.youtube && site.youtube.channel_id, 30);
+  // Seminars & journal clubs: content/seminars.yml + content/seminars.csv + the published sheet (site.yml)
+  const seminars = await loadSeminars({ contentDir: CONTENT, sheetUrl: site.seminars && site.seminars.sheet_csv, videos: allVideos });
 
   // Author lists for the papers in the profiles (content/publication-authors.yml), with CFP members flagged
   const pubAuthors = fs.existsSync(path.join(CONTENT, "publication-authors.yml")) ? readYaml("publication-authors.yml") || {} : {};
@@ -158,8 +159,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
   eleventyConfig.addGlobalData("areas", areas);
   eleventyConfig.addGlobalData("projects", projects);
-  eleventyConfig.addGlobalData("seminars", { upcoming, past });
-  eleventyConfig.addGlobalData("videos", () => fetchVideos(site.youtube && site.youtube.channel_id, 8));
+  eleventyConfig.addGlobalData("seminars", seminars);
+  eleventyConfig.addGlobalData("videos", allVideos.slice(0, 8));
   eleventyConfig.addGlobalData("publications", publications);
   eleventyConfig.addGlobalData("pubYears", pubYears);
   eleventyConfig.addGlobalData("cfpWorks", cfpWorks);
