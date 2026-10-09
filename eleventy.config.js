@@ -145,6 +145,7 @@ export default async function (eleventyConfig) {
   // Profile visual: an animated scene chosen from the profile's keywords (or "visual:" in the profile)
   // [scene, keywords (counted), areas where it may be used (empty = any)]
   const SCENES = [
+    ["solitons", /soliton|kink|vortex|vortic|topological defect|sine-gordon|\bbps\b|lump|monopole|domain wall|breather/g, []],
     ["chain", /hubbard|bethe|integrab|one-dimensional|\b1d\b|spin-charge/g, ["quantum-materials"]],
     ["lensing", /black hole|horizon|photon sphere|shadow|compact object/g, []],
     ["bloch", /quantum algorithm|quantum comput|qubit|neural quantum|quantum data|quantum simul/g, []],
@@ -152,7 +153,7 @@ export default async function (eleventyConfig) {
     ["cosmos", /cosmolog|dark energy|dark matter|hubble|inflation|universe|supernova|gravitational wave|modified gravity/g, []],
     ["dirac", /graphene|moir|2d material|dirac|topological (insulator|material|semimetal|phase)|semimetal|quasiperiod|exciton|hall|superconduct|condensed|materials?\b/g, ["quantum-materials"]],
   ];
-  const AREA_SCENE = { "quantum-materials": "dirac", "qft-holography": "bootstrap", "gravitation-cosmology": "cosmos", "quantum-computation": "bloch" };
+  const AREA_SCENE = { "nonlinear-physics": "solitons", "quantum-materials": "dirac", "qft-holography": "bootstrap", "gravitation-cosmology": "cosmos", "quantum-computation": "bloch" };
   for (const p of people) {
     const text = [...p.keywords, p.bio || ""].join(" ").toLowerCase();
     let best = "", bestN = 0;

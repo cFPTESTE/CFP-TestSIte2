@@ -59,7 +59,7 @@ photo: /assets/people/vasco-goncalves.jpg
 | `areas` | sim | ids de `content/areas.yml`, ex. `[quantum-materials]` |
 | `keywords`, `affiliation`, `email`, `office`, `orcid`, `links`, `photo`, `bio`, `publications` | não | |
 | `member_since` | não | ano de entrada no CFP; artigos anteriores não contam como publicações do centro (preenchido a partir das listas da equipa, desde 2017) |
-| `visual` | não | animação no topo do perfil: `bootstrap`, `dirac`, `cosmos`, `lensing`, `bloch`, `chain`, ou `false` para nenhuma; se faltar, é escolhida pelas palavras-chave |
+| `visual` | não | animação no topo do perfil: `bootstrap`, `dirac`, `cosmos`, `lensing`, `bloch`, `chain`, `solitons`, ou `false` para nenhuma; se faltar, é escolhida pelas palavras-chave |
 | `featured` | não | até 3 trabalhos em destaque no topo do perfil (DOI, link ou palavras do título); se faltar, usa as "Selected publications" |
 | `pending: true` | não | mostra "Profile coming soon" e não cria página individual |
 

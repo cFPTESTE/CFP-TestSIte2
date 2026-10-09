@@ -139,6 +139,37 @@
       c.fillStyle = col.accent; c.beginPath(); c.arc(tip[0], tip[1], 5, 0, TAU); c.fill();
     },
 
+    // Sine-Gordon kink–antikink collision (exact solution) shown on its mechanical analogue, a chain of pendula:
+    // phi(x,t) = 4 arctan( sinh(γ v t) / (v cosh(γ x)) ); the solitons pass through each other unchanged
+    solitons(c, w, h, t, col) {
+      const v = 0.45, g = 1 / Math.sqrt(1 - v * v), cyc = 10, ts = ((t % cyc) / cyc) * 22 - 11;
+      const phi = (x) => 4 * Math.atan(Math.sinh(g * v * ts) / (v * Math.cosh(g * x)));
+      const L = w * 0.34, R = w * 0.96, X = (x) => L + (R - L) * (x + 12) / 24;
+      const yTop = h * 0.36, yB = h * 0.86, amp = h * 0.24;
+      // pendulum chain: each pendulum rotated by phi
+      c.strokeStyle = rgba(col.ink, 0.3); c.lineWidth = 1; c.beginPath(); c.moveTo(L, yTop); c.lineTo(R, yTop); c.stroke();
+      const N = 34, len = h * 0.15;
+      for (let i = 0; i < N; i++) {
+        const x = -12 + 24 * i / (N - 1), a = phi(x), px = X(x);
+        const ex = px + Math.sin(a) * len, ey = yTop + Math.cos(a) * len;
+        const twisted = Math.abs(Math.sin(a / 2));
+        c.strokeStyle = rgba(twisted > 0.3 ? col.accent : col.ink, 0.45 + 0.5 * twisted); c.lineWidth = 1.6;
+        c.beginPath(); c.moveTo(px, yTop); c.lineTo(ex, ey); c.stroke();
+        c.fillStyle = rgba(twisted > 0.3 ? col.accent : col.ink, 0.6 + 0.4 * twisted);
+        c.beginPath(); c.arc(ex, ey, h * 0.014, 0, TAU); c.fill();
+      }
+      // field profile phi(x)
+      const base = yB;
+      c.strokeStyle = rgba(col.ink, 0.25); c.setLineDash([4, 5]);
+      for (const k of [0, 1]) { c.beginPath(); c.moveTo(L, base - k * amp); c.lineTo(R, base - k * amp); c.stroke(); }
+      c.setLineDash([]);
+      c.strokeStyle = rgba(col.accent, 0.95); c.lineWidth = 2.4; c.beginPath();
+      for (let i = 0; i <= 200; i++) { const x = -12 + 24 * i / 200, y = base - amp * Math.abs(phi(x)) / (2 * Math.PI); i ? c.lineTo(X(x), y) : c.moveTo(X(x), y); }
+      c.stroke();
+      c.fillStyle = rgba(col.ink, 0.6); c.font = `${Math.round(h * 0.045)}px Helvetica, Arial, sans-serif`;
+      c.fillText("φ = 2π", R - h * 0.2, base - amp - h * 0.02); c.fillText("φ = 0", R - h * 0.16, base - h * 0.02);
+    },
+
     // 1D Hubbard chain: an injected hole splits into a holon (charge) and a spinon (spin) moving at different speeds
     chain(c, w, h, t, col) {
       const N = 22, L = w * 0.08, R = w * 0.96, y = h * 0.5, dx = (R - L) / (N - 1), cyc = 7, k = (t % cyc) / cyc;
