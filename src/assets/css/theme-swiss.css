@@ -139,3 +139,7 @@ a.pcard:hover{box-shadow:none;background:var(--hover);transform:none}
 .news-img{margin:0 0 6px;border-radius:0}
 .news-figure img{border-radius:0}
 .btn.outline{border:2px solid var(--rule);background:transparent}
+/* profile visual on the light band */
+.profile-band{--viz-ink:var(--ink);--viz-bg:#0B1220}
+.fw-item{color:var(--ink)}
+.fw-venue{color:var(--muted)}

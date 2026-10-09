@@ -385,3 +385,21 @@ a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srg
 .pubs details.au[open] summary{display:none}
 .pubs .more-au{color:var(--fcup-deep);white-space:nowrap}
 .seminar .stype{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--fcup-deep));margin-bottom:4px}
+
+/* ---------- profile: research visual + featured work ---------- */
+.profile-band{--viz-ink:#E6EAF0;--viz-bg:var(--night)}
+.profile-band.has-visual{position:relative;overflow:hidden}
+.profile-band .research-visual{position:absolute;top:0;right:0;width:min(58%,720px);height:100%;opacity:.9;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+.profile-band .wrap{position:relative;z-index:1}
+.profile-band .wrap>div:last-child{max-width:640px}
+.featured{margin-top:22px;max-width:560px}
+.fw-label{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+.fw-items{display:grid}
+.fw-item{grid-area:1/1;display:grid;gap:3px;text-decoration:none;color:var(--night-ink);opacity:0;transform:translateY(6px);transition:opacity .6s,transform .6s;pointer-events:none}
+.fw-item.on{opacity:1;transform:none;pointer-events:auto}
+.fw-title{font-size:16px;line-height:1.35}
+.fw-item:hover .fw-title{text-decoration:underline}
+.fw-venue{font-size:13px;color:var(--night-muted)}
+@media (max-width:900px){.profile-band .research-visual{width:100%;opacity:.25;-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.fw-item{transition:none}}

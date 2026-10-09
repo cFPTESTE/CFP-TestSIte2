@@ -141,6 +141,34 @@ export default async function (eleventyConfig) {
     w.moreAuthors = all.length - shown.length;
   }
   for (const p of people) p.cfpPublications = cfpWorks.filter((w) => w.members.some((m) => m.slug === p.slug));
+
+  // Profile visual: an animated scene chosen from the profile's keywords (or "visual:" in the profile)
+  // [scene, keywords (counted), areas where it may be used (empty = any)]
+  const SCENES = [
+    ["chain", /hubbard|bethe|integrab|one-dimensional|\b1d\b|spin-charge/g, ["quantum-materials"]],
+    ["lensing", /black hole|horizon|photon sphere|shadow|compact object/g, []],
+    ["bloch", /quantum algorithm|quantum comput|qubit|neural quantum|quantum data|quantum simul/g, []],
+    ["bootstrap", /bootstrap|conformal|\bcft\b|ads\/cft|holograph|gauge theor|gauge\/gravity|duality|supersymm|yang-mills|s-matrix|string|matrix quantum|quantum field/g, []],
+    ["cosmos", /cosmolog|dark energy|dark matter|hubble|inflation|universe|supernova|gravitational wave|modified gravity/g, []],
+    ["dirac", /graphene|moir|2d material|dirac|topological (insulator|material|semimetal|phase)|semimetal|quasiperiod|exciton|hall|superconduct|condensed|materials?\b/g, ["quantum-materials"]],
+  ];
+  const AREA_SCENE = { "quantum-materials": "dirac", "qft-holography": "bootstrap", "gravitation-cosmology": "cosmos", "quantum-computation": "bloch" };
+  for (const p of people) {
+    const text = [...p.keywords, p.bio || ""].join(" ").toLowerCase();
+    let best = "", bestN = 0;
+    for (const [name, re, areasOk] of SCENES) {
+      if (areasOk.length && !areasOk.some((a) => p.areas.includes(a))) continue;
+      const n = (text.match(re) || []).length;
+      if (n > bestN) { best = name; bestN = n; }
+    }
+    p.scene = p.visual === false ? "" : p.visual || best || AREA_SCENE[p.areas[0]] || "";
+    // Featured works: "featured:" in the profile (DOIs, links or title words), else the selected publications, else recent CFP papers
+    const pool = [...p.publications.map((x) => ({ title: x.title, url: x.url, venue: x.journal, year: x.year })),
+                  ...p.cfpPublications.map((w) => ({ title: w.title, url: w.url, venue: w.journal, year: w.year }))];
+    const pick = (f) => pool.find((x) => (x.url || "").toLowerCase().includes(String(f).toLowerCase()) || (x.title || "").toLowerCase().includes(String(f).toLowerCase()));
+    const chosen = (p.featured || []).map(pick).filter(Boolean);
+    p.featuredWorks = (chosen.length ? chosen : pool).filter((x) => x.title).slice(0, 3);
+  }
   const cfpYears = [...new Set(cfpWorks.map((w) => w.year))].filter(Boolean).sort((a, b) => b - a);
 
   // Official logos: any file named src/assets/logos/<name>.{svg,png,webp,jpg}
