@@ -77,7 +77,7 @@ layout: base.njk
   <section class="section" aria-labelledby="people-h">
     <div class="section-head">
       <div><div class="eyebrow">People</div><h2 id="people-h" style="margin-top:8px">{{ people | length }} physicists, from MSc students to full professors</h2></div>
-      <a class="more" href="/people/">Everyone</a>
+      <span class="head-links"><a class="more" href="/join/">Join us</a><a class="more" href="/people/">Everyone</a></span>
     </div>
     <div class="mosaic">
       {% for p in people %}{% if p.pending %}<span title="{{ p.name }}">{{ avatar(p) }}</span>{% else %}<a href="/people/{{ p.slug }}/" title="{{ p.name }}">{{ avatar(p) }}</a>{% endif %}{% endfor %}

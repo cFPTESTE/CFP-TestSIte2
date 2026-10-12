@@ -188,6 +188,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("profiles", people.filter((p) => !p.pending));
   eleventyConfig.addGlobalData("areas", areas);
   eleventyConfig.addGlobalData("projects", projects);
+  eleventyConfig.addGlobalData("join", fs.existsSync(path.join(CONTENT, "join.yml")) ? readYaml("join.yml") || {} : {});
   eleventyConfig.addGlobalData("seminars", seminars);
   eleventyConfig.addGlobalData("videos", allVideos.slice(0, 8));
   eleventyConfig.addGlobalData("publications", publications);
@@ -219,6 +220,11 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
   eleventyConfig.addFilter("paragraphs", (s) => (s || "").trim().split(/\n\s*\n/).map((x) => x.trim()));
   eleventyConfig.addFilter("senior", (list) => list.filter((p) => p.category === "faculty" || p.category === "researcher"));
+  // open calls on the Join us page: drop those whose deadline has passed
+  eleventyConfig.addFilter("openCalls", (list) => { const today = new Date().toISOString().slice(0, 10);
+    return (list || []).filter((p) => !p.deadline || new Date(p.deadline).toISOString().slice(0, 10) >= today); });
+  eleventyConfig.addFilter("take", (list, n) => (list || []).slice(0, n));
+  eleventyConfig.addFilter("person", (slug) => people.find((p) => p.slug === slug));
   eleventyConfig.addFilter("students", (list) => list.filter((p) => p.category === "phd" || p.category === "msc"));
 
   return {

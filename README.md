@@ -12,6 +12,7 @@ content/
   site.yml          nome, texto "about", morada, email do centro
   areas.yml         áreas de investigação (texto, tópicos, cor, ordem)
   projects.yml      projetos
+  join.yml          página "Join us": vagas abertas, formas de entrar, como contactar
   people/*.yml      um ficheiro por pessoa
 src/                modelos das páginas (HTML/Nunjucks) e CSS
   news/*.md         notícias (uma por ficheiro)
@@ -92,6 +93,8 @@ Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-"
 **Corrigir um autor trocado pelo OpenAlex** – às vezes o OpenAlex atribui a autoria de um membro a outra pessoa (nome errado e artigo ausente do perfil). Acrescentar uma entrada em `content/author-fixes.yml` com o DOI do artigo (para arXiv, `10.48550/arxiv.XXXX.XXXXX`), o nome tal como aparece no site (`openalex_name`) e o nome do ficheiro do perfil (`member`). A correção definitiva é o membro confirmar o artigo no seu registo ORCID.
 
 **Vídeos do YouTube** – os vídeos mais recentes do canal aparecem sozinhos na página inicial e em News & Seminars (o site lê o canal cada vez que é compilado, todas as noites). O canal está definido em `content/site.yml`. Para ligar um seminário à gravação, acrescentar `video: https://www.youtube.com/watch?v=...` à entrada em `content/seminars.yml`.
+
+**Anunciar uma vaga (bolsa de doutoramento, pós-doc, tese de mestrado…)** – acrescentar uma entrada em `positions:` no ficheiro `content/join.yml` (há um exemplo comentado no próprio ficheiro: título, tipo, área, contacto, prazo, link e texto). A vaga sai sozinha da página no dia a seguir ao prazo. Sem vagas, a página mostra a mensagem de `no_positions:`. A lista de orientadores por área é gerada a partir dos perfis (docentes e investigadores).
 
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
 

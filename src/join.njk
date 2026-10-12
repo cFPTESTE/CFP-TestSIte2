@@ -1,0 +1,80 @@
+---
+layout: base.njk
+title: Join us
+permalink: /join/
+---
+{% from "macros.njk" import pageBand, avatar, areaTags %}
+{{ pageBand("Opportunities", "Join us", join.intro) }}
+<div class="wrap">
+
+<section class="section" aria-labelledby="calls">
+  <div class="section-head"><div><div class="eyebrow">Now</div><h2 id="calls">Open positions</h2></div></div>
+  {% set calls = join.positions | openCalls %}
+  {% if calls.length %}
+  <div class="join-calls">
+  {% for c in calls %}{% set a = (c.area | area) if c.area else {color:"muted"} %}{% set who = (c.contact | person) if c.contact else false %}
+    <article class="join-call" data-c="{{ a.color }}">
+      <div class="jc-type">{{ c.type or "Position" }}</div>
+      <div>
+        <h3>{% if c.url %}<a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}</h3>
+        {% if c.text %}<div class="jc-text">{{ c.text | md | safe }}</div>{% endif %}
+        <p class="jc-meta">
+          {% if c.area %}{{ areaTags([c.area]) }}{% endif %}
+          {% if c.deadline %}<span>Deadline <b>{{ c.deadline | dateLong }}</b></span>{% endif %}
+          {% if who %}<span>Contact <a href="/people/{{ who.slug }}/">{{ who.name }}</a></span>{% elif c.contact %}<span>Contact <span class="mono">{{ c.contact }}</span></span>{% endif %}
+        </p>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  {% else %}
+  <p class="note">{{ join.no_positions }}</p>
+  {% endif %}
+</section>
+
+<section class="section" aria-labelledby="paths">
+  <div class="section-head"><div><div class="eyebrow">Paths</div><h2 id="paths">Ways to join</h2></div></div>
+  <div class="join-paths">
+  {% for p in join.paths %}
+    <article class="card join-path">
+      <div class="jp-n">{{ "0" if loop.index < 10 }}{{ loop.index }}</div>
+      <h3>{{ p.title }}</h3>
+      <div class="jp-text">{{ p.text | md | safe }}</div>
+      {% for l in p.links %}<a class="more" href="{{ l.url }}"{% if l.url.startsWith('http') %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}</a>{% endfor %}
+    </article>
+  {% endfor %}
+  </div>
+</section>
+
+<section class="section join-two" aria-label="Life at CFP and how to get in touch">
+  <div>
+    <div class="eyebrow">Life at CFP</div>
+    <h2>Why here</h2>
+    <ul class="join-why">{% for w in join.why %}<li>{{ w | md | replace("<p>","") | replace("</p>","") | safe }}</li>{% endfor %}</ul>
+  </div>
+  <div class="join-apply">
+    <div class="eyebrow">Get in touch</div>
+    <h2>How to apply</h2>
+    <div class="prose">{{ join.apply | md | safe }}</div>
+    <p class="actions"><a class="btn outline" href="#hosts">Find a supervisor or host</a>{% if site.email %} <a class="btn outline" href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="hosts">
+  <div class="section-head"><div><div class="eyebrow">Who to contact</div><h2 id="hosts">Supervisors and hosts by area</h2>
+    <p class="muted">Faculty and researchers of each area. Open a profile for research interests, recent papers and email.</p></div></div>
+  <div class="join-hosts">
+  {% for a in areas %}{% set list = people | senior | inArea(a.id) %}{% if list.length %}
+    <div class="join-area" data-c="{{ a.color }}">
+      <div class="ja-head"><a href="/research/{{ a.id }}/">{{ a.label or a.name }}</a>{% if a.short %}<span>{{ a.short }}</span>{% endif %}</div>
+      <ul class="ja-people">
+      {% for p in list %}
+        <li>{% if p.pending %}<span class="ja-p">{{ avatar(p) }}<span><b>{{ p.name }}</b><small>{{ p.keywords | take(3) | join(" · ") }}</small></span></span>{% else %}<a class="ja-p" href="/people/{{ p.slug }}/">{{ avatar(p) }}<span><b>{{ p.name }}</b><small>{{ p.keywords | take(3) | join(" · ") }}</small></span></a>{% endif %}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}{% endfor %}
+  </div>
+</section>
+
+</div>

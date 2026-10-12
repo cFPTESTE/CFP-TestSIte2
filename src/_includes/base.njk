@@ -24,7 +24,7 @@
       {% else %}<span><b>{{ site.name }}</b><small>{{ site.tagline }}</small></span>{% endif %}
     </a>
     <nav class="nav" aria-label="Main">
-      {% set navs = [["/research/","Research"],["/people/","People"],["/publications/","Publications"],["/news/","News & Seminars"],["/projects/","Projects"],["/contact/","Contact"]] %}
+      {% set navs = [["/research/","Research"],["/people/","People"],["/publications/","Publications"],["/news/","News & Seminars"],["/projects/","Projects"],["/join/","Join us"],["/contact/","Contact"]] %}
       {% for n in navs %}<a href="{{ n[0] }}"{% if page.url.startsWith(n[0]) %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}
     </nav>
   </div>
@@ -44,7 +44,7 @@
     </div>
     <div>
       <div class="h">Centre</div>
-      <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/news/">News &amp; Seminars</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li>{% if site.youtube %}<li><a href="{{ site.youtube.url }}" target="_blank" rel="noopener">YouTube</a></li>{% endif %}</ul>
+      <ul><li><a href="/people/">People</a></li><li><a href="/publications/">Publications</a></li><li><a href="/news/">News &amp; Seminars</a></li><li><a href="/projects/">Projects</a></li><li><a href="/join/">Join us</a></li><li><a href="/contact/">Contact</a></li>{% if site.youtube %}<li><a href="{{ site.youtube.url }}" target="_blank" rel="noopener">YouTube</a></li>{% endif %}</ul>
       <p style="margin-top:18px">Founded {{ site.founded }} · © {{ build.year }}</p>
     </div>
   </div>

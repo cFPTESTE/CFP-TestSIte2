@@ -1,0 +1,72 @@
+# "Join us" page (/join/). Edit freely; text fields accept Markdown: [text](link), **bold**.
+
+intro: >-
+  We welcome students and researchers who want to work in theoretical physics. Most people
+  join CFP by getting in touch directly with a member whose work interests them: the list of
+  possible supervisors and hosts, by research area, is at the bottom of this page.
+
+# Open calls (PhD grants, postdoc positions, MSc projects...). The page shows the ones whose
+# deadline has not passed (or that have no deadline). Leave the list empty when there are none.
+#   - title: PhD grant in moiré materials
+#     type: PhD            # PhD | Postdoc | MSc | Internship | Other
+#     area: quantum-materials
+#     contact: eduardo-castro   # profile name (file name in content/people) or an email
+#     deadline: 2027-01-31
+#     url: https://...      # call notice, if any
+#     text: Short description.
+positions: []
+
+# Message shown when there are no open calls.
+no_positions: >-
+  There are no open calls at the moment, but we are always happy to hear from motivated
+  students and researchers. Write to a possible supervisor or host (see below).
+
+# Ways to join, one card each.
+paths:
+  - title: Undergraduate and MSc students
+    text: >-
+      Students at the University of Porto can do research projects, summer projects and MSc
+      theses with CFP members, in any of our research areas. Research initiation grants are
+      sometimes available through ongoing projects.
+    links:
+      - label: Department of Physics and Astronomy
+        url: https://www.fc.up.pt/dfa/
+  - title: PhD students
+    text: >-
+      PhD students enrol in a doctoral programme in Physics at the University of Porto. Funding
+      usually comes from an FCT PhD studentship, through a yearly national call that opens in
+      the first months of the year, or from a research project. Contact a possible supervisor
+      **well before the call** to prepare the application together.
+    links:
+      - label: FCT – Fundação para a Ciência e a Tecnologia
+        url: https://www.fct.pt/
+  - title: Postdoctoral researchers
+    text: >-
+      Postdocs join CFP through research projects or individual fellowships. We support
+      applications to the Marie Skłodowska-Curie Postdoctoral Fellowships of the European
+      Commission and to FCT's Scientific Employment Stimulus (CEEC Individual) calls. Get in
+      touch with a host several months before the deadline.
+    links:
+      - label: MSCA Postdoctoral Fellowships
+        url: https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships
+  - title: Visitors and speakers
+    text: >-
+      We host visitors for short research stays and invite speakers to our seminars and journal
+      clubs. If you would like to visit or give a talk, write to a member working in your area.
+    links:
+      - label: Seminars and journal clubs
+        url: /news/
+
+# "Life at CFP": short points shown next to the paths.
+why:
+  - Weekly seminars and student-run journal clubs, many of them recorded on our YouTube channel.
+  - A small centre where condensed matter, high energy theory and cosmology share corridors, ideas and students.
+  - Close links to CF-UM-UP and LaPMET, and collaborations with groups across Europe and beyond.
+  - Located at the Faculty of Sciences, on the Campo Alegre campus in Porto.
+
+# How to apply / get in touch.
+apply: >-
+  Write directly to the person you would like to work with (emails are on their profiles).
+  Include a short CV, a few lines on what interests you and, for students, your academic
+  record. If you are not sure who to contact, choose a research area below and write to any
+  of its members – they will point you in the right direction.
