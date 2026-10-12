@@ -12,7 +12,7 @@ content/
   site.yml          nome, texto "about", morada, email do centro
   areas.yml         áreas de investigação (texto, tópicos, cor, ordem)
   projects.yml      projetos
-  join.yml          página "Join us": vagas abertas, formas de entrar, como contactar
+  join.yml          secção "Join us" da página Contact: vagas abertas, formas de entrar, como contactar
   people/*.yml      um ficheiro por pessoa
 src/                modelos das páginas (HTML/Nunjucks) e CSS
   news/*.md         notícias (uma por ficheiro)
@@ -94,7 +94,7 @@ Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-"
 
 **Vídeos do YouTube** – os vídeos mais recentes do canal aparecem sozinhos na página inicial e em News & Seminars (o site lê o canal cada vez que é compilado, todas as noites). O canal está definido em `content/site.yml`. Para ligar um seminário à gravação, acrescentar `video: https://www.youtube.com/watch?v=...` à entrada em `content/seminars.yml`.
 
-**Anunciar uma vaga (bolsa de doutoramento, pós-doc, tese de mestrado…)** – acrescentar uma entrada em `positions:` no ficheiro `content/join.yml` (há um exemplo comentado no próprio ficheiro: título, tipo, área, contacto, prazo, link e texto). A vaga sai sozinha da página no dia a seguir ao prazo. Sem vagas, a página mostra a mensagem de `no_positions:`. A lista de orientadores por área é gerada a partir dos perfis (docentes e investigadores).
+**Anunciar uma vaga (bolsa de doutoramento, pós-doc, tese de mestrado…)** – aparece na secção "Join us" da página Contact. Acrescentar uma entrada em `positions:` no ficheiro `content/join.yml` (há um exemplo comentado no próprio ficheiro: título, tipo, área, contacto, prazo, link e texto). A vaga sai sozinha da página no dia a seguir ao prazo. Sem vagas, a página mostra a mensagem de `no_positions:`. A lista de orientadores por área é gerada a partir dos perfis (docentes e investigadores).
 
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
 
