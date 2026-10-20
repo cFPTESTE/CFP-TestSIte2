@@ -98,6 +98,14 @@ Texto da notícia em Markdown. **Negrito**, [links](https://...), listas com "-"
 
 **Alterar textos das áreas ou a página inicial** – `content/areas.yml` e `content/site.yml`.
 
+## Alojar na FCUP (servidor estático)
+
+O site é estático (só HTML, CSS, JavaScript e imagens): não precisa de PHP, MySQL nem WordPress.
+
+- **Cópia pronta a publicar** – todas as noites, e a cada alteração, o GitHub gera uma cópia com ligações relativas no ramo `fcup` do repositório. Funciona em qualquer pasta do servidor (por exemplo `www.fc.up.pt/cfp/`) e também aberta diretamente do disco. Para a descarregar: <https://github.com/cFPTESTE/CFP-TestSIte2/archive/refs/heads/fcup.zip>. Basta copiar o conteúdo do zip para a pasta do servidor, substituindo o que lá estiver.
+- **Atualização automática (opcional)** – se os serviços da FCUP derem um acesso SFTP à pasta do site, criar no GitHub (Settings › Secrets and variables › Actions) os segredos `FCUP_HOST`, `FCUP_USER`, `FCUP_PASSWORD` e `FCUP_DIR` (a pasta no servidor). A partir daí o GitHub envia a cópia nova para a FCUP todas as noites, e as publicações, seminários e vídeos atualizam-se sozinhos como hoje. Sem esse acesso, é preciso repetir a cópia à mão quando houver alterações.
+- As alterações de conteúdo fazem-se sempre no ramo `main` (ficheiros em `content/`), nunca nos ficheiros da cópia.
+
 ## Trabalhar no computador (opcional)
 
 ```bash

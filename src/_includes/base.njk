@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+<title>{% if title %}{{ title | safe }} · {% endif %}{{ site.name }}</title>
 <meta name="description" content="{{ description or site.tagline }}">
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
 <meta property="og:description" content="{{ description or site.tagline }}">

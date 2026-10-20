@@ -9,7 +9,7 @@ on:
     - cron: "17 4 * * *"   # nightly rebuild so upcoming seminars move to the archive
 
 permissions:
-  contents: read
+  contents: write   # to update the "fcup" branch with the static copy
   pages: write
   id-token: write
 
@@ -20,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FCUP_HOST: ${{ secrets.FCUP_HOST }}   # empty until the secret is created
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,6 +45,34 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      # Portable copy for static hosting at FCUP: relative links, works in any folder.
+      # Published on the "fcup" branch; download it at
+      # https://github.com/<owner>/<repo>/archive/refs/heads/fcup.zip
+      - run: python3 tools/relativize.py _site _site_fcup "${{ steps.pages.outputs.base_path }}/"
+      - name: Publish the FCUP copy on the "fcup" branch
+        run: |
+          cd _site_fcup
+          printf '%s\n' "Cópia estática do site do CFP, gerada todas as noites a partir do ramo main." \
+            "Para publicar: copiar todo o conteúdo desta pasta para o servidor (qualquer pasta serve)." \
+            "Não editar estes ficheiros: as alterações fazem-se no ramo main (ver README.md)." > LEIA-ME.txt
+          git init -q -b fcup
+          git config user.name "github-actions[bot]"
+          git config user.email "41898099+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Site build ${{ github.sha }}"
+          git push -f -q "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" fcup
+      # Optional: upload the FCUP copy straight to the FCUP server every night.
+      # Create the repository secrets FCUP_HOST, FCUP_USER, FCUP_PASSWORD and FCUP_DIR
+      # (Settings > Secrets and variables > Actions) and this step starts running by itself.
+      - name: Upload to the FCUP server (SFTP)
+        if: env.FCUP_HOST != ''
+        env:
+          FCUP_USER: ${{ secrets.FCUP_USER }}
+          FCUP_PASSWORD: ${{ secrets.FCUP_PASSWORD }}
+          FCUP_DIR: ${{ secrets.FCUP_DIR }}
+        run: |
+          sudo apt-get install -y -qq lftp
+          lftp -u "$FCUP_USER","$FCUP_PASSWORD" "sftp://$FCUP_HOST" -e "set sftp:auto-confirm yes; mirror -R --delete --exclude-glob .git* --verbose=1 _site_fcup ${FCUP_DIR:-.}; quit"
 
   deploy:
     needs: build
