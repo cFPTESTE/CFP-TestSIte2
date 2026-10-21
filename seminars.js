@@ -70,6 +70,7 @@ async function readSheet(url, cacheFile) {
   if (!url || process.env.SKIP_SHEET) return [];
   try {
     const res = await fetch(sheetCsvUrl(url), { signal: AbortSignal.timeout(10000), redirect: "follow" });
+    if (res.status === 401 || res.status === 403) throw new Error(`HTTP ${res.status}: the sheet is private – share it as 'Anyone with the link – Viewer' or publish it as CSV`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const text = await res.text();
     if (/^\s*</.test(text)) throw new Error("got a web page, not a table: share the sheet as 'Anyone with the link – Viewer' or publish it as CSV");
