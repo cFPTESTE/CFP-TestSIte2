@@ -55,18 +55,31 @@ function parseDate(v) {
   return null;
 }
 
+// Any Google Sheets link works: a "Publish to web" CSV link, or the normal editing link of a sheet
+// shared as "Anyone with the link – Viewer" (it is turned into its CSV export, tab included).
+export function sheetCsvUrl(url) {
+  const m = /docs\.google\.com\/spreadsheets\/d\/([\w-]{20,})/.exec(url || "");
+  if (!m || /\/pub|\/export|tqx=out:csv/.test(url)) return url;
+  const gid = (/[#?&]gid=(\d+)/.exec(url) || [])[1];
+  return `https://docs.google.com/spreadsheets/d/${m[1]}/export?format=csv${gid ? `&gid=${gid}` : ""}`;
+}
+// in GitHub Actions, also report as an annotation of the build (visible in the Actions tab)
+const report = (kind, msg) => { console.log(`[seminars] ${msg}`); if (process.env.GITHUB_ACTIONS) console.log(`::${kind} title=Seminars sheet::${msg}`); };
+
 async function readSheet(url, cacheFile) {
   if (!url || process.env.SKIP_SHEET) return [];
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(10000), redirect: "follow" });
+    const res = await fetch(sheetCsvUrl(url), { signal: AbortSignal.timeout(10000), redirect: "follow" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const text = await res.text();
-    if (/^\s*</.test(text)) throw new Error("not a CSV (is the sheet published as CSV?)");
+    if (/^\s*</.test(text)) throw new Error("got a web page, not a table: share the sheet as 'Anyone with the link – Viewer' or publish it as CSV");
     fs.mkdirSync(path.dirname(cacheFile), { recursive: true });
     fs.writeFileSync(cacheFile, text);
-    return rowsToSeminars(parseCsv(text));
+    const rows = parseCsv(text), list = rowsToSeminars(rows);
+    report("notice", `sheet read: ${rows.length - 1} rows, ${list.length} seminars kept; columns: ${(rows[0] || []).map((h) => h.trim()).join(" | ")}`);
+    return list;
   } catch (err) {
-    console.warn(`[seminars] could not read the sheet (${err.message}); using the last saved copy`);
+    report("warning", `could not read the sheet (${err.message}); using the last saved copy`);
     return fs.existsSync(cacheFile) ? rowsToSeminars(parseCsv(fs.readFileSync(cacheFile, "utf8"))) : [];
   }
 }
