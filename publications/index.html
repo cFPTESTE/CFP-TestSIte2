@@ -1,0 +1,1881 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Publications · Centro de Física do Porto</title>
+<meta name="description" content="Theoretical physics at the University of Porto">
+<meta property="og:title" content="Publications · Centro de Física do Porto">
+<meta property="og:description" content="Theoretical physics at the University of Porto">
+<style>svg,img,canvas{max-width:100%;height:auto}.brand-logo{height:36px;width:auto}.art{width:100%;height:auto}</style>
+<link rel="expect" href="#page-end" blocking="render">
+<script>try{if(sessionStorage.getItem("cfp-seen"))document.documentElement.classList.add("seen");else sessionStorage.setItem("cfp-seen","1")}catch(e){}</script>
+<style>/* no cross-page transition: it overlays a snapshot of the old page, which looks like a stretched image */
+@view-transition{navigation:none}
+/* Centro de Física do Porto — site styles */
+:root{
+  --bg:#F4F6F9; --surface:#FFFFFF; --ink:#0E1726; --ink-2:#34425A; --muted:#5C6778; --line:#DDE3EB;
+  --night:#0B1422; --night-2:#132035; --night-ink:#E8EDF4; --night-muted:#9DAABD; --night-line:#23324A;
+  --accent:#1F5E91; --accent-soft:#E3EEF4;
+  --fcup:#92C1E9; --fcup-deep:#1F5E91; /* FCUP blue, Pantone 283 C, and a darker shade for text on light backgrounds */
+  --art-a:#C8D6E5; --art-b:var(--fcup); --art-bg:var(--night);
+  --cm:#2F79B9; --hep:#6A55B5; --cos:#1A8572; --qc:#A94A7C; --edu:#77762A; --nl:#4A6A86; --muted-c:#7A8494;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:var(--sans);
+  --code:ui-monospace,Menlo,Consolas,monospace;
+  --radius:14px; --max:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --bg:#0E131B; --surface:#151D29; --ink:#E6EBF2; --ink-2:#C2CAD6; --muted:#97A2B3; --line:#263244;
+    --night:#070C15; --night-2:#101A2B; --night-line:#1E2B40;
+    --accent:#86C0DB; --accent-soft:#18293A;
+    --cm:#7FB5E6; --hep:#A792E3; --cos:#5CC6B2; --qc:#E08AB6; --edu:#C9C66A; --nl:#9DB9D3; --fcup-deep:#92C1E9; --muted-c:#8C96A6;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0E131B; --surface:#151D29; --ink:#E6EBF2; --ink-2:#C2CAD6; --muted:#97A2B3; --line:#263244;
+  --night:#070C15; --night-2:#101A2B; --night-line:#1E2B40;
+  --accent:#86C0DB; --accent-soft:#18293A;
+  --cm:#7FB5E6; --hep:#A792E3; --cos:#5CC6B2; --qc:#E08AB6; --edu:#C9C66A; --nl:#9DB9D3; --fcup-deep:#92C1E9; --muted-c:#8C96A6;}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+img,svg{max-width:100%;display:block}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--fcup);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:24px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--surface);padding:8px 12px;z-index:30}
+
+[data-c="cm"]{--c:var(--cm)} [data-c="hep"]{--c:var(--hep)} [data-c="cos"]{--c:var(--cos)}
+[data-c="qc"]{--c:var(--qc)} [data-c="edu"]{--c:var(--edu)} [data-c="nl"]{--c:var(--nl)} [data-c="muted"]{--c:var(--muted-c)} [data-c="fcup"]{--c:var(--fcup-deep)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:-.025em}
+h1{font-size:clamp(36px,5.6vw,64px);line-height:1.04}
+h2{font-size:clamp(32px,4vw,48px);line-height:1.08}
+h3{font-size:clamp(24px,2.6vw,30px);line-height:1.15}
+h1 em,h2 em{font-style:normal;color:inherit}
+.eyebrow{font:500 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow a{color:inherit}
+.lede{font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0}
+.prose{max-width:68ch;font-size:17px}
+.prose p{margin:0 0 1em}
+.muted{color:var(--muted)}
+.mono{font-family:var(--code);font-size:13.5px}
+
+/* ---------- header ---------- */
+.site-header{background:var(--night);color:var(--night-ink);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--night-line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--night-ink)}
+.brand-logo{height:44px;width:auto;flex:none;display:block}
+.brand b{font:700 19px/1.1 var(--display);letter-spacing:-.01em;display:block}
+.brand small{font:12px var(--sans);color:var(--night-muted);letter-spacing:.06em}
+.nav{display:flex;flex-wrap:wrap;gap:2px}
+.nav a{color:var(--night-muted);text-decoration:none;font-size:15px;padding:7px 12px;border-radius:999px}
+.nav a:hover{color:var(--night-ink);background:var(--night-2)}
+.nav a[aria-current="page"]{color:var(--night);background:var(--night-ink)}
+
+/* ---------- dark bands ---------- */
+.band{background:var(--night);color:var(--night-ink);position:relative;overflow:hidden}
+.band .lede{color:var(--night-muted)}
+.band .eyebrow{color:var(--fcup)}
+.band a{color:var(--night-ink)}
+
+/* hero */
+.hero{min-height:min(640px,86vh);display:flex;align-items:center}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:88px 72px}
+.hero-copy{max-width:720px;display:grid;gap:22px}
+.hero h1{font-size:clamp(40px,6vw,76px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 15px var(--sans);padding:11px 20px;border-radius:999px;text-decoration:none;border:1px solid var(--night-line)}
+.btn.primary{background:var(--fcup);color:#0B1422;border-color:var(--fcup)}
+.btn.primary:hover{background:#B3D4F1}
+.btn.ghost{color:var(--night-ink);background:rgba(255,255,255,.04)}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.facts{display:flex;flex-wrap:wrap;gap:14px 30px;margin:18px 0 0;padding:22px 0 0;list-style:none;border-top:1px solid var(--night-line)}
+.facts li{display:grid;gap:2px}
+.facts b{font:700 38px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--night-ink)}
+.facts span{font:12px var(--sans);letter-spacing:.06em;color:var(--night-muted);text-transform:uppercase}
+
+/* page heads (inner pages) */
+.page-band .wrap{padding-block:64px 56px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+.page-band .head{display:grid;gap:16px}
+.page-band .art{width:clamp(160px,22vw,260px)}
+.page-band.plain .wrap{grid-template-columns:1fr}
+
+main{padding-block:0 96px}
+.section{padding-top:88px;display:grid;gap:28px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.section-head p{margin:8px 0 0}
+.more{font:500 15px var(--sans);text-decoration:none;white-space:nowrap}
+.more::after{content:"\00a0→"}
+
+/* ---------- areas (home + research) ---------- */
+.areas{display:grid;gap:22px}
+.area{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.area:nth-child(even){grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.area:nth-child(even) .area-art{order:2}
+.area-art{background:var(--night);display:grid;place-items:center;padding:36px;min-height:300px;position:relative}
+.area-art .art{width:100%;max-width:300px}
+.area-art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--c)}
+.area-body{padding:36px 40px;display:grid;gap:14px;align-content:center}
+.area-body .kicker{font:500 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.area-body h3{font-size:clamp(30px,3.2vw,40px)}
+.area-body h3 a{color:var(--ink);text-decoration:none}
+.area-body h3 a:hover{color:var(--c)}
+.area-body p{margin:0;color:var(--ink-2)}
+.topic-list{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 20px}
+.topic-list li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+.area-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.faces{display:flex;flex-wrap:wrap}
+.faces{gap:5px}
+.faces .av{--s:32px}
+.faces a{text-decoration:none}
+.faces-count{font:13px var(--sans);color:var(--muted);margin-left:16px;align-self:center}
+
+.minor-areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.minor{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.minor.noart{grid-template-columns:1fr}
+.minor .mini-art{background:var(--night);border-radius:10px;padding:12px}
+.minor .kicker{font:500 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.minor h3{font-size:26px;margin-top:4px}
+.minor h3 a{color:var(--ink);text-decoration:none}
+.minor p{margin:6px 0 0;color:var(--ink-2);font-size:15px}
+
+/* topics grid on area page */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 32px}
+.topics-grid div{padding:18px 0;border-top:2px solid var(--c)}
+.topics-grid h3{font-size:24px}
+.topics-grid p{margin:6px 0 0;color:var(--ink-2);font-size:15px}
+
+/* ---------- people ---------- */
+.av{--s:40px;width:var(--s);height:var(--s);border-radius:50%;display:grid;place-items:center;background:var(--c,var(--muted-c));color:#fff;font:600 calc(var(--s)*.36)/1 var(--display);flex:none;overflow:hidden}
+.av{position:relative}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--c,var(--muted-c))}
+.av.lg{--s:132px;box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 30%,transparent)}
+.mosaic{display:flex;flex-wrap:wrap;gap:10px}
+.mosaic a,.mosaic span{text-decoration:none}
+.mosaic .av{--s:56px;transition:transform .15s}
+.mosaic a:hover .av{transform:scale(1.08)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14px var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--muted-c))}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tag{display:inline-block;max-width:100%;font:500 11.5px var(--sans);letter-spacing:.02em;color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);padding:3px 8px;border-radius:4px;text-decoration:none}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.filters{display:grid;gap:12px;padding-block:28px 12px}
+.filters input{font:15px var(--sans);padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%;max-width:440px}
+.cat{margin-top:44px}
+.cat h2{display:flex;gap:12px;align-items:baseline;margin-bottom:18px;font-size:36px}
+.cat h2 small{font:400 14px var(--sans);color:var(--muted)}
+.people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.pcard{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-decoration:none;color:inherit;position:relative}
+.pcard .av{--s:52px}
+a.pcard:hover{border-color:var(--c);box-shadow:0 8px 24px -16px color-mix(in srgb,var(--c) 70%,transparent)}
+.pcard .n{font:600 18px/1.2 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.pcard .k{font-size:13.5px;color:var(--muted);margin-top:4px}
+.pcard .tags{margin-top:10px}
+.pcard.pending{background:transparent;border-style:dashed}
+.pcard.pending .n{color:var(--ink-2)}
+
+/* profile */
+.profile-band .wrap{padding-block:56px 48px;display:flex;gap:36px;align-items:center;flex-wrap:wrap}
+.profile-band h1{font-size:clamp(40px,5.5vw,64px)}
+.profile-band .role{color:var(--night-muted);margin-top:8px;font-size:17px}
+.profile-band .tags{margin-top:16px}
+.profile-band .tag{background:color-mix(in srgb,var(--c) 22%,transparent);color:#fff}
+.profile{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start;padding-top:56px}
+.sidebar{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:sticky;top:96px}
+.sidebar dl{margin:0;display:grid;gap:18px}
+.sidebar dt{font:500 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sidebar dd{margin:4px 0 0;overflow-wrap:anywhere}
+.copy{font:12px var(--sans);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:4px;padding:1px 7px;margin-left:8px;cursor:pointer}
+.keywords{font:14px var(--sans);color:var(--muted);margin:0 0 20px}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{padding:16px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.pubs li:first-child{border-top:1px solid var(--line)}
+.pubs .t{font:500 17px/1.35 var(--display);color:var(--ink);text-decoration:none}
+.pubs .t:hover{color:var(--accent)}
+.pubs .j{font:13px var(--sans);color:var(--muted)}
+.pubs .who{font-size:14px}
+.pubs .who a{color:var(--ink-2)}
+.year-block{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;margin-top:40px}
+.year{font:700 36px/1 var(--display);letter-spacing:-.02em;color:var(--muted);font-variant-numeric:tabular-nums;position:sticky;top:96px;align-self:start}
+.pub-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.pub-cols .pubs li:first-child{border-top:1px solid var(--line)}
+
+/* projects / contact */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:40px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:grid;gap:10px;align-content:start}
+.card h3{font-size:30px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14.5px}
+.card dt{font:500 11px/2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:0}
+.empty{color:var(--muted);padding:20px 0}
+
+/* footer */
+.site-footer{background:var(--night);color:var(--night-muted);padding-block:48px;font-size:14px}
+.site-footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:32px}
+.site-footer b{font:700 20px/1.2 var(--display);color:var(--night-ink);display:block;margin-bottom:8px}
+.site-footer address{font-style:normal}
+.site-footer a{color:var(--night-ink);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.site-footer .h{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;color:var(--fcup)}
+
+@media (max-width:900px){
+  .area,.area:nth-child(even){grid-template-columns:1fr}
+  .area:nth-child(even) .area-art{order:0}
+  .area-art{min-height:0;padding:28px}.area-art .art{max-width:220px}
+  .area-body{padding:26px}
+  .profile{grid-template-columns:1fr;gap:32px}.sidebar{position:static}
+  .page-band .wrap{grid-template-columns:1fr}.page-band .art{display:none}
+  .pub-cols{grid-template-columns:1fr}
+  .year-block{grid-template-columns:1fr;gap:8px}.year{position:static}
+  .site-footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding-inline:18px}
+  .site-header{position:static}
+  .nav a{padding:6px 9px;font-size:14px}
+  .people-grid{grid-template-columns:1fr}
+  .minor{grid-template-columns:80px minmax(0,1fr)}
+  .hero .wrap{padding-block:64px 48px}
+}
+@media (prefers-reduced-motion:no-preference){a.pcard,.chip,.btn{transition:border-color .15s,background .15s,box-shadow .15s}}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion:no-preference){
+  html:not(.seen) .hero-copy>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  html:not(.seen) .hero-copy>*:nth-child(2){animation-delay:.08s}
+  html:not(.seen) .hero-copy>*:nth-child(3){animation-delay:.18s}
+  html:not(.seen) .hero-copy>*:nth-child(4){animation-delay:.28s}
+  html:not(.seen) .hero-copy>*:nth-child(5){animation-delay:.38s}
+  html:not(.seen) .page-band .head>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  html:not(.seen) .page-band .head>*:nth-child(2){animation-delay:.07s}
+  html:not(.seen) .page-band .head>*:nth-child(3){animation-delay:.14s}
+  html:not(.seen) .page-band .art,html:not(.seen) .profile-band .av{animation:fadeScale 1.1s cubic-bezier(.2,.7,.2,1) both .1s}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  .area .art{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .area:hover .art{transform:scale(1.06) rotate(-3deg)}
+  .area{transition:box-shadow .3s,transform .3s}
+  .area:hover{box-shadow:0 24px 48px -32px color-mix(in srgb,var(--c) 60%,transparent);transform:translateY(-3px)}
+  a.pcard{transition:transform .25s,border-color .15s,box-shadow .25s}
+  a.pcard:hover{transform:translateY(-3px)}
+  .btn{transition:transform .2s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .more::after{display:inline-block;transition:transform .2s}
+  .more:hover::after{transform:translateX(4px)}
+  .mosaic .av{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+  .mosaic a:hover .av{transform:scale(1.18)}
+  .topics-grid div{transition:transform .25s}
+  .topics-grid div:hover{transform:translateY(-3px)}
+  .nav a{transition:background .2s,color .2s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+
+/* ---------- news & seminars ---------- */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.news-card{display:grid;gap:10px;align-content:start;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:var(--radius);padding:24px;text-decoration:none;color:inherit}
+.news-card time{font:500 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.news-card h3{font-size:22px;color:var(--ink)}
+.news-card p{margin:0;color:var(--ink-2);font-size:15px}
+.news-card .more{color:var(--accent);margin-top:4px}
+.news-card:hover{border-color:var(--c)}
+.seminar-list{display:grid;gap:14px}
+.seminar{display:grid;grid-template-columns:110px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.sdate{background:var(--night);color:var(--night-ink);display:grid;align-content:center;justify-items:center;gap:2px;padding:18px 10px;border-bottom:4px solid var(--c)}
+.sdate b{font:700 40px/1 var(--sans);letter-spacing:-.02em}
+.sdate span{font:500 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--night-muted)}
+.sbody{padding:20px 24px;display:grid;gap:6px}
+.sbody h3{font-size:22px}
+.speaker{font-weight:500}
+.smeta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:14px;color:var(--muted)}
+.sbody details summary{cursor:pointer;color:var(--accent);font-size:14px;font-weight:500}
+.sbody details p{margin:8px 0 0;color:var(--ink-2);max-width:72ch}
+.seminar-list.past .seminar{grid-template-columns:90px minmax(0,1fr)}
+.seminar-list.past .sdate{background:var(--surface);color:var(--ink);border-right:1px solid var(--line)}
+.seminar-list.past .sdate b{font-size:30px}
+.seminar-list.past .sdate span{color:var(--muted)}
+.news-body{font-size:17px}
+.news-body ul{padding-left:20px;display:grid;gap:10px}
+.note{font-size:15px;color:var(--ink-2);background:var(--accent-soft);border-radius:10px;padding:14px 18px;max-width:72ch;margin:0}
+@media (max-width:560px){.seminar{grid-template-columns:78px minmax(0,1fr)}.sdate b{font-size:30px}.sbody{padding:16px}}
+
+/* ---------- YouTube ---------- */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.video{display:grid;gap:8px;align-content:start;text-decoration:none;color:inherit}
+.thumb{position:relative;display:block;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:var(--night)}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.thumb .yt-icon{position:absolute;left:50%;top:50%;width:52px;transform:translate(-50%,-50%);color:rgba(11,20,34,.82);transition:color .2s,transform .2s}
+.video:hover .thumb img{transform:scale(1.05)}
+.video:hover .yt-icon{color:#FF0033;transform:translate(-50%,-50%) scale(1.1)}
+.video .vt{font-weight:600;line-height:1.35;color:var(--ink)}
+.video time{font-size:13px;color:var(--muted)}
+.yt-cta{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--night);color:var(--night-ink);border-radius:var(--radius);padding:26px 30px;text-decoration:none}
+.yt-cta .yt-icon{width:56px;color:#FF0033}
+.yt-cta b{display:block;font-size:22px;letter-spacing:-.01em}
+.yt-cta span span{color:var(--night-muted)}
+.yt-cta .more{color:var(--fcup)}
+.yt-cta:hover{background:var(--night-2)}
+@media (max-width:560px){.yt-cta{grid-template-columns:auto minmax(0,1fr)}.yt-cta .more{grid-column:1/-1}}
+.pubs .au{font-size:14px;color:var(--ink-2)}
+.pubs .au b{font-weight:600;color:var(--ink)}
+.search-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.search-row input{flex:1 1 260px}
+.count{font-size:14px;font-variant-numeric:tabular-nums}
+.more-pubs summary{cursor:pointer;color:var(--accent);font-weight:500;padding:14px 0}
+
+/* twisted bilayer graphene caption in the hero */
+.tbg-label{position:absolute;right:24px;bottom:20px;z-index:1;display:flex;gap:10px;align-items:baseline;font:500 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--night-muted);background:color-mix(in srgb,var(--night) 70%,transparent);padding:6px 10px}
+.tbg-label b{font:700 15px var(--sans);letter-spacing:0;text-transform:none;color:var(--fcup);font-variant-numeric:tabular-nums;min-width:6.5ch}
+@media (max-width:560px){.tbg-label{right:12px;bottom:10px}}
+.art-stack{position:relative;aspect-ratio:1/1}
+.art-stack svg,.art-stack canvas{position:absolute;inset:0;width:100%;height:100%}
+
+/* news images and photos */
+.news-img{display:block;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:var(--night);margin:-24px -24px 6px;border-radius:var(--radius) var(--radius) 0 0}
+.news-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.news-card:hover .news-img img{transform:scale(1.04)}
+.news-figure{margin:48px 0 0;max-width:820px}
+.news-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius)}
+.news-figure figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.btn.outline{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.outline:hover{border-color:var(--accent)}
+.av img{object-position:50% 25%}
+
+/* ---------- funding logos ---------- */
+.site-footer .funding{display:block;margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+.funding-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.funding-row p{margin:0;max-width:60ch}
+.logo-chip{display:inline-flex;align-items:center;min-height:56px;padding:6px 0}
+.logo-chip img{height:40px;width:auto;display:block}
+.site-footer .logo-chip .logo-text{color:inherit;font:600 14px var(--sans);border:1px solid currentColor;border-radius:6px;padding:10px 14px;opacity:.85}
+.site-footer a.logo-chip:hover{text-decoration:none}
+
+/* ---------- logos, about ---------- */
+.brand-logo{height:36px;width:auto;max-width:100%}
+.site-footer .funding-row{gap:28px}
+.funding-text{margin:14px 0 0;max-width:70ch}
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
+.about .prose p{font-size:18px;line-height:1.6;color:var(--ink-2);margin:12px 0 0}
+.about .prose a{color:var(--ink)}
+.partners{display:grid;gap:14px;margin-top:24px}
+.partner{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);text-decoration:none;color:var(--ink-2);font-size:14.5px;line-height:1.5}
+.partner:hover{border-color:var(--fcup-deep)}
+.partner-logo{display:flex;align-items:center;justify-content:center;min-height:56px;padding:8px}
+.partner-logo img{max-height:44px;width:auto}
+.partner-logo b{color:var(--ink);font:700 20px var(--sans);letter-spacing:.02em}
+.about-logo{margin:0;background:#fff;border-radius:var(--radius);padding:18px;border:1px solid var(--line)}
+.about-logo img{display:block;width:100%;height:auto}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:28px}.about-logo{order:-1;max-width:520px}}
+@media (max-width:560px){.partner{grid-template-columns:1fr}.partner-logo{justify-self:start}}
+@media (min-width:1000px){
+  .minor-areas{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .minor-areas .minor:not(.noart){grid-template-columns:1fr;align-content:start;gap:18px}
+  .minor-areas .minor .mini-art{width:150px}
+}
+
+/* ---------- justified text (descriptions and bios) ---------- */
+.prose p,.area-body>p,.minor p,.topics-grid p,.partner-text,.page-band .lede{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+
+/* ---------- authors: CFP members highlighted ---------- */
+.pubs .cfp-author{font-weight:700;color:var(--fcup-deep);text-decoration:none}
+.pubs a.cfp-author:hover{text-decoration:underline}
+.pubs details.au{font-size:14px;color:var(--ink-2)}
+.pubs details.au summary{cursor:pointer;list-style:none}
+.pubs details.au summary::-webkit-details-marker{display:none}
+.pubs details.au[open] summary{display:none}
+.pubs .more-au{color:var(--fcup-deep);white-space:nowrap}
+.seminar .stype{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--fcup-deep));margin-bottom:4px}
+
+/* ---------- profile: research visual + featured work ---------- */
+.profile-band{--viz-ink:#E6EAF0;--viz-bg:var(--night)}
+.profile-band.has-visual{position:relative;overflow:hidden}
+.profile-band .research-visual{position:absolute;top:0;right:0;width:min(58%,720px);height:100%;opacity:.9;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+.profile-band .wrap{position:relative;z-index:1}
+.profile-band .wrap>div:last-child{max-width:640px}
+.featured{margin-top:22px;max-width:560px}
+.fw-label{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+.fw-items{display:grid}
+.fw-item{grid-area:1/1;display:grid;gap:3px;text-decoration:none;color:var(--night-ink);opacity:0;transform:translateY(6px);transition:opacity .6s,transform .6s;pointer-events:none}
+.fw-item.on{opacity:1;transform:none;pointer-events:auto}
+.fw-title{font-size:16px;line-height:1.35}
+.fw-item:hover .fw-title{text-decoration:underline}
+.fw-venue{font-size:13px;color:var(--night-muted)}
+@media (max-width:900px){.profile-band .research-visual{width:100%;opacity:.25;-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.fw-item{transition:none}}
+
+/* ---------- Join us ---------- */
+.join-calls{display:grid;gap:14px}
+.join-call{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:var(--radius);padding:22px 26px}
+.join-call .jc-type{font:600 13px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c);padding-top:6px}
+.join-call h3{font-size:26px;margin:0}
+.join-call h3 a{color:var(--ink);text-decoration:none}
+.join-call h3 a:hover{text-decoration:underline}
+.jc-text p{margin:8px 0 0;color:var(--ink-2)}
+.jc-meta{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;margin:12px 0 0;font-size:14.5px;color:var(--muted)}
+.jc-meta b{color:var(--ink)}
+.join-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.join-path{position:relative;padding-top:24px}
+.join-path h3{font-size:24px}
+.jp-n{font:700 14px var(--display);color:var(--muted);letter-spacing:.08em}
+.jp-text p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;text-align:left}
+.join-path .more{white-space:normal}
+.join-two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px 64px;align-items:start}
+.join-two h2{margin:6px 0 18px}
+.join-why{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.join-why li{position:relative;padding-left:26px;font-size:17px;line-height:1.5;color:var(--ink-2)}
+.join-why li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:2px;background:var(--accent,var(--fcup))}
+.join-apply .prose p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.join-apply .actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.join-hosts{display:grid;gap:14px}
+.join-area{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.ja-head a{font:600 20px/1.25 var(--display);color:var(--c);text-decoration:none}
+.ja-head a:hover{text-decoration:underline}
+.ja-head span{display:block;margin-top:4px;font-size:14px;color:var(--muted)}
+.ja-people{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px 18px}
+.ja-p{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);padding:6px 8px;margin:-6px -8px;border-radius:10px}
+.ja-people a.ja-p:hover{background:var(--surface)}
+.ja-people b{display:block;font-weight:600;font-size:15.5px}
+.ja-people small{display:block;font-size:13px;color:var(--muted);line-height:1.35}
+@media (max-width:700px){.join-call{grid-template-columns:1fr;gap:6px}.join-area{grid-template-columns:1fr;gap:12px}}
+.head-links{display:flex;gap:22px;flex-wrap:wrap}
+.join{padding-top:96px}
+.join .lede{max-width:72ch}
+.join-sub{display:grid;gap:18px;margin-top:22px}
+.join-h{font-size:clamp(24px,2.4vw,30px);margin:0;padding-top:22px;border-top:1px solid var(--line)}
+.join-path h4{font:600 22px/1.2 var(--display);margin:0}
+.join-call h4{font:600 22px/1.25 var(--display);margin:0}
+.join-call h4 a{color:var(--ink);text-decoration:none}
+.join-two .join-h{margin-bottom:6px}
+#join,#calls,#paths,#hosts{scroll-margin-top:90px}
+</style>
+
+<link rel="icon" href="../assets/logos/cfp-icon.png">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Centro de Física do Porto home">
+      <img class="brand-logo" src="../assets/logos/cfp-white.png" alt="Centro de Física do Porto" width="438" height="36">
+      
+      
+    </a>
+    <nav class="nav" aria-label="Main">
+      
+      <a href="../research/index.html">Research</a><a href="../people/index.html">People</a><a href="index.html" aria-current="page">Publications</a><a href="../news/index.html">News &amp; Seminars</a><a href="../projects/index.html">Projects</a><a href="../contact/index.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+
+
+<section class="band page-band plain">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">200 papers</div><h1>Publications</h1><p class="lede">All papers where members of CFP list the centre as their affiliation, updated automatically from OpenAlex and ORCID.</p></div>
+    
+  </div>
+</section>
+
+<div class="wrap">
+<div class="filters">
+  <div class="chips" id="areaChips" role="group" aria-label="Filter by research area">
+    <button class="chip" type="button" data-area="" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-area="quantum-materials" data-c="cm" aria-pressed="false"><span class="dot"></span>Quantum Materials</button><button class="chip" type="button" data-area="qft-holography" data-c="hep" aria-pressed="false"><span class="dot"></span>QFT &amp; Holography</button><button class="chip" type="button" data-area="gravitation-cosmology" data-c="cos" aria-pressed="false"><span class="dot"></span>Gravitation &amp; Cosmology</button><button class="chip" type="button" data-area="quantum-computation" data-c="qc" aria-pressed="false"><span class="dot"></span>Quantum Computation</button><button class="chip" type="button" data-area="nonlinear-physics" data-c="nl" aria-pressed="false"><span class="dot"></span>Nonlinear Physics</button><button class="chip" type="button" data-area="physics-education" data-c="edu" aria-pressed="false"><span class="dot"></span>Physics Education</button>
+  </div>
+  <label class="muted" for="q" style="font-size:14px">Search by title, author or journal</label>
+  <div class="search-row"><input type="search" id="q" placeholder="e.g. graphene, bootstrap, Physical Review"><span class="muted count" id="count">200 papers</span></div>
+</div>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2026</h2>
+  <ul class="pubs">
+<li data-areas="qft-holography gravitation-cosmology" data-search="effective field theory for holographic compact objects arxiv (cornell university) miguel correia vasco gonçalves filipe serrano">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2609.37806" target="_blank" rel="noopener">Effective Field Theory for Holographic Compact Objects</a>
+  <span class="au">Miguel Correia, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, <a class="cfp-author" href="../people/filipe-serrano/index.html">Filipe Serrano</a></span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation qft-holography" data-search="effective strings and particles interacting in 3d: the ising model journal of high energy physics 2026 joão viana lopes josé matos joão penedones">
+  <a class="t" href="https://doi.org/10.1007/jhep09(2026)201" target="_blank" rel="noopener">Effective strings and particles interacting in 3D: the Ising model</a>
+  <span class="au"><b class="cfp-author">João Viana Lopes</b>, <b class="cfp-author">José Matos</b>, João Penedones</span>
+  <span class="j">Journal of High Energy Physics 2026 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="a tale of two couplings: bayesian selection in the interacting dark sector arxiv (cornell university) miguel barroso varela álvaro de la cruz-dombriz">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2608.03981" target="_blank" rel="noopener">A Tale of Two Couplings: Bayesian Selection in the Interacting Dark Sector</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, Álvaro de la Cruz-Dombriz</span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="semiconductor wannier equations: a real-time, real-space approach to the nonlinear optical response in crystals physical review research 8 bruno amorim misha ivanov graham g. brown giovanni cistaro joão viana lopes álvaro jiménez-galán pablo san-josé rui e. f. silva">
+  <a class="t" href="https://doi.org/10.1103/sxcl-yqs7" target="_blank" rel="noopener">Semiconductor Wannier equations: A real-time, real-space approach to the nonlinear optical response in crystals</a>
+  <span class="au"><b class="cfp-author">Bruno Amorim</b>, Misha Ivanov, Graham G. Brown, Giovanni Cistaro, <b class="cfp-author">João Viana Lopes</b>, Álvaro Jiménez-Galán, Pablo San-José, Rui E. F. Silva</span>
+  <span class="j">Physical Review Research 8 (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation qft-holography" data-search="effective string theory on a torus: the 3d ising domain wall journal of high energy physics 2026 david lima joão viana lopes josé matos joão penedones">
+  <a class="t" href="https://doi.org/10.1007/jhep07(2026)267" target="_blank" rel="noopener">Effective string theory on a torus: the 3d Ising domain wall</a>
+  <span class="au">David Lima, <b class="cfp-author">João Viana Lopes</b>, <b class="cfp-author">José Matos</b>, João Penedones</span>
+  <span class="j">Journal of High Energy Physics 2026 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="non-minimally coupled chain inflation at high scales arxiv (cornell university) miguel barroso varela orfeu bertolami katherine freese evangelos i. sfakianakis">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2607.27193" target="_blank" rel="noopener">Non-Minimally Coupled Chain Inflation at High Scales</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b>, Katherine Freese, Evangelos I. Sfakianakis</span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="on dark-sector scalar field theories driven by cosmological c-fields universe 12, 215 alex e. bernardini orfeu bertolami">
+  <a class="t" href="https://doi.org/10.3390/universe12070215" target="_blank" rel="noopener">On Dark-Sector Scalar Field Theories Driven by Cosmological c-Fields</a>
+  <span class="au">Alex E. Bernardini, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Universe 12, 215 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="black hole shadows in nonminimally coupled weyl connection gravity the european physical journal c 86 cláudio gomes maria margarida lima francisco s. n. lobo luís f. dias da silva">
+  <a class="t" href="https://doi.org/10.1140/epjc/s10052-026-16006-2" target="_blank" rel="noopener">Black hole shadows in nonminimally coupled Weyl connection gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Maria Margarida Lima, Francisco S. N. Lobo, Luís F. Dias da Silva</span>
+  <span class="j">The European Physical Journal C 86 (2026)</span>
+</li>
+
+<li data-areas="quantum-computation" data-search="network-based prediction of drug combinations with quantum annealing quantum machine intelligence 8 diogo ramos bruno coelho coutinho duarte magano">
+  <a class="t" href="https://doi.org/10.1007/s42484-026-00411-7" target="_blank" rel="noopener">Network-based prediction of drug combinations with quantum annealing</a>
+  <span class="au">Diogo Ramos, Bruno Coelho Coutinho, <a class="cfp-author" href="../people/duarte-magano/index.html">Duarte Magano</a></span>
+  <span class="j">Quantum Machine Intelligence 8 (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="real-space spectral approach to orbital magnetization physical review. b./physical review. b 113 kevin j. u. vidarte h. p. veiga joão viana lopes ramon cardias aires ferreira tarik p. cysne tatiana g. rappoport">
+  <a class="t" href="https://doi.org/10.1103/bhg8-c3rw" target="_blank" rel="noopener">Real-space spectral approach to orbital magnetization</a>
+  <span class="au">Kevin J. U. Vidarte, H. P. Veiga, <b class="cfp-author">João Viana Lopes</b>, Ramon Cardias, Aires Ferreira, Tarik P. Cysne, Tatiana G. Rappoport</span>
+  <span class="j">Physical review. B./Physical review. B 113 (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="exact nonlinear dynamics of single band metallic systems with dissipation: from optical to dc currents physical review. b./physical review. b 113 joão pinho bruno amorim yu. v. bludov joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/3q7s-vmx6" target="_blank" rel="noopener">Exact nonlinear dynamics of single band metallic systems with dissipation: From optical to dc currents</a>
+  <span class="au"><b class="cfp-author">João Pinho</b>, <b class="cfp-author">Bruno Amorim</b>, Yu. V. Bludov, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical review. B./Physical review. B 113 (2026)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="markov inequality as a tool for linear-scaling estimation of local observables physical review research 8 h. p. veiga d. r. pinheiro joão pedro pires joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/qb1w-44r1" target="_blank" rel="noopener">Markov inequality as a tool for linear-scaling estimation of local observables</a>
+  <span class="au">H. P. Veiga, D. R. Pinheiro, <b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical Review Research 8 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="on an airborne proton accelerator for enhancing cloud formation or inducing their precipitation arxiv (cornell university) orfeu bertolami">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2606.07637" target="_blank" rel="noopener">On an Airborne Proton Accelerator for Enhancing Cloud Formation or Inducing their Precipitation</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="temperature-induced optical enhancement near a localization transition arxiv (cornell university) raul liquito miguel gonçalves bruno amorim eduardo v. castro">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2605.21423" target="_blank" rel="noopener">Temperature-induced optical enhancement near a localization transition</a>
+  <span class="au"><b class="cfp-author">Raul Liquito</b>, Miguel Gonçalves, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="accretion of generalized chaplygin gas onto cosmologically coupled black holes classical and quantum gravity 43, 075008 luís felipe reis mario cesar baldiotti orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1361-6382/ae5b18" target="_blank" rel="noopener">Accretion of generalized Chaplygin gas onto cosmologically coupled black holes</a>
+  <span class="au"><a class="cfp-author" href="../people/luis-felipe-reis/index.html">Luís Felipe Reis</a>, Mario Cesar Baldiotti, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Classical and Quantum Gravity 43, 075008 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="cosmological and lunar laser ranging constraints on evolving dark energy in a nonminimally coupled curvature-matter gravity model physical review. d/physical review. d. 113 riccardo march miguel barroso varela orfeu bertolami giada bargiacchi marco muccino simone dell’agnello">
+  <a class="t" href="https://doi.org/10.1103/g7h8-dzp1" target="_blank" rel="noopener">Cosmological and lunar laser ranging constraints on evolving dark energy in a nonminimally coupled curvature-matter gravity model</a>
+  <span class="au">Riccardo March, <a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b>, Giada Bargiacchi, Marco Muccino, Simone Dell’Agnello</span>
+  <span class="j">Physical review. D/Physical review. D. 113 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="towards a theory of coupled sociopolitical events-planetary boundaries, crises, policrisis and earth system syndromes physics letters a 583, 131597 orfeu bertolami ricardo elísio">
+  <a class="t" href="https://doi.org/10.1016/j.physleta.2026.131597" target="_blank" rel="noopener">Towards a theory of coupled sociopolitical events-planetary boundaries, crises, policrisis and earth system syndromes</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Ricardo Elísio</span>
+  <span class="j">Physics Letters A 583, 131597 (2026)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="effective band-projected description of interacting quasiperiodic systems arxiv (cornell university) flavio elias riche raul liquito bruno amorim eduardo v. castro pedro ribeiro miguel gonçalves">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2603.13548" target="_blank" rel="noopener">Effective band-projected description of interacting quasiperiodic systems</a>
+  <span class="au">Flavio Elias Riche, <b class="cfp-author">Raul Liquito</b>, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Pedro Ribeiro, Miguel Gonçalves</span>
+  <span class="j">arXiv (Cornell University) (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="setting up the physical principles of resilience in a model of the earth system earth system dynamics 17, 141 orfeu bertolami magnus nyström">
+  <a class="t" href="https://doi.org/10.5194/esd-17-141-2026" target="_blank" rel="noopener">Setting up the physical principles of resilience in a model of the Earth System</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Magnus Nyström</span>
+  <span class="j">Earth System Dynamics 17, 141 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="implications of f(r) gravity on late-time cosmic structure growth through a complete description of density perturbations physics of the dark universe 51, 102232 miguel barroso varela álvaro de la cruz-dombriz">
+  <a class="t" href="https://doi.org/10.1016/j.dark.2026.102232" target="_blank" rel="noopener">Implications of f(R) gravity on late-time cosmic structure growth through a complete description of density perturbations</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, Álvaro de la Cruz-Dombriz</span>
+  <span class="j">Physics of the Dark Universe 51, 102232 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="density perturbations in nonminimally coupled gravity: symptoms of lagrangian density ambiguity journal of cosmology and astroparticle physics 2026, 032 miguel barroso varela orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2026/01/032" target="_blank" rel="noopener">Density perturbations in nonminimally coupled gravity: symptoms of Lagrangian density ambiguity</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2026, 032 (2026)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflationary dynamics of non-minimally coupled f ( r ) matter-curvature theories journal of cosmology and astroparticle physics 2026, 061 miguel barroso varela orfeu bertolami andreas mantziris">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2026/01/061" target="_blank" rel="noopener">Inflationary dynamics of non-minimally coupled f ( R ) matter-curvature theories</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b>, Andreas Mantziris</span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2026, 061 (2026)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2025</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="on scalar cosmological perturbations in non-minimally coupled weyl connection gravity modern physics letters a 41 m. lima cláudio gomes">
+  <a class="t" href="https://doi.org/10.1142/s0217732325410019" target="_blank" rel="noopener">On scalar cosmological perturbations in non-minimally coupled Weyl connection gravity</a>
+  <span class="au">M. Lima, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Modern Physics Letters A 41 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="testing the dark universe through the layzer–irvine equation modern physics letters a 41 cláudio gomes">
+  <a class="t" href="https://doi.org/10.1142/s021773232541007x" target="_blank" rel="noopener">Testing the dark Universe through the Layzer–Irvine equation</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Modern Physics Letters A 41 (2025)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="tunable magnetic order in chiral coupled spin chains physical review a 113 rafael d. soares joão viana lopes hugo terças">
+  <a class="t" href="https://doi.org/10.1103/pmxg-86rv" target="_blank" rel="noopener">Tunable magnetic order in chiral coupled spin chains</a>
+  <span class="au">Rafael D. Soares, <b class="cfp-author">João Viana Lopes</b>, Hugo Terças</span>
+  <span class="j">Physical Review A 113 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="gravitational wave propagation in generalized hybrid metric-palatini gravity the european physical journal c 85 cláudio gomes joão luís rosa miguel a. s. pinto">
+  <a class="t" href="https://doi.org/10.1140/epjc/s10052-025-15085-x" target="_blank" rel="noopener">Gravitational wave propagation in generalized hybrid metric-Palatini gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, João Luís Rosa, Miguel A. S. Pinto</span>
+  <span class="j">The European Physical Journal C 85 (2025)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="plasmon polariton assisted second-harmonic generation in graphene physical review. b./physical review. b 112 joão pinho simão s. cardoso yu. v. bludov joão viana lopes v. v. konotop joel d. cox nuno m. r. peres">
+  <a class="t" href="https://doi.org/10.1103/jxtp-18tx" target="_blank" rel="noopener">Plasmon polariton assisted second-harmonic generation in graphene</a>
+  <span class="au"><b class="cfp-author">João Pinho</b>, Simão S. Cardoso, Yu. V. Bludov, <b class="cfp-author">João Viana Lopes</b>, V. V. Konotop, Joel D. Cox, Nuno M. R. Peres</span>
+  <span class="j">Physical review. B./Physical review. B 112 (2025)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="electric field-tunable ferromagnetism in a van der waals semiconductor up to room temperature nature communications 16, 10197 deyi fu jiawei liu fuchen hou xiao chang tingyu qu johan félisaz gunasheel kauwtilyaa krishnaswamy sergey grebenchuk yuang jie kenji watanabe takashi taniguchi vitor manuel pereira kostya s. novoselov maciej koperski n.l. yakovlev anjan soumyanarayanan ahmet avşar oleg v. yazyev junhao lin barbaros oezyilmaz">
+  <a class="t" href="https://doi.org/10.1038/s41467-025-59961-2" target="_blank" rel="noopener">Electric field-tunable ferromagnetism in a van der Waals semiconductor up to room temperature</a>
+  <span class="au">Deyi Fu, Jiawei Liu, Fuchen Hou, Xiao Chang, Tingyu Qu, Johan Félisaz, Gunasheel Kauwtilyaa Krishnaswamy, Sergey Grebenchuk, Yuang Jie, Kenji Watanabe, Takashi Taniguchi, <a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, Kostya S. Novoselov, Maciej Koperski, N.L. Yakovlev, Anjan Soumyanarayanan, Ahmet Avşar, Oleg V. Yazyev, Junhao Lin, Barbaros Oezyilmaz</span>
+  <span class="j">Nature Communications 16, 10197 (2025)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="dissecting supergraviton six-point function with lightcone limits and chiral algebra journal of high energy physics 2025 vasco gonçalves maria nocchi xinan zhou">
+  <a class="t" href="https://doi.org/10.1007/jhep06(2025)173" target="_blank" rel="noopener">Dissecting supergraviton six-point function with lightcone limits and chiral algebra</a>
+  <span class="au"><a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Maria Nocchi, Xinan Zhou</span>
+  <span class="j">Journal of High Energy Physics 2025 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="weak field limit of the nonminimally coupled weyl connection gravity journal of physics conference series 3027, 012024 cláudio gomes">
+  <a class="t" href="https://doi.org/10.1088/1742-6596/3027/1/012024" target="_blank" rel="noopener">Weak Field Limit of the Nonminimally Coupled Weyl Connection Gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Journal of Physics Conference Series 3027, 012024 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="is cosmological data suggesting a nonminimal coupling between matter and gravity? physics of the dark universe 48, 101861 miguel barroso varela orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1016/j.dark.2025.101861" target="_blank" rel="noopener">Is cosmological data suggesting a nonminimal coupling between matter and gravity?</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physics of the Dark Universe 48, 101861 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="could the well of an orbital lift be used to deposit greenhouse gases into space? , 367 orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1002/9781394204847.ch23" target="_blank" rel="noopener">Could the Well of an Orbital Lift Be Used to Deposit Greenhouse Gases into Space?</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">, 367 (2025)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="chaotic behaviour of the earth system in the anthropocene evolving earth 3, 100060 alex e. bernardini orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.1016/j.eve.2025.100060" target="_blank" rel="noopener">Chaotic behaviour of the Earth System in the Anthropocene</a>
+  <span class="au">Alex E. Bernardini, <b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">Evolving Earth 3, 100060 (2025)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2024</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="black hole solutions in non-minimally coupled weyl connection gravity universe 10, 433 maria margarida lima cláudio gomes">
+  <a class="t" href="https://doi.org/10.3390/universe10110433" target="_blank" rel="noopener">Black Hole Solutions in Non-Minimally Coupled Weyl Connection Gravity</a>
+  <span class="au">Maria Margarida Lima, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Universe 10, 433 (2024)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="two-loop five-point integrals: light, heavy and large-spin correlators journal of high energy physics 2024 carlos bercini bruno fernandes vasco gonçalves">
+  <a class="t" href="https://doi.org/10.1007/jhep10(2024)242" target="_blank" rel="noopener">Two-loop five-point integrals: light, heavy and large-spin correlators</a>
+  <span class="au">Carlos Bercini, <a class="cfp-author" href="../people/bruno-fernandes/index.html">Bruno Fernandes</a>, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a></span>
+  <span class="j">Journal of High Energy Physics 2024 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="incommensurability enabled quasi-fractal order in 1d narrow-band moiré systems nature physics 20, 1933 miguel gonçalves bruno amorim flavio elias riche eduardo v. castro pedro ribeiro">
+  <a class="t" href="https://doi.org/10.1038/s41567-024-02662-2" target="_blank" rel="noopener">Incommensurability enabled quasi-fractal order in 1D narrow-band moiré systems</a>
+  <span class="au">Miguel Gonçalves, <b class="cfp-author">Bruno Amorim</b>, Flavio Elias Riche, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Pedro Ribeiro</span>
+  <span class="j">Nature Physics 20, 1933 (2024)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="gravitational waves from a curvature-induced phase transition of a higgs-portal dark matter sector journal of cosmology and astroparticle physics 2024, 104 andreas mantziris orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2024/10/104" target="_blank" rel="noopener">Gravitational waves from a curvature-induced phase transition of a Higgs-portal dark matter sector</a>
+  <span class="au">Andreas Mantziris, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2024, 104 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="designer spin-orbit superlattices: symmetry-protected dirac cones and spin berry curvature in two-dimensional van der waals metamaterials communications physics 7 luis miguel martelo aires ferreira">
+  <a class="t" href="https://doi.org/10.1038/s42005-024-01801-8" target="_blank" rel="noopener">Designer spin-orbit superlattices: symmetry-protected Dirac cones and spin Berry curvature in two-dimensional van der Waals metamaterials</a>
+  <span class="au"><a class="cfp-author" href="../people/luis-miguel-martelo/index.html">Luis Miguel Martelo</a>, Aires Ferreira</span>
+  <span class="j">Communications Physics 7 (2024)</span>
+</li>
+
+<li data-areas="physics-education" data-search="estações laboratoriais como promotoras da mobilização de práticas epistêmicas e manifestações metacognitivas investigações em ensino de ciências 29, 515 ana rita mota fernando césar silva cleci teresinha werner da rosa lúcia helena sasseron">
+  <a class="t" href="https://doi.org/10.22600/1518-8795.ienci2024v29n2p515" target="_blank" rel="noopener">ESTAÇÕES LABORATORIAIS COMO PROMOTORAS DA MOBILIZAÇÃO DE PRÁTICAS EPISTÊMICAS E MANIFESTAÇÕES METACOGNITIVAS</a>
+  <span class="au"><a class="cfp-author" href="../people/ana-rita-mota/index.html">Ana Rita Mota</a>, Fernando César Silva, Cleci Teresinha Werner da Rosa, Lúcia Helena Sasseron</span>
+  <span class="j">Investigações em Ensino de Ciências 29, 515 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="subcycle dynamics of excitons under strong laser fields science advances 10, eadn6985 eduardo b. molinero bruno amorim mikhail malakhov giovanni cistaro álvaro jiménez-galán antonio picón pablo san-josé misha ivanov rui e. f. silva">
+  <a class="t" href="https://doi.org/10.1126/sciadv.adn6985" target="_blank" rel="noopener">Subcycle dynamics of excitons under strong laser fields</a>
+  <span class="au">Eduardo B. Molinero, <b class="cfp-author">Bruno Amorim</b>, Mikhail Malakhov, Giovanni Cistaro, Álvaro Jiménez-Galán, Antonio Picón, Pablo San-José, Misha Ivanov, Rui E. F. Silva</span>
+  <span class="j">Science Advances 10, eadn6985 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="promoting surface conduction through scalable structure engineering of flexible topological insulator thin films advanced functional materials 34 mafalda moreira ana l. pires sofia ferreira‐teixeira oksana iurkevich r. vilarinho eduardo v. castro andré m. pereira">
+  <a class="t" href="https://doi.org/10.1002/adfm.202405057" target="_blank" rel="noopener">Promoting Surface Conduction through Scalable Structure Engineering of Flexible Topological Insulator Thin Films</a>
+  <span class="au">Mafalda Moreira, Ana L. Pires, Sofia Ferreira‐Teixeira, Oksana Iurkevich, R. Vilarinho, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, André M. Pereira</span>
+  <span class="j">Advanced Functional Materials 34 (2024)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="the de sitter swampland conjectures in the context of chaplygin-inspired inflation universe 10, 271 orfeu bertolami robertus potting paulo m. sá">
+  <a class="t" href="https://doi.org/10.3390/universe10070271" target="_blank" rel="noopener">The de Sitter Swampland Conjectures in the Context of Chaplygin-Inspired Inflation</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Robertus Potting, Paulo M. Sá</span>
+  <span class="j">Universe 10, 271 (2024)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="hubble tension in a nonminimally coupled curvature-matter gravity model journal of cosmology and astroparticle physics 2024, 025 miguel barroso varela orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2024/06/025" target="_blank" rel="noopener">Hubble tension in a nonminimally coupled curvature-matter gravity model</a>
+  <span class="au"><a class="cfp-author" href="../people/miguel-barroso-varela/index.html">Miguel Barroso Varela</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2024, 025 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="instability of quadratic band crossing systems to topological anderson insulating phases physical review. b./physical review. b 109 nicolau sobrosa miguel gonçalves eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.109.184206" target="_blank" rel="noopener">Instability of quadratic band crossing systems to topological Anderson insulating phases</a>
+  <span class="au"><b class="cfp-author">Nicolau Sobrosa</b>, Miguel Gonçalves, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 109 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="fate of quadratic band crossing under quasiperiodic modulation physical review. b./physical review. b 109 raul liquito miguel gonçalves eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.109.174202" target="_blank" rel="noopener">Fate of quadratic band crossing under quasiperiodic modulation</a>
+  <span class="au"><b class="cfp-author">Raul Liquito</b>, Miguel Gonçalves, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 109 (2024)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="two-loop integrals of half-bps six-point functions on a line journal of high energy physics 2024 ricardo rodrigues">
+  <a class="t" href="https://doi.org/10.1007/jhep05(2024)007" target="_blank" rel="noopener">Two-loop integrals of half-BPS six-point functions on a line</a>
+  <span class="au"><a class="cfp-author" href="../people/ricardo-rodrigues/index.html">Ricardo Rodrigues</a></span>
+  <span class="j">Journal of High Energy Physics 2024 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="topological anderson insulating phases in the interacting haldane model physical review. b./physical review. b 109 joão s. silva eduardo v. castro rubem mondaini maría a. h. vozmediano maría p. lópez-sancho">
+  <a class="t" href="https://doi.org/10.1103/physrevb.109.125145" target="_blank" rel="noopener">Topological Anderson insulating phases in the interacting Haldane model</a>
+  <span class="au"><a class="cfp-author" href="../people/joao-s-silva/index.html">João S. Silva</a>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Rubem Mondaini, María A. H. Vozmediano, María P. López-Sancho</span>
+  <span class="j">Physical review. B./Physical review. B 109 (2024)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="time crystals and phase-space noncommutative quantum mechanics arxiv (cornell university) orfeu bertolami alex e. bernardini">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2402.18238" target="_blank" rel="noopener">Time Crystals and Phase-Space Noncommutative Quantum Mechanics</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Alex E. Bernardini</span>
+  <span class="j">arXiv (Cornell University) (2024)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="six-point ads gluon amplitudes from flat space and factorization physical review research 6 luis fernando alday vasco gonçalves maria nocchi xinan zhou">
+  <a class="t" href="https://doi.org/10.1103/physrevresearch.6.l012041" target="_blank" rel="noopener">Six-point AdS gluon amplitudes from flat space and factorization</a>
+  <span class="au">Luis Fernando Alday, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Maria Nocchi, Xinan Zhou</span>
+  <span class="j">Physical Review Research 6 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="fast fourier-chebyshev approach to real-space simulations of the kubo formula physical review letters 132, 076302 santiago giménez de castro joão viana lopes aires ferreira dario andres bahamon">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.132.076302" target="_blank" rel="noopener">Fast Fourier-Chebyshev Approach to Real-Space Simulations of the Kubo Formula</a>
+  <span class="au">Santiago Giménez de Castro, <b class="cfp-author">João Viana Lopes</b>, Aires Ferreira, Dario Andres Bahamon</span>
+  <span class="j">Physical Review Letters 132, 076302 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="electron-mediated entanglement of two distant macroscopic ferromagnets within a nonequilibrium spintronic device physical review a 109 abhin suresh rafael diogo soares p. mondal joão pedro pires joão viana lopes aires ferreira adrian e. feiguin petr plecháč branislav k. nikolić">
+  <a class="t" href="https://doi.org/10.1103/physreva.109.022414" target="_blank" rel="noopener">Electron-mediated entanglement of two distant macroscopic ferromagnets within a nonequilibrium spintronic device</a>
+  <span class="au">Abhin Suresh, Rafael Diogo Soares, P. Mondal, <b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">João Viana Lopes</b>, Aires Ferreira, Adrian E. Feiguin, Petr Plecháč, Branislav K. Nikolić</span>
+  <span class="j">Physical Review A 109 (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="short-range interactions are irrelevant at the quasiperiodicity-driven luttinger liquid to anderson glass transition physical review. b./physical review. b 109 miguel gonçalves j. h. pixley bruno amorim eduardo v. castro pedro ribeiro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.109.014211" target="_blank" rel="noopener">Short-range interactions are irrelevant at the quasiperiodicity-driven Luttinger liquid to Anderson glass transition</a>
+  <span class="au">Miguel Gonçalves, J. H. Pixley, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Pedro Ribeiro</span>
+  <span class="j">Physical review. B./Physical review. B 109 (2024)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="cooling the earth with $co_2$ filled containers in space arxiv (cornell university) orfeu bertolami clovis jacinto de matos">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2401.07829" target="_blank" rel="noopener">Cooling the Earth with $CO_2$ filled containers in space</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Clovis Jacinto de Matos</span>
+  <span class="j">arXiv (Cornell University) (2024)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="third-order topological insulator induced by disorder physical review. b./physical review. b 109 hugo lóio miguel gonçalves pedro ribeiro eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.109.014204" target="_blank" rel="noopener">Third-order topological insulator induced by disorder</a>
+  <span class="au">Hugo Lóio, Miguel Gonçalves, Pedro Ribeiro, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 109 (2024)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2023</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="critical phase dualities in 1d exactly solvable quasiperiodic models physical review letters 131, 186303 miguel gonçalves bruno amorim eduardo v. castro pedro ribeiro">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.131.186303" target="_blank" rel="noopener">Critical Phase Dualities in 1D Exactly Solvable Quasiperiodic Models</a>
+  <span class="au">Miguel Gonçalves, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Pedro Ribeiro</span>
+  <span class="j">Physical Review Letters 131, 186303 (2023)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="a note on defect mellin amplitudes journal of high energy physics 2023 vasco gonçalves γεώργιος ίτσιος">
+  <a class="t" href="https://doi.org/10.1007/jhep11(2023)001" target="_blank" rel="noopener">A note on defect Mellin amplitudes</a>
+  <span class="au"><a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Γεώργιος Ίτσιος</span>
+  <span class="j">Journal of High Energy Physics 2023 (2023)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="zigzag materials: selective interchain couplings control the coexistence of one-dimensional physics and deviations from it physical review research 5 josé manuel pereira carmelo pedro d sacramento tobias stauber d. k. campbell">
+  <a class="t" href="https://doi.org/10.1103/physrevresearch.5.043058" target="_blank" rel="noopener">Zigzag materials: Selective interchain couplings control the coexistence of one-dimensional physics and deviations from it</a>
+  <span class="au"><a class="cfp-author" href="../people/jose-manuel-pereira-carmelo/index.html">José Manuel Pereira Carmelo</a>, Pedro D Sacramento, Tobias Stauber, D. K. Campbell</span>
+  <span class="j">Physical Review Research 5 (2023)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="conformal multi-regge theory journal of high energy physics 2023 miguel costa vasco gonçalves aaditya salgarkar joão vilas boas">
+  <a class="t" href="https://doi.org/10.1007/jhep09(2023)155" target="_blank" rel="noopener">Conformal multi-Regge theory</a>
+  <span class="au"><b class="cfp-author">Miguel Costa</b>, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Aaditya Salgarkar, <a class="cfp-author" href="../people/joao-vilas-boas/index.html">João Vilas Boas</a></span>
+  <span class="j">Journal of High Energy Physics 2023 (2023)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="renormalization group theory of one-dimensional quasiperiodic lattice models with commensurate approximants physical review. b./physical review. b 108 miguel gonçalves bruno amorim eduardo v. castro pedro ribeiro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.108.l100201" target="_blank" rel="noopener">Renormalization group theory of one-dimensional quasiperiodic lattice models with commensurate approximants</a>
+  <span class="au">Miguel Gonçalves, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Pedro Ribeiro</span>
+  <span class="j">Physical review. B./Physical review. B 108 (2023)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="kaluza-klein five-point functions from ads5×s5 supergravity journal of high energy physics 2023 vasco gonçalves carlo meneghelli a raul pereira joão vilas boas xinan zhou">
+  <a class="t" href="https://doi.org/10.1007/jhep08(2023)067" target="_blank" rel="noopener">Kaluza-Klein five-point functions from AdS5×S5 supergravity</a>
+  <span class="au"><a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Carlo Meneghelli A, Raul Pereira, <a class="cfp-author" href="../people/joao-vilas-boas/index.html">João Vilas Boas</a>, Xinan Zhou</span>
+  <span class="j">Journal of High Energy Physics 2023 (2023)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="from bloch oscillations to a steady-state current in strongly biased mesoscopic devices physical review. b./physical review. b 108 joão pinho joão pedro pires simão m. joão bruno amorim joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevb.108.075402" target="_blank" rel="noopener">From Bloch oscillations to a steady-state current in strongly biased mesoscopic devices</a>
+  <span class="au"><b class="cfp-author">João Pinho</b>, <b class="cfp-author">João Pedro Pires</b>, Simão M. João, <b class="cfp-author">Bruno Amorim</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical review. B./Physical review. B 108 (2023)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="could the well of an orbital lift be used to dump greenhouse gases into space? arxiv (cornell university) orfeu bertolami">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2307.13590" target="_blank" rel="noopener">Could the Well of an Orbital Lift be used to Dump Greenhouse Gases into Space?</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">arXiv (Cornell University) (2023)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="quantum prey–predator dynamics: a gaussian ensemble analysis foundations of physics 53 alex e. bernardini orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1007/s10701-023-00703-z" target="_blank" rel="noopener">Quantum Prey–Predator Dynamics: A Gaussian Ensemble Analysis</a>
+  <span class="au">Alex E. Bernardini, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Foundations of Physics 53 (2023)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="theories of gravity with nonminimal matter-curvature coupling and the de sitter swampland conjectures physical review. d/physical review. d. 107 orfeu bertolami cláudio gomes paulo m. sá">
+  <a class="t" href="https://doi.org/10.1103/physrevd.107.084009" target="_blank" rel="noopener">Theories of gravity with nonminimal matter-curvature coupling and the de Sitter swampland conjectures</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Paulo M. Sá</span>
+  <span class="j">Physical review. D/Physical review. D. 107 (2023)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="kaluza-klein five-point functions from $&#92;textrm{ads}_5&#92;times s_5$ supergravity arxiv (cornell university) vasco gonçalves carlo meneghelli a pereira, raul joão vilas boas zhou, xinan">
+  <a class="t" href="https://doi.org/10.48550/arxiv.2302.01896" target="_blank" rel="noopener">Kaluza-Klein Five-Point Functions from $&#92;textrm{AdS}_5&#92;times S_5$ Supergravity</a>
+  <span class="au"><a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Carlo Meneghelli A, Pereira, Raul, <a class="cfp-author" href="../people/joao-vilas-boas/index.html">João Vilas Boas</a>, Zhou, Xinan</span>
+  <span class="j">arXiv (Cornell University) (2023)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="delocalization of topological surface states by diagonal disorder in nodal loop semimetals physical review. b./physical review. b 107 joão s. silva m. a. n. araújo miguel gonçalves pedro ribeiro eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.107.045146" target="_blank" rel="noopener">Delocalization of topological surface states by diagonal disorder in nodal loop semimetals</a>
+  <span class="au"><a class="cfp-author" href="../people/joao-s-silva/index.html">João S. Silva</a>, M. A. N. Araújo, Miguel Gonçalves, Pedro Ribeiro, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 107 (2023)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="quantum kinetic theory of jeans instability in non-minimal matter-curvature coupling gravity the european physical journal c 83 cláudio gomes kamel ourabah">
+  <a class="t" href="https://doi.org/10.1140/epjc/s10052-023-11184-9" target="_blank" rel="noopener">Quantum kinetic theory of Jeans instability in non-minimal matter-curvature coupling gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Kamel Ourabah</span>
+  <span class="j">The European Physical Journal C 83 (2023)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2022</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials quantum-computation" data-search="anomalous transport signatures in weyl semimetals with point defects physical review letters 129, 196601 joão pedro pires simão m. joão aires ferreira bruno amorim joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.129.196601" target="_blank" rel="noopener">Anomalous Transport Signatures in Weyl Semimetals with Point Defects</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, Simão M. João, Aires Ferreira, <b class="cfp-author">Bruno Amorim</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical Review Letters 129, 196601 (2022)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="nodal vacancy bound states and resonances in three-dimensional weyl semimetals physical review. b./physical review. b 106 joão pedro pires simão m. joão aires ferreira bruno amorim joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevb.106.184201" target="_blank" rel="noopener">Nodal vacancy bound states and resonances in three-dimensional Weyl semimetals</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, Simão M. João, Aires Ferreira, <b class="cfp-author">Bruno Amorim</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical review. B./Physical review. B 106 (2022)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="spin-triplet superconducting pairing in doped mos2 physical review. b./physical review. b 106 jingyao wang xiao zhang runyu ma guang yang eduardo v. castro tianxing ma">
+  <a class="t" href="https://doi.org/10.1103/physrevb.106.134513" target="_blank" rel="noopener">Spin-triplet superconducting pairing in doped MoS2</a>
+  <span class="au">Jingyao Wang, Xiao Zhang, Runyu Ma, Guang Yang, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Tianxing Ma</span>
+  <span class="j">Physical review. B./Physical review. B 106 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflação cósmica revista de ciência elementar 10 cláudio gomes">
+  <a class="t" href="https://doi.org/10.24927/rce2022.039" target="_blank" rel="noopener">Inflação cósmica</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Revista de Ciência Elementar 10 (2022)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="spinning hexagons journal of high energy physics 2022 carlos bercini vasco gonçalves alexandre homrich pedro vieira">
+  <a class="t" href="https://doi.org/10.1007/jhep09(2022)228" target="_blank" rel="noopener">Spinning hexagons</a>
+  <span class="au">Carlos Bercini, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Alexandre Homrich, Pedro Vieira</span>
+  <span class="j">Journal of High Energy Physics 2022 (2022)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="high-resolution real-space evaluation of the self-energy operator of disordered lattices: gade singularity, spin–orbit effects and p-wave superconductivity journal of physics materials 5, 045002 simão m. joão joão viana lopes aires ferreira">
+  <a class="t" href="https://doi.org/10.1088/2515-7639/ac91f9" target="_blank" rel="noopener">High-resolution real-space evaluation of the self-energy operator of disordered lattices: Gade singularity, spin–orbit effects and p-wave superconductivity</a>
+  <span class="au">Simão M. João, <b class="cfp-author">João Viana Lopes</b>, Aires Ferreira</span>
+  <span class="j">Journal of Physics Materials 5, 045002 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="multi-field cold and warm inflation and the de sitter swampland conjectures journal of cosmology and astroparticle physics 2022, 001 orfeu bertolami paulo m. sá">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2022/09/001" target="_blank" rel="noopener">Multi-field cold and warm inflation and the de Sitter swampland conjectures</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Paulo M. Sá</span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2022, 001 (2022)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="the wilson loop — large spin ope dictionary journal of high energy physics 2022 carlos bercini vasco gonçalves alexandre homrich pedro vieira">
+  <a class="t" href="https://doi.org/10.1007/jhep07(2022)079" target="_blank" rel="noopener">The Wilson loop — large spin OPE dictionary</a>
+  <span class="au">Carlos Bercini, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Alexandre Homrich, Pedro Vieira</span>
+  <span class="j">Journal of High Energy Physics 2022 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="towards a classification scheme for the rocky planets based on equilibrium thermodynamic considerations monthly notices of the royal astronomical society 515, 1037 orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.1093/mnras/stac1665" target="_blank" rel="noopener">Towards a classification scheme for the rocky planets based on equilibrium thermodynamic considerations</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">Monthly Notices of the Royal Astronomical Society 515, 1037 (2022)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="edge magnetism in transition metal dichalcogenide nanoribbons: mean field theory and determinant quantum monte carlo physical review. b./physical review. b 105 francisco m. o. brito linhu li joão viana lopes eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.105.195130" target="_blank" rel="noopener">Edge magnetism in transition metal dichalcogenide nanoribbons: Mean field theory and determinant quantum Monte Carlo</a>
+  <span class="au">Francisco M. O. Brito, Linhu Li, <b class="cfp-author">João Viana Lopes</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 105 (2022)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="supersymmetric five-point gluon amplitudes in ads space physical review letters 128, 161601 luis fernando alday vasco gonçalves xinan zhou">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.128.161601" target="_blank" rel="noopener">Supersymmetric Five-Point Gluon Amplitudes in AdS Space</a>
+  <span class="au">Luis Fernando Alday, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Xinan Zhou</span>
+  <span class="j">Physical Review Letters 128, 161601 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="stability conditions for the horndeski scalar field gravity model journal of cosmology and astroparticle physics 2022, 008 cláudio gomes orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2022/04/008" target="_blank" rel="noopener">Stability conditions for the Horndeski scalar field gravity model</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2022, 008 (2022)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="lightcone bootstrap at higher points journal of high energy physics 2022 antónio antunes miguel costa vasco gonçalves joão vilas boas">
+  <a class="t" href="https://doi.org/10.1007/jhep03(2022)139" target="_blank" rel="noopener">Lightcone bootstrap at higher points</a>
+  <span class="au">António Antunes, <b class="cfp-author">Miguel Costa</b>, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, <a class="cfp-author" href="../people/joao-vilas-boas/index.html">João Vilas Boas</a></span>
+  <span class="j">Journal of High Energy Physics 2022 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="cassini and extra force constraints to nonminimally coupled gravity with a screening mechanism physical review. d/physical review. d. 105 riccardo march orfeu bertolami marco muccino cláudio gomes simone dell’agnello">
+  <a class="t" href="https://doi.org/10.1103/physrevd.105.044048" target="_blank" rel="noopener">Cassini and extra force constraints to nonminimally coupled gravity with a screening mechanism</a>
+  <span class="au">Riccardo March, <b class="cfp-author">Orfeu Bertolami</b>, Marco Muccino, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Simone Dell’Agnello</span>
+  <span class="j">Physical review. D/Physical review. D. 105 (2022)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="a new microscopic look into pressure fields and local buoyancy american journal of physics 90, 179 simão m. joão joão pedro pires joão viana lopes">
+  <a class="t" href="https://doi.org/10.1119/5.0060479" target="_blank" rel="noopener">A new microscopic look into pressure fields and local buoyancy</a>
+  <span class="au">Simão M. João, <b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">American Journal of Physics 90, 179 (2022)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="from a dynamic integrated climate economy (dice) to a resilience integrated model of climate and economy (rimce) the anthropocene review 11, 491 orfeu bertolami carmen diego gonçalves">
+  <a class="t" href="https://doi.org/10.1177/20530196231205486" target="_blank" rel="noopener">From a Dynamic Integrated Climate Economy (DICE) to a Resilience Integrated Model of Climate and Economy (RIMCE)</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Carmen Diego Gonçalves</span>
+  <span class="j">The Anthropocene Review 11, 491 (2022)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2021</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="interplay of interactions, disorder, and topology in the haldane-hubbard model physical review. b./physical review. b 104 tian-cheng yi shijie hu eduardo v. castro rubem mondaini">
+  <a class="t" href="https://doi.org/10.1103/physrevb.104.195117" target="_blank" rel="noopener">Interplay of interactions, disorder, and topology in the Haldane-Hubbard model</a>
+  <span class="au">Tian-Cheng Yi, Shijie Hu, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Rubem Mondaini</span>
+  <span class="j">Physical review. B./Physical review. B 104 (2021)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflation, phase transitions and the cosmological constant general relativity and gravitation 53 orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1007/s10714-021-02877-1" target="_blank" rel="noopener">Inflation, phase transitions and the cosmological constant</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">General Relativity and Gravitation 53 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="environmental sensitivity of fabry-perot microcavities induced by layered graphene-dielectric hybrid coatings physical review applied 16 rui peixoto joão pedro pires catarina s. monteiro maria raposo paulo antonio ribeiro susana silva orlando frazão joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevapplied.16.044041" target="_blank" rel="noopener">Environmental Sensitivity of Fabry-Perot Microcavities Induced by Layered Graphene-Dielectric Hybrid Coatings</a>
+  <span class="au">Rui Peixoto, <b class="cfp-author">João Pedro Pires</b>, Catarina S. Monteiro, Maria Raposo, Paulo Antonio Ribeiro, Susana Silva, Orlando Frazão, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical Review Applied 16 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="incommensurability-induced sub-ballistic narrow-band-states in twisted bilayer graphene 2d materials 9, 011001 miguel gonçalves hadi z. olyaei bruno amorim rubem mondaini pedro ribeiro eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1088/2053-1583/ac3259" target="_blank" rel="noopener">Incommensurability-induced sub-ballistic narrow-band-states in twisted bilayer graphene</a>
+  <span class="au">Miguel Gonçalves, Hadi Z. Olyaei, <b class="cfp-author">Bruno Amorim</b>, Rubem Mondaini, Pedro Ribeiro, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">2D Materials 9, 011001 (2021)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="glue-and-cut at five loops journal of high energy physics 2021 alessandro georgoudis vasco gonçalves erik panzer raul pereira alexander v. smirnov vladimir aleksandrovich smirnov">
+  <a class="t" href="https://doi.org/10.1007/jhep09(2021)098" target="_blank" rel="noopener">Glue-and-cut at five loops</a>
+  <span class="au">Alessandro Georgoudis, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Erik Panzer, Raul Pereira, Alexander V. Smirnov, Vladimir Aleksandrovich Smirnov</span>
+  <span class="j">Journal of High Energy Physics 2021 (2021)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="is large technological investment really a solution for a major shift to rail? a discussion based on a mediterranean freight corridor case-study journal of rail transport planning &amp; management 19, 100271 frederico francisco paulo fonseca teixeira armand toubol bo-lennart nelldal">
+  <a class="t" href="https://doi.org/10.1016/j.jrtpm.2021.100271" target="_blank" rel="noopener">Is large technological investment really a solution for a major shift to rail? A discussion based on a Mediterranean freight corridor case-study</a>
+  <span class="au"><b class="cfp-author">Frederico Francisco</b>, Paulo Fonseca Teixeira, Armand Toubol, Bo-Lennart Nelldal</span>
+  <span class="j">Journal of Rail Transport Planning &amp; Management 19, 100271 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="nonlinear optical conductivity of a two-band crystal i journal of physics condensed matter 33, 465701 d j passos g b ventura j m b lopes dos santos joão viana lopes">
+  <a class="t" href="https://doi.org/10.1088/1361-648x/ac1c2d" target="_blank" rel="noopener">Nonlinear optical conductivity of a two-band crystal I</a>
+  <span class="au">D J Passos, G B Ventura, J M B Lopes dos Santos, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Journal of Physics Condensed Matter 33, 465701 (2021)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="pressureless static solutions in a newton-yukawa gravity model physical review. d/physical review. d. 103 tiago d. ferreira joão p. a. novo nuno a. silva ariel guerreiro orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1103/physrevd.103.124019" target="_blank" rel="noopener">Pressureless static solutions in a Newton-Yukawa gravity model</a>
+  <span class="au">Tiago D. Ferreira, João P. A. Novo, Nuno A. Silva, Ariel Guerreiro, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physical review. D/Physical review. D. 103 (2021)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="analogue cosmology: using techniques from nonlinear optics to study modified theories of gravity with non-minimal coupling between curvature and matter , 41 tiago d. ferreira joão p. a. novo orfeu bertolami nuno a. silva ariel guerreiro">
+  <a class="t" href="https://doi.org/10.1117/12.2592316" target="_blank" rel="noopener">Analogue cosmology: using techniques from nonlinear optics to study modified theories of gravity with non-minimal coupling between curvature and matter</a>
+  <span class="au">Tiago D. Ferreira, João P. A. Novo, <b class="cfp-author">Orfeu Bertolami</b>, Nuno A. Silva, Ariel Guerreiro</span>
+  <span class="j">, 41 (2021)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="light-cone bootstrap of higher point functions and wilson loop duality physical review letters 126, 121603 carlos bercini vasco gonçalves pedro vieira">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.126.121603" target="_blank" rel="noopener">Light-Cone Bootstrap of Higher Point Functions and Wilson Loop Duality</a>
+  <span class="au">Carlos Bercini, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Pedro Vieira</span>
+  <span class="j">Physical Review Letters 126, 121603 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="breakdown of universality in three-dimensional dirac semimetals with random impurities physical review research 3 joão pedro pires bruno amorim aires ferreira i̇nanç adagideli eduardo r. mucciolo joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevresearch.3.013183" target="_blank" rel="noopener">Breakdown of universality in three-dimensional Dirac semimetals with random impurities</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">Bruno Amorim</b>, Aires Ferreira, İnanç Adagideli, Eduardo R. Mucciolo, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical Review Research 3 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="interplay of local order and topology in the extended haldane-hubbard model physical review. b./physical review. b 103 can shao eduardo v. castro shijie hu rubem mondaini">
+  <a class="t" href="https://doi.org/10.1103/physrevb.103.035125" target="_blank" rel="noopener">Interplay of local order and topology in the extended Haldane-Hubbard model</a>
+  <span class="au">Can Shao, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Shijie Hu, Rubem Mondaini</span>
+  <span class="j">Physical review. B./Physical review. B 103 (2021)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="modelling the flow within forests: the canopy-related terms in the reynolds-averaged formulation journal of fluid mechanics 910 joão viana lopes josé m. l. m. palma alexandre silva lopes">
+  <a class="t" href="https://doi.org/10.1017/jfm.2020.927" target="_blank" rel="noopener">Modelling the flow within forests: the canopy-related terms in the Reynolds-averaged formulation</a>
+  <span class="au"><b class="cfp-author">João Viana Lopes</b>, José M. L. M. Palma, Alexandre Silva Lopes</span>
+  <span class="j">Journal of Fluid Mechanics 910 (2021)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="an ostrogradsky instability analysis of non-minimally coupled weyl connection gravity theories general relativity and gravitation 53 rodrigo p baptista orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1007/s10714-021-02784-5" target="_blank" rel="noopener">An Ostrogradsky instability analysis of non-minimally coupled Weyl connection gravity theories</a>
+  <span class="au">Rodrigo P Baptista, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">General Relativity and Gravitation 53 (2021)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2020</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="nonminimally coupled boltzmann equation: foundations physical review. d/physical review. d. 102 orfeu bertolami cláudio gomes">
+  <a class="t" href="https://doi.org/10.1103/physrevd.102.084051" target="_blank" rel="noopener">Nonminimally coupled Boltzmann equation: Foundations</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Physical review. D/Physical review. D. 102 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="lua revista de ciência elementar 8 cláudio gomes orfeu bertolami">
+  <a class="t" href="https://doi.org/10.24927/rce2020.046" target="_blank" rel="noopener">Lua</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Revista de Ciência Elementar 8 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="can dark matter drive electroweak symmetry breaking? physical review. d/physical review. d. 102 catarina cosme joão g. rosa orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1103/physrevd.102.063507" target="_blank" rel="noopener">Can dark matter drive electroweak symmetry breaking?</a>
+  <span class="au">Catarina Cosme, João G. Rosa, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physical review. D/Physical review. D. 102 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="jeans instability in non-minimal matter-curvature coupling gravity the european physical journal c 80 cláudio gomes">
+  <a class="t" href="https://doi.org/10.1140/epjc/s10052-020-8189-y" target="_blank" rel="noopener">Jeans instability in non-minimal matter-curvature coupling gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">The European Physical Journal C 80 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="a quantum field theory view of interaction free measurements foundations of physics 50, 764 filipe barroso orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1007/s10701-020-00350-8" target="_blank" rel="noopener">A Quantum Field Theory View of Interaction Free Measurements</a>
+  <span class="au">Filipe Barroso, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Foundations of Physics 50, 764 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="towards a physically motivated planetary accounting framework the anthropocene review 7, 191 miguel barbosa orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.1177/2053019620909659" target="_blank" rel="noopener">Towards a physically motivated planetary accounting framework</a>
+  <span class="au">Miguel Barbosa, <b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">The Anthropocene Review 7, 191 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="using a non-minimal coupling between matter and curvature to sequester the cosmological constant general relativity and gravitation 52 orfeu bertolami jorge páramos">
+  <a class="t" href="https://doi.org/10.1007/s10714-020-02695-x" target="_blank" rel="noopener">Using a non-minimal coupling between matter and curvature to sequester the cosmological constant</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Jorge Páramos</span>
+  <span class="j">General Relativity and Gravitation 52 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="disorder-driven multifractality transition in weyl nodal loops physical review letters 124, 136405 miguel gonçalves pedro ribeiro eduardo v. castro m. a. n. araújo">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.124.136405" target="_blank" rel="noopener">Disorder-Driven Multifractality Transition in Weyl Nodal Loops</a>
+  <span class="au">Miguel Gonçalves, Pedro Ribeiro, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, M. A. N. Araújo</span>
+  <span class="j">Physical Review Letters 124, 136405 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="landauer transport as a quasisteady state on finite chains under unitary quantum dynamics physical review. b./physical review. b 101 joão pedro pires bruno amorim joão viana lopes">
+  <a class="t" href="https://doi.org/10.1103/physrevb.101.104203" target="_blank" rel="noopener">Landauer transport as a quasisteady state on finite chains under unitary quantum dynamics</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">Bruno Amorim</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Physical review. B./Physical review. B 101 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="cosmological solutions of the non-minimally coupled weyl connection gravity theories classical and quantum gravity 37, 085011 rodrigo baptista orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1361-6382/ab7bb8" target="_blank" rel="noopener">Cosmological solutions of the non-minimally coupled Weyl connection gravity theories</a>
+  <span class="au">Rodrigo Baptista, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Classical and Quantum Gravity 37, 085011 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="phononic phase gate with dark-soliton qubit physica scripta 95, 055103 muzzamal iqbal shaukat eduardo v. castro hugo terças">
+  <a class="t" href="https://doi.org/10.1088/1402-4896/ab7651" target="_blank" rel="noopener">Phononic phase gate with dark-soliton qubit</a>
+  <span class="au">Muzzamal Iqbal Shaukat, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Hugo Terças</span>
+  <span class="j">Physica Scripta 95, 055103 (2020)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="using numerical methods from nonlocal optics to simulate the dynamics of n -body systems in alternative theories of gravity physical review. e 101, 023301 tiago d. ferreira nuno a. silva orfeu bertolami cláudio gomes ariel guerreiro">
+  <a class="t" href="https://doi.org/10.1103/physreve.101.023301" target="_blank" rel="noopener">Using numerical methods from nonlocal optics to simulate the dynamics of N -body systems in alternative theories of gravity</a>
+  <span class="au">Tiago D. Ferreira, Nuno A. Silva, <b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Ariel Guerreiro</span>
+  <span class="j">Physical review. E 101, 023301 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="kite: high-performance accurate modelling of electronic structure and response functions of large molecules, disordered crystals and heterostructures royal society open science 7, 191809 simão m. joão miša anđelković lucian covaci tatiana g. rappoport joão viana lopes aires ferreira">
+  <a class="t" href="https://doi.org/10.1098/rsos.191809" target="_blank" rel="noopener">KITE: high-performance accurate modelling of electronic structure and response functions of large molecules, disordered crystals and heterostructures</a>
+  <span class="au">Simão M. João, Miša Anđelković, Lucian Covaci, Tatiana G. Rappoport, <b class="cfp-author">João Viana Lopes</b>, Aires Ferreira</span>
+  <span class="j">Royal Society Open Science 7, 191809 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="multi-orbital physics of edge-magnetism in a hubbard model of transition-metal dichalcogenide nanoribbons: comparing mean field theory and determinant quantum monte carlo epj web of conferences 233, 03003 francisco m. o. brito eduardo v. castro joão viana lopes">
+  <a class="t" href="https://doi.org/10.1051/epjconf/202023303003" target="_blank" rel="noopener">Multi-orbital physics of edge-magnetism in a Hubbard model of transition-metal dichalcogenide nanoribbons: Comparing Mean Field Theory and Determinant Quantum Monte Carlo</a>
+  <span class="au">Francisco M. O. Brito, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">EPJ Web of Conferences 233, 03003 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="non-linear optical response in disordered 2d materials epj web of conferences 233, 03002 simão m. joão joão viana lopes">
+  <a class="t" href="https://doi.org/10.1051/epjconf/202023303002" target="_blank" rel="noopener">Non-linear optical response in disordered 2D materials</a>
+  <span class="au">Simão M. João, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">EPJ Web of Conferences 233, 03002 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="numerical simulation of non-equilibrium stationary currents through nano-scale one-dimensional chains epj web of conferences 233, 05010 joão pedro pires bruno amorim joão viana lopes">
+  <a class="t" href="https://doi.org/10.1051/epjconf/202023305010" target="_blank" rel="noopener">Numerical Simulation of Non-Equilibrium Stationary Currents Through Nano-scale One-Dimensional Chains</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">Bruno Amorim</b>, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">EPJ Web of Conferences 233, 05010 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="probing the global delocalization transition in the de moura-lyra model with the kernel polynomial method epj web of conferences 233, 05011 niaz ali khan joão pedro pires joão viana lopes j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1051/epjconf/202023305011" target="_blank" rel="noopener">Probing the Global Delocalization Transition in the de Moura-Lyra Model with the Kernel Polynomial Method</a>
+  <span class="au">Niaz Ali Khan, <b class="cfp-author">João Pedro Pires</b>, <b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos</span>
+  <span class="j">EPJ Web of Conferences 233, 05011 (2020)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="theoretical calculations of nonlinear optical calculations of 2d materials epj web of conferences 233, 03001 g. b. ventura d. j. passos joão viana lopes j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1051/epjconf/202023303001" target="_blank" rel="noopener">Theoretical calculations of nonlinear optical calculations of 2D materials</a>
+  <span class="au">G. B. Ventura, D. J. Passos, <b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos</span>
+  <span class="j">EPJ Web of Conferences 233, 03001 (2020)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2019</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials quantum-computation" data-search="a study of the nonlinear optical response of the plain graphene and gapped graphene monolayers beyond the dirac approximation journal of physics condensed matter 32, 185701 g. b. ventura d. j. passos joão viana lopes j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1088/1361-648x/ab62bc" target="_blank" rel="noopener">A study of the nonlinear optical response of the plain graphene and gapped graphene monolayers beyond the Dirac approximation</a>
+  <span class="au">G. B. Ventura, D. J. Passos, <b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos</span>
+  <span class="j">Journal of Physics Condensed Matter 32, 185701 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="superfluid weight and polarization amplitude in the one-dimensional bosonic hubbard model physical review. b./physical review. b 100 balázs hetényi luis miguel martelo b. tanatar">
+  <a class="t" href="https://doi.org/10.1103/physrevb.100.174517" target="_blank" rel="noopener">Superfluid weight and polarization amplitude in the one-dimensional bosonic Hubbard model</a>
+  <span class="au">Balázs Hetényi, <a class="cfp-author" href="../people/luis-miguel-martelo/index.html">Luis Miguel Martelo</a>, B. Tanatar</span>
+  <span class="j">Physical review. B./Physical review. B 100 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="basis-independent spectral methods for non-linear optical response in arbitrary tight-binding models journal of physics condensed matter 32, 125901 simão m. joão joão viana lopes">
+  <a class="t" href="https://doi.org/10.1088/1361-648x/ab59ec" target="_blank" rel="noopener">Basis-independent spectral methods for non-linear optical response in arbitrary tight-binding models</a>
+  <span class="au">Simão M. João, <b class="cfp-author">João Viana Lopes</b></span>
+  <span class="j">Journal of Physics Condensed Matter 32, 125901 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="nonminimally coupled weyl gravity classical and quantum gravity 36, 235016 cláudio gomes orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1361-6382/ab52b9" target="_blank" rel="noopener">Nonminimally coupled Weyl gravity</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Classical and Quantum Gravity 36, 235016 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="a phase space description of the earth system in the anthropocene europhysics letters (epl) 127, 59001 orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.1209/0295-5075/127/59001" target="_blank" rel="noopener">A phase space description of the Earth System in the Anthropocene</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">Europhysics Letters (EPL) 127, 59001 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="a physical framework for the earth system in the anthropocene: towards an accountancy system arxiv (cornell university) orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.48550/arxiv.1910.02467" target="_blank" rel="noopener">A Physical Framework for the Earth System in the Anthropocene: Towards an Accountancy System</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">arXiv (Cornell University) (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="constraining a nonminimally coupled curvature-matter gravity model with ocean experiments physical review. d/physical review. d. 100 riccardo march orfeu bertolami marco muccino rodrigo p baptista simone dell’agnello">
+  <a class="t" href="https://doi.org/10.1103/physrevd.100.042002" target="_blank" rel="noopener">Constraining a nonminimally coupled curvature-matter gravity model with ocean experiments</a>
+  <span class="au">Riccardo March, <b class="cfp-author">Orfeu Bertolami</b>, Marco Muccino, Rodrigo P Baptista, Simone Dell’Agnello</span>
+  <span class="j">Physical review. D/Physical review. D. 100 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="quantum cloning and teleportation fidelity in the noncommutative phase-space journal of physics a mathematical and theoretical 52, 375302 p leal alex e. bernardini orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1751-8121/ab359b" target="_blank" rel="noopener">Quantum cloning and teleportation fidelity in the noncommutative phase-space</a>
+  <span class="au">P Leal, Alex E. Bernardini, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Journal of Physics A Mathematical and Theoretical 52, 375302 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="termodinâmica de buracos negros revista de ciência elementar 7 orfeu bertolami cláudio gomes">
+  <a class="t" href="https://doi.org/10.24927/rce2019.034" target="_blank" rel="noopener">Termodinâmica de Buracos Negros</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Revista de Ciência Elementar 7 (2019)</span>
+</li>
+
+<li data-areas="physics-education" data-search="homework as a metacognitive tool in an undergraduate physics course physical review physics education research 15 ana rita mota nilüfer didiş körhasan kelly miller eric mazur">
+  <a class="t" href="https://doi.org/10.1103/physrevphyseducres.15.010136" target="_blank" rel="noopener">Homework as a metacognitive tool in an undergraduate physics course</a>
+  <span class="au"><a class="cfp-author" href="../people/ana-rita-mota/index.html">Ana Rita Mota</a>, Nilüfer Didiş Körhasan, Kelly Miller, Eric Mazur</span>
+  <span class="j">Physical Review Physics Education Research 15 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="transmission across a bilayer graphene region physical review. b./physical review. b 99 hadi z. olyaei pedro ribeiro eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.99.205436" target="_blank" rel="noopener">Transmission across a bilayer graphene region</a>
+  <span class="au">Hadi Z. Olyaei, Pedro Ribeiro, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 99 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="global delocalization transition in the de moura–lyra model physical review. b./physical review. b 99 joão pedro pires niaz ali khan joão viana lopes j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1103/physrevb.99.205148" target="_blank" rel="noopener">Global delocalization transition in the de Moura–Lyra model</a>
+  <span class="au"><b class="cfp-author">João Pedro Pires</b>, Niaz Ali Khan, <b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos</span>
+  <span class="j">Physical review. B./Physical review. B 99 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="slow sound in matter-wave dark soliton gases physical review. b./physical review. b 99 muzzamal iqbal shaukat eduardo v. castro hugo terças">
+  <a class="t" href="https://doi.org/10.1103/physrevb.99.205408" target="_blank" rel="noopener">Slow sound in matter-wave dark soliton gases</a>
+  <span class="au">Muzzamal Iqbal Shaukat, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Hugo Terças</span>
+  <span class="j">Physical review. B./Physical review. B 99 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="relativistic dispersion relation and putative metric structure in noncommutative phase-space physics letters b 793, 240 pedro leal orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1016/j.physletb.2019.04.049" target="_blank" rel="noopener">Relativistic dispersion relation and putative metric structure in noncommutative phase-space</a>
+  <span class="au">Pedro Leal, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physics Letters B 793, 240 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="spontaneous generation of phononic entanglement in quantum dark-soliton qubits physical review a 99 muzzamal iqbal shaukat eduardo v. castro hugo terças">
+  <a class="t" href="https://doi.org/10.1103/physreva.99.042326" target="_blank" rel="noopener">Spontaneous generation of phononic entanglement in quantum dark-soliton qubits</a>
+  <span class="au">Muzzamal Iqbal Shaukat, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Hugo Terças</span>
+  <span class="j">Physical Review A 99 (2019)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="ensuring uninterrupted power supply to lunar installations through an organic rankine cycle arxiv (cornell university) frederico francisco orfeu bertolami">
+  <a class="t" href="https://doi.org/10.48550/arxiv.1904.03944" target="_blank" rel="noopener">Ensuring Uninterrupted Power Supply to Lunar Installations Through an Organic Rankine Cycle</a>
+  <span class="au"><b class="cfp-author">Frederico Francisco</b>, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">arXiv (Cornell University) (2019)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="taming chaos to sample rare events: the effect of weak chaos chaos an interdisciplinary journal of nonlinear science 29, 043113 jorge c. leitão joão viana lopes eduardo g. altmann">
+  <a class="t" href="https://doi.org/10.1063/1.5082640" target="_blank" rel="noopener">Taming chaos to sample rare events: The effect of weak chaos</a>
+  <span class="au">Jorge C. Leitão, <b class="cfp-author">João Viana Lopes</b>, Eduardo G. Altmann</span>
+  <span class="j">Chaos An Interdisciplinary Journal of Nonlinear Science 29, 043113 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="temperature-driven gapless topological insulator physical review letters 122, 126601 miguel gonçalves pedro ribeiro rubem mondaini eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.122.126601" target="_blank" rel="noopener">Temperature-Driven Gapless Topological Insulator</a>
+  <span class="au">Miguel Gonçalves, Pedro Ribeiro, Rubem Mondaini, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical Review Letters 122, 126601 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="spectral functions of one-dimensional systems with correlated disorder journal of physics condensed matter 31, 175501 niaz ali khan joão viana lopes joão pedro pires j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1088/1361-648x/ab03ad" target="_blank" rel="noopener">Spectral functions of one-dimensional systems with correlated disorder</a>
+  <span class="au">Niaz Ali Khan, <b class="cfp-author">João Viana Lopes</b>, <b class="cfp-author">João Pedro Pires</b>, J. M. B. Lopes dos Santos</span>
+  <span class="j">Journal of Physics Condensed Matter 31, 175501 (2019)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="twisted bilayer graphene: low-energy physics, electronic and optical properties portuguese national funding agency for science, research and technology (rcaap project by fct) catarina, g. amorim, b. eduardo v. castro joão viana lopes nuno m. r. peres">
+  <a class="t" href="https://hdl.handle.net/1822/61565" target="_blank" rel="noopener">Twisted bilayer graphene: low-energy physics, electronic and optical properties</a>
+  <span class="au">Catarina, G., Amorim, B., <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, <b class="cfp-author">João Viana Lopes</b>, Nuno M. R. Peres</span>
+  <span class="j">Portuguese National Funding Agency for Science, Research and Technology (RCAAP Project by FCT) (2019)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2018</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="symmetry breaking and lattice kirigami physical review letters 121, 221601 eduardo v. castro antonino flachi pedro ribeiro vincenzo m. vitagliano">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.121.221601" target="_blank" rel="noopener">Symmetry Breaking and Lattice Kirigami</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Antonino Flachi, Pedro Ribeiro, Vincenzo M. Vitagliano</span>
+  <span class="j">Physical Review Letters 121, 221601 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="entangled states and the gravitational quantum well europhysics letters (epl) 124, 10001 rui alves orfeu bertolami catarina bastos">
+  <a class="t" href="https://doi.org/10.1209/0295-5075/124/10001" target="_blank" rel="noopener">Entangled states and the gravitational quantum well</a>
+  <span class="au">Rui Alves, <b class="cfp-author">Orfeu Bertolami</b>, Catarina Bastos</span>
+  <span class="j">Europhysics Letters (EPL) 124, 10001 (2018)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="valley-polarized magnetic state in hole-doped monolayers of transition-metal dichalcogenides physical review. b./physical review. b 98 joão e. h. braz bruno amorim eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1103/physrevb.98.161406" target="_blank" rel="noopener">Valley-polarized magnetic state in hole-doped monolayers of transition-metal dichalcogenides</a>
+  <span class="au">João E. H. Braz, <b class="cfp-author">Bruno Amorim</b>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Physical review. B./Physical review. B 98 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="observatório astronómico de santana - açores revista de ciência elementar 6 cláudio gomes pedro garcia sofia janeiro flávio almeida alexandra melo observatório astronómico de santana - açores observatório astronómico de santana - açores observatório astronómico de santana - açores observatório astronómico de santana - açores">
+  <a class="t" href="https://doi.org/10.24927/rce2018.064" target="_blank" rel="noopener">Observatório Astronómico de Santana - Açores</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Pedro Garcia, Sofia Janeiro, Flávio Almeida, Alexandra Melo, Observatório Astronómico de Santana - Açores, Observatório Astronómico de Santana - Açores, Observatório Astronómico de Santana - Açores, Observatório Astronómico de Santana - Açores</span>
+  <span class="j">Revista de Ciência Elementar 6 (2018)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="entanglement sudden death and revival in quantum dark-soliton qubits physical review a 98 muzzamal iqbal shaukat eduardo v. castro hugo terças">
+  <a class="t" href="https://doi.org/10.1103/physreva.98.022319" target="_blank" rel="noopener">Entanglement sudden death and revival in quantum dark-soliton qubits</a>
+  <span class="au">Muzzamal Iqbal Shaukat, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Hugo Terças</span>
+  <span class="j">Physical Review A 98 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="a physical framework for the earth system, anthropocene equation and the great acceleration global and planetary change 169, 66 orfeu bertolami frederico francisco">
+  <a class="t" href="https://doi.org/10.1016/j.gloplacha.2018.07.006" target="_blank" rel="noopener">A physical framework for the earth system, Anthropocene equation and the great acceleration</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b></span>
+  <span class="j">Global and Planetary Change 169, 66 (2018)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="nonlinear optical responses of crystalline systems: results from a velocity gauge analysis physical review. b./physical review. b 97 d. j. passos g. b. ventura joão viana lopes j. m. b. lopes dos santos nuno m. r. peres">
+  <a class="t" href="https://doi.org/10.1103/physrevb.97.235446" target="_blank" rel="noopener">Nonlinear optical responses of crystalline systems: Results from a velocity gauge analysis</a>
+  <span class="au">D. J. Passos, G. B. Ventura, <b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos, Nuno M. R. Peres</span>
+  <span class="j">Physical review. B./Physical review. B 97 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflation with planck data: a survey of some exotic inflationary models physical review. d/physical review. d. 97 cláudio gomes orfeu bertolami joão g. rosa">
+  <a class="t" href="https://doi.org/10.1103/physrevd.97.104061" target="_blank" rel="noopener">Inflation with Planck data: A survey of some exotic inflationary models</a>
+  <span class="au"><a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, <b class="cfp-author">Orfeu Bertolami</b>, João G. Rosa</span>
+  <span class="j">Physical review. D/Physical review. D. 97 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="scalar field dark matter with spontaneous symmetry breaking and the 3.5 kev line physics letters b 781, 639 catarina cosme joão g. rosa orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1016/j.physletb.2018.04.062" target="_blank" rel="noopener">Scalar field dark matter with spontaneous symmetry breaking and the 3.5 keV line</a>
+  <span class="au">Catarina Cosme, João G. Rosa, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physics Letters B 781, 639 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="collapsing shells and black holes: a quantum analysis classical and quantum gravity 35, 115013 pedro leal alex e. bernardini orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1088/1361-6382/aac083" target="_blank" rel="noopener">Collapsing shells and black holes: a quantum analysis</a>
+  <span class="au">Pedro Leal, Alex E. Bernardini, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Classical and Quantum Gravity 35, 115013 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="gravitational waves in theories with a non-minimal curvature-matter coupling the european physical journal c 78 orfeu bertolami cláudio gomes francisco s. n. lobo">
+  <a class="t" href="https://doi.org/10.1140/epjc/s10052-018-5781-5" target="_blank" rel="noopener">Gravitational waves in theories with a non-minimal curvature-matter coupling</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a>, Francisco S. N. Lobo</span>
+  <span class="j">The European Physical Journal C 78 (2018)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="scale-invariant scalar field dark matter through the higgs portal portuguese national funding agency for science, research and technology (rcaap project by fct) catarina cosme joão g. rosa orfeu bertolami">
+  <a class="t" href="http://hdl.handle.net/10773/24043" target="_blank" rel="noopener">Scale-invariant scalar field dark matter through the Higgs portal</a>
+  <span class="au">Catarina Cosme, João G. Rosa, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Portuguese National Funding Agency for Science, Research and Technology (RCAAP Project by FCT) (2018)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2017</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="neutron stars, ungravity, and the i-love-q relations physical review. d/physical review. d. 96 hodjat mariji orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1103/physrevd.96.084042" target="_blank" rel="noopener">Neutron stars, ungravity, and the I-Love-Q relations</a>
+  <span class="au">Hodjat Mariji, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physical review. D/Physical review. D. 96 (2017)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="gauge covariances and nonlinear optical responses physical review. b./physical review. b 96 g. b. ventura d. j. passos j. m. b. lopes dos santos joão viana lopes nuno m. r. peres">
+  <a class="t" href="https://doi.org/10.1103/physrevb.96.035431" target="_blank" rel="noopener">Gauge covariances and nonlinear optical responses</a>
+  <span class="au">G. B. Ventura, D. J. Passos, J. M. B. Lopes dos Santos, <b class="cfp-author">João Viana Lopes</b>, Nuno M. R. Peres</span>
+  <span class="j">Physical review. B./Physical review. B 96 (2017)</span>
+</li>
+
+<li data-areas="physics-education" data-search="cor revista de ciência elementar 5 ana rita mota">
+  <a class="t" href="https://doi.org/10.24927/rce2017.019" target="_blank" rel="noopener">Cor</a>
+  <span class="au"><a class="cfp-author" href="../people/ana-rita-mota/index.html">Ana Rita Mota</a></span>
+  <span class="j">Revista de Ciência Elementar 5 (2017)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="estimating the thermally induced acceleration of the new horizons spacecraft physical review. d/physical review. d. 95 andré g. c. guerra frederico francisco p. j. s. gil orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1103/physrevd.95.124027" target="_blank" rel="noopener">Estimating the thermally induced acceleration of the New Horizons spacecraft</a>
+  <span class="au">André G. C. Guerra, <b class="cfp-author">Frederico Francisco</b>, P. J. S. Gil, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physical review. D/Physical review. D. 95 (2017)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflation in non-minimal matter-curvature coupling theories portuguese national funding agency for science, research and technology (rcaap project by fct) rosa, joão pedro trancoso gomes gomes, cláudio orfeu bertolami">
+  <a class="t" href="http://hdl.handle.net/10773/18248" target="_blank" rel="noopener">Inflation in non-minimal matter-curvature coupling theories</a>
+  <span class="au">Rosa, João Pedro Trancoso Gomes, Gomes, Cláudio, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Portuguese National Funding Agency for Science, Research and Technology (RCAAP Project by FCT) (2017)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2016</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="on small satellites for oceanography: a survey acta astronautica 127, 404 andré g. c. guerra frederico francisco jaime e. villate fernando aguado agelet orfeu bertolami kanna rajan">
+  <a class="t" href="https://doi.org/10.1016/j.actaastro.2016.06.007" target="_blank" rel="noopener">On small satellites for oceanography: A survey</a>
+  <span class="au">André G. C. Guerra, <b class="cfp-author">Frederico Francisco</b>, Jaime E. Villate, Fernando Aguado Agelet, <b class="cfp-author">Orfeu Bertolami</b>, Kanna Rajan</span>
+  <span class="j">Acta Astronautica 127, 404 (2016)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="vacuum decay in an interacting multiverse physics letters b 759, 328 salvador robles-pérez ana alonso-serrano catarina bastos orfeu bertolami">
+  <a class="t" href="https://doi.org/10.1016/j.physletb.2016.05.091" target="_blank" rel="noopener">Vacuum decay in an interacting multiverse</a>
+  <span class="au">Salvador Robles-Pérez, Ana Alonso-Serrano, Catarina Bastos, <b class="cfp-author">Orfeu Bertolami</b></span>
+  <span class="j">Physics Letters B 759, 328 (2016)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="variational monte carlo method for the baeriswyl wave function: application to the one-dimensional bosonic hubbard model physical review. b./physical review. b 93 balázs hetényi b. tanatar luis miguel martelo">
+  <a class="t" href="https://doi.org/10.1103/physrevb.93.174518" target="_blank" rel="noopener">Variational Monte Carlo method for the Baeriswyl wave function: Application to the one-dimensional bosonic Hubbard model</a>
+  <span class="au">Balázs Hetényi, B. Tanatar, <a class="cfp-author" href="../people/luis-miguel-martelo/index.html">Luis Miguel Martelo</a></span>
+  <span class="j">Physical review. B./Physical review. B 93 (2016)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="white dwarfs in an ungravity-inspired model physical review. d/physical review. d. 93 orfeu bertolami hodjat mariji">
+  <a class="t" href="https://doi.org/10.1103/physrevd.93.104046" target="_blank" rel="noopener">White dwarfs in an ungravity-inspired model</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Hodjat Mariji</span>
+  <span class="j">Physical review. D/Physical review. D. 93 (2016)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="scalar field dark matter and the higgs field physics letters b 759, 1 orfeu bertolami catarina cosme joão g. rosa">
+  <a class="t" href="https://doi.org/10.1016/j.physletb.2016.05.047" target="_blank" rel="noopener">Scalar field dark matter and the Higgs field</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Catarina Cosme, João G. Rosa</span>
+  <span class="j">Physics Letters B 759, 1 (2016)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="gluing hexagons at three loops nuclear physics b 907, 695 benjamin basso vasco gonçalves shota komatsu pedro vieira">
+  <a class="t" href="https://doi.org/10.1016/j.nuclphysb.2016.04.020" target="_blank" rel="noopener">Gluing hexagons at three loops</a>
+  <span class="au">Benjamin Basso, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, Shota Komatsu, Pedro Vieira</span>
+  <span class="j">Nuclear Physics B 907, 695 (2016)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="inflation with a massive vector field nonminimally coupled to gravity physical review. d/physical review. d. 93 orfeu bertolami vitor bessa jorge páramos">
+  <a class="t" href="https://doi.org/10.1103/physrevd.93.064002" target="_blank" rel="noopener">Inflation with a massive vector field nonminimally coupled to gravity</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Vitor Bessa, Jorge Páramos</span>
+  <span class="j">Physical review. D/Physical review. D. 93 (2016)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="viability of nonminimally coupled $$f&#92;,(r)$$ f ( r ) gravity general relativity and gravitation 48 orfeu bertolami jorge páramos">
+  <a class="t" href="https://doi.org/10.1007/s10714-015-2002-5" target="_blank" rel="noopener">Viability of nonminimally coupled $$f&#92;,(R)$$ f ( R ) gravity</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Jorge Páramos</span>
+  <span class="j">General Relativity and Gravitation 48 (2016)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2015</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="black hole solutions of gravity theories with non-minimal coupling between matter and curvature classical and quantum gravity 32, 205009 orfeu bertolami mariano cadoni andrea porru">
+  <a class="t" href="https://doi.org/10.1088/0264-9381/32/20/205009" target="_blank" rel="noopener">Black hole solutions of gravity theories with non-minimal coupling between matter and curvature</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Mariano Cadoni, Andrea Porru</span>
+  <span class="j">Classical and Quantum Gravity 32, 205009 (2015)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="singularities of the dynamical structure factors of the spin-1/2 xxx chain at finite magnetic field journal of physics condensed matter 27, 406001 josé manuel pereira carmelo pedro d sacramento j. d. p. machado d k campbell">
+  <a class="t" href="https://doi.org/10.1088/0953-8984/27/40/406001" target="_blank" rel="noopener">Singularities of the dynamical structure factors of the spin-1/2 XXX chain at finite magnetic field</a>
+  <span class="au"><a class="cfp-author" href="../people/jose-manuel-pereira-carmelo/index.html">José Manuel Pereira Carmelo</a>, Pedro D Sacramento, J. D. P. Machado, D K Campbell</span>
+  <span class="j">Journal of Physics Condensed Matter 27, 406001 (2015)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2014</h2>
+  <ul class="pubs">
+<li data-areas="gravitation-cosmology" data-search="homogeneous spherically symmetric bodies with a non-minimal coupling between curvature and matter: the choice of the lagrangian density for matter general relativity and gravitation 47 orfeu bertolami jorge páramos">
+  <a class="t" href="https://doi.org/10.1007/s10714-014-1835-7" target="_blank" rel="noopener">Homogeneous spherically symmetric bodies with a non-minimal coupling between curvature and matter: the choice of the Lagrangian density for matter</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, Jorge Páramos</span>
+  <span class="j">General Relativity and Gravitation 47 (2014)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="efficiency of monte carlo sampling in chaotic systems physical review e 90, 052916 jorge c. leitão joão viana lopes eduardo g. altmann">
+  <a class="t" href="https://doi.org/10.1103/physreve.90.052916" target="_blank" rel="noopener">Efficiency of Monte Carlo sampling in chaotic systems</a>
+  <span class="au">Jorge C. Leitão, <b class="cfp-author">João Viana Lopes</b>, Eduardo G. Altmann</span>
+  <span class="j">Physical Review E 90, 052916 (2014)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="the layzer-irvine equation in theories with non-minimal coupling between matter and curvature journal of cosmology and astroparticle physics 2014, 010 orfeu bertolami cláudio gomes">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2014/09/010" target="_blank" rel="noopener">The Layzer-Irvine equation in theories with non-minimal coupling between matter and curvature</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <a class="cfp-author" href="../people/claudio-gomes/index.html">Cláudio Gomes</a></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2014, 010 (2014)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="spinning ads propagators journal of high energy physics 2014 miguel costa vasco gonçalves joão penedones">
+  <a class="t" href="https://doi.org/10.1007/jhep09(2014)064" target="_blank" rel="noopener">Spinning AdS propagators</a>
+  <span class="au"><b class="cfp-author">Miguel Costa</b>, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, João Penedones</span>
+  <span class="j">Journal of High Energy Physics 2014 (2014)</span>
+</li>
+
+<li data-areas="gravitation-cosmology" data-search="modeling the nongravitational acceleration during cassini’s gravitation experiments physical review. d. particles, fields, gravitation, and cosmology/physical review. d. particles and fields 90 orfeu bertolami frederico francisco p. j. s. gil jorge páramos">
+  <a class="t" href="https://doi.org/10.1103/physrevd.90.042004" target="_blank" rel="noopener">Modeling the nongravitational acceleration during Cassini’s gravitation experiments</a>
+  <span class="au"><b class="cfp-author">Orfeu Bertolami</b>, <b class="cfp-author">Frederico Francisco</b>, P. J. S. Gil, Jorge Páramos</span>
+  <span class="j">Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields 90 (2014)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="the role of leading twist operators in the regge and lorentzian ope limits journal of high energy physics 2014 miguel costa j. m. drummond vasco gonçalves joão penedones">
+  <a class="t" href="https://doi.org/10.1007/jhep04(2014)094" target="_blank" rel="noopener">The role of leading twist operators in the Regge and Lorentzian OPE limits</a>
+  <span class="au"><b class="cfp-author">Miguel Costa</b>, J. M. Drummond, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, João Penedones</span>
+  <span class="j">Journal of High Energy Physics 2014 (2014)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2012</h2>
+  <ul class="pubs">
+<li data-areas="qft-holography" data-search="conformal regge theory journal of high energy physics 2012 miguel costa vasco gonçalves joão penedones">
+  <a class="t" href="https://doi.org/10.1007/jhep12(2012)091" target="_blank" rel="noopener">Conformal Regge theory</a>
+  <span class="au"><b class="cfp-author">Miguel Costa</b>, <a class="cfp-author" href="../people/vasco-goncalves/index.html">Vasco Gonçalves</a>, João Penedones</span>
+  <span class="j">Journal of High Energy Physics 2012 (2012)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2011</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="effect of pressure on the magnetism of bilayer graphene physical review b 84 eduardo v. castro maría p. lópez-sancho maría a. h. vozmediano">
+  <a class="t" href="https://doi.org/10.1103/physrevb.84.075432" target="_blank" rel="noopener">Effect of pressure on the magnetism of bilayer graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, María P. López-Sancho, María A. H. Vozmediano</span>
+  <span class="j">Physical Review B 84 (2011)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="temperature-dependent resistivity in bilayer graphene due to flexural phonons physical review b 83 héctor ochoa eduardo v. castro mikhail i. katsnelson f. guinea">
+  <a class="t" href="https://doi.org/10.1103/physrevb.83.235416" target="_blank" rel="noopener">Temperature-dependent resistivity in bilayer graphene due to flexural phonons</a>
+  <span class="au">Héctor Ochoa, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Mikhail I. Katsnelson, F. Guinea</span>
+  <span class="j">Physical Review B 83 (2011)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="scattering by flexural phonons in suspended graphene under back gate induced strain physica e low-dimensional systems and nanostructures 44, 963 héctor ochoa eduardo v. castro mikhail i. katsnelson f. guinea">
+  <a class="t" href="https://doi.org/10.1016/j.physe.2011.03.017" target="_blank" rel="noopener">Scattering by flexural phonons in suspended graphene under back gate induced strain</a>
+  <span class="au">Héctor Ochoa, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Mikhail I. Katsnelson, F. Guinea</span>
+  <span class="j">Physica E Low-dimensional Systems and Nanostructures 44, 963 (2011)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2010</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="quantum quench dynamics and population inversion in bilayer graphene physical review b 82 balázs dóra eduardo v. castro roderich moessner">
+  <a class="t" href="https://doi.org/10.1103/physrevb.82.125441" target="_blank" rel="noopener">Quantum quench dynamics and population inversion in bilayer graphene</a>
+  <span class="au">Balázs Dóra, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Roderich Moessner</span>
+  <span class="j">Physical Review B 82 (2010)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="substitutional disorder and charge localization in manganites journal of physics condensed matter 22, 075601 eduardo v. castro j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1088/0953-8984/22/7/075601" target="_blank" rel="noopener">Substitutional disorder and charge localization in manganites</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, J. M. B. Lopes dos Santos</span>
+  <span class="j">Journal of Physics Condensed Matter 22, 075601 (2010)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="new type of vacancy-induced localized states in multilayer graphene physical review letters 104, 036802 eduardo v. castro maría p. lópez-sancho maría a. h. vozmediano">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.104.036802" target="_blank" rel="noopener">New Type of Vacancy-Induced Localized States in Multilayer Graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, María P. López-Sancho, María A. H. Vozmediano</span>
+  <span class="j">Physical Review Letters 104, 036802 (2010)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2009</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="valley symmetry breaking in bilayer graphene: a test of the minimal model physical review letters 103, 266804 masaaki nakamura eduardo v. castro balázs dóra">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.103.266804" target="_blank" rel="noopener">Valley Symmetry Breaking in Bilayer Graphene: A Test of the Minimal Model</a>
+  <span class="au">Masaaki Nakamura, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Balázs Dóra</span>
+  <span class="j">Physical Review Letters 103, 266804 (2009)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="pinning and switching of magnetic moments in bilayer graphene digital.csic (spanish national research council (csic)) eduardo v. castro lópez-sancho, maría pilar vozmediano, maría a. h.">
+  <a class="t" href="http://hdl.handle.net/10261/280421" target="_blank" rel="noopener">Pinning and switching of magnetic moments in bilayer graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, López-Sancho, María Pilar, Vozmediano, María A. H.</span>
+  <span class="j">DIGITAL.CSIC (Spanish National Research Council (CSIC)) (2009)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2008</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="bilayer graphene: gap tunability and edge properties journal of physics conference series 129, 012002 eduardo v. castro nuno m. r. peres j. m. b. lopes dos santos f. guinea a. h. castro neto">
+  <a class="t" href="https://doi.org/10.1088/1742-6596/129/1/012002" target="_blank" rel="noopener">Bilayer graphene: gap tunability and edge properties</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres, J. M. B. Lopes dos Santos, F. Guinea, A. H. Castro Neto</span>
+  <span class="j">Journal of Physics Conference Series 129, 012002 (2008)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="low-density ferromagnetism in biased bilayer graphene physical review letters 100, 186803 eduardo v. castro nuno m. r. peres tobias stauber n. a. p. silva">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.100.186803" target="_blank" rel="noopener">Low-Density Ferromagnetism in Biased Bilayer Graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres, Tobias Stauber, N. A. P. Silva</span>
+  <span class="j">Physical Review Letters 100, 186803 (2008)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="localized states at zigzag edges of bilayer graphene physical review letters 100, 026802 eduardo v. castro nuno m. r. peres j. m. b. lopes dos santos a. h. castro neto f. guinea">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.100.026802" target="_blank" rel="noopener">Localized States at Zigzag Edges of Bilayer Graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres, J. M. B. Lopes dos Santos, A. H. Castro Neto, F. Guinea</span>
+  <span class="j">Physical Review Letters 100, 026802 (2008)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2007</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="biased bilayer graphene: semiconductor with a gap tunable by the electric field effect physical review letters 99, 216802 eduardo v. castro kostya s. novoselov sergey v. morozov nuno m. r. peres j. m. b. lopes dos santos johan nilsson f. guinea andre k. geim a. h. castro neto">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.99.216802" target="_blank" rel="noopener">Biased Bilayer Graphene: Semiconductor with a Gap Tunable by the Electric Field Effect</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Kostya S. Novoselov, Sergey V. Morozov, Nuno M. R. Peres, J. M. B. Lopes dos Santos, Johan Nilsson, F. Guinea, Andre K. Geim, A. H. Castro Neto</span>
+  <span class="j">Physical Review Letters 99, 216802 (2007)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="algebraic solution of a graphene layer in transverse electric and perpendicular magnetic fields journal of physics condensed matter 19, 406231 nuno m. r. peres eduardo v. castro">
+  <a class="t" href="https://doi.org/10.1088/0953-8984/19/40/406231" target="_blank" rel="noopener">Algebraic solution of a graphene layer in transverse electric and perpendicular magnetic fields</a>
+  <span class="au">Nuno M. R. Peres, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a></span>
+  <span class="j">Journal of Physics Condensed Matter 19, 406231 (2007)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="an introduction to the physics of graphene layers world scientific ebooks, 111 eduardo v. castro nuno m. r. peres j. m. b. lopes dos santos f. guinea a. h. castro neto">
+  <a class="t" href="https://doi.org/10.1142/9789812772206_0004" target="_blank" rel="noopener">An introduction to the physics of graphene layers</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres, J. M. B. Lopes dos Santos, F. Guinea, A. H. Castro Neto</span>
+  <span class="j">WORLD SCIENTIFIC eBooks, 111 (2007)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="disorder in the double exchange model world scientific ebooks, 279 vitor manuel pereira eduardo v. castro j. m. b. lopes dos santos">
+  <a class="t" href="https://doi.org/10.1142/9789812772206_0011" target="_blank" rel="noopener">Disorder in the double exchange model</a>
+  <span class="au"><a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, J. M. B. Lopes dos Santos</span>
+  <span class="j">WORLD SCIENTIFIC eBooks, 279 (2007)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2006</h2>
+  <ul class="pubs">
+<li data-areas="qft-holography" data-search="evolution of the fine-structure constant in the non-linear regime journal of cosmology and astroparticle physics 2006, 018 pedro pina avelino c. j. a. p. martins j. menezes caroline dos santos">
+  <a class="t" href="https://doi.org/10.1088/1475-7516/2006/12/018" target="_blank" rel="noopener">Evolution of the fine-structure constant in the non-linear regime</a>
+  <span class="au">Pedro Pina Avelino, C. J. A. P. Martins, J. Menezes, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a></span>
+  <span class="j">Journal of Cosmology and Astroparticle Physics 2006, 018 (2006)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="correlation-function asymptotic expansions: universality of prefactors of the one-dimensional hubbard model physical review b 73 josé manuel pereira carmelo karlo penc">
+  <a class="t" href="https://doi.org/10.1103/physrevb.73.113112" target="_blank" rel="noopener">Correlation-function asymptotic expansions: Universality of prefactors of the one-dimensional Hubbard model</a>
+  <span class="au"><a class="cfp-author" href="../people/jose-manuel-pereira-carmelo/index.html">José Manuel Pereira Carmelo</a>, Karlo Penc</span>
+  <span class="j">Physical Review B 73 (2006)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="site dilution of quantum spins in the honeycomb and square lattices physica b condensed matter 378-380, 137 eduardo v. castro nuno m. r. peres">
+  <a class="t" href="https://doi.org/10.1016/j.physb.2006.01.135" target="_blank" rel="noopener">Site dilution of quantum spins in the honeycomb and square lattices</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres</span>
+  <span class="j">Physica B Condensed Matter 378-380, 137 (2006)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="site dilution of quantum spins in the honeycomb lattice physical review b 73 eduardo v. castro nuno m. r. peres k. s. d. beach anders w. sandvik">
+  <a class="t" href="https://doi.org/10.1103/physrevb.73.054422" target="_blank" rel="noopener">Site dilution of quantum spins in the honeycomb lattice</a>
+  <span class="au"><a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, Nuno M. R. Peres, K. S. D. Beach, Anders W. Sandvik</span>
+  <span class="j">Physical Review B 73 (2006)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="disorder induced localized states in graphene physical review letters 96, 036801 vitor manuel pereira f. guinea j. m. b. lopes dos santos nuno m. r. peres a. h. castro neto">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.96.036801" target="_blank" rel="noopener">Disorder Induced Localized States in Graphene</a>
+  <span class="au"><a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, F. Guinea, J. M. B. Lopes dos Santos, Nuno M. R. Peres, A. H. Castro Neto</span>
+  <span class="j">Physical Review Letters 96, 036801 (2006)</span>
+</li>
+
+<li data-areas="quantum-materials" data-search="magneto-optical evidence of double exchange in a percolating lattice physical review letters 96, 016403 g. caimi a. perucchi l. degiorgi h. r. ott vitor manuel pereira a. h. castro neto andrea daniele bianchi z. fisk">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.96.016403" target="_blank" rel="noopener">Magneto-Optical Evidence of Double Exchange in a Percolating Lattice</a>
+  <span class="au">G. Caimi, A. Perucchi, L. Degiorgi, H. R. Ott, <a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, A. H. Castro Neto, Andrea Daniele Bianchi, Z. Fisk</span>
+  <span class="j">Physical Review Letters 96, 016403 (2006)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="gravitational effects of varying alpha strings  j. menezes pedro pina avelino caroline dos santos">
+  <a class="t" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.339.5520" target="_blank" rel="noopener">Gravitational Effects of Varying Alpha Strings</a>
+  <span class="au">J. Menezes, Pedro Pina Avelino, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a></span>
+  <span class="j">Preprint (2006)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2005</h2>
+  <ul class="pubs">
+<li data-areas="qft-holography" data-search="varying- α monopoles physical review. d. particles, fields, gravitation, and cosmology/physical review. d. particles and fields 72 j. menezes pedro pina avelino caroline dos santos">
+  <a class="t" href="https://doi.org/10.1103/physrevd.72.103504" target="_blank" rel="noopener">Varying- α monopoles</a>
+  <span class="au">J. Menezes, Pedro Pina Avelino, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a></span>
+  <span class="j">Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields 72 (2005)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2004</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="double exchange model for magnetic hexaborides physical review letters 93, 147202 vitor manuel pereira j. m. b. lopes dos santos eduardo v. castro a. h. castro neto">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.93.147202" target="_blank" rel="noopener">Double Exchange Model for Magnetic Hexaborides</a>
+  <span class="au"><a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, J. M. B. Lopes dos Santos, <a class="cfp-author" href="../people/eduardo-v-castro/index.html">Eduardo V. Castro</a>, A. H. Castro Neto</span>
+  <span class="j">Physical Review Letters 93, 147202 (2004)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="cosmic strings in bekenstein-type models  j. menezes pp avelino caroline dos santos">
+  <a class="t" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.315.4037" target="_blank" rel="noopener">Cosmic strings in Bekenstein-type models</a>
+  <span class="au">J. Menezes, Pp Avelino, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a></span>
+  <span class="j">Preprint (2004)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2003</h2>
+  <ul class="pubs">
+<li data-areas="qft-holography" data-search="topological defects: a problem for cyclic universes? physical review. d. particles, fields, gravitation, and cosmology/physical review. d. particles and fields 68 pedro pina avelino c. j. a. p. martins caroline dos santos e. p. s. shellard">
+  <a class="t" href="https://doi.org/10.1103/physrevd.68.123502" target="_blank" rel="noopener">Topological defects: A problem for cyclic universes?</a>
+  <span class="au">Pedro Pina Avelino, C. J. A. P. Martins, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a>, E. P. S. Shellard</span>
+  <span class="j">Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields 68 (2003)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2002</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="scaling study of the metal-insulator transition in one-dimensional fermion systems physical review. b, condensed matter 66 shi-jian gu vitor manuel pereira nuno m. r. peres">
+  <a class="t" href="https://doi.org/10.1103/physrevb.66.235108" target="_blank" rel="noopener">Scaling study of the metal-insulator transition in one-dimensional Fermion systems</a>
+  <span class="au">Shi-Jian Gu, <a class="cfp-author" href="../people/vitor-manuel-pereira/index.html">Vitor Manuel Pereira</a>, Nuno M. R. Peres</span>
+  <span class="j">Physical review. B, Condensed matter 66 (2002)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="topological defects in contracting universes physical review letters 89, 271301 pedro pina avelino c. j. a. p. martins caroline dos santos e. p. s. shellard">
+  <a class="t" href="https://doi.org/10.1103/physrevlett.89.271301" target="_blank" rel="noopener">Topological Defects in Contracting Universes</a>
+  <span class="au">Pedro Pina Avelino, C. J. A. P. Martins, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a>, E. P. S. Shellard</span>
+  <span class="j">Physical Review Letters 89, 271301 (2002)</span>
+</li>
+
+<li data-areas="qft-holography" data-search="spacetime structure of the global vortex classical and quantum gravity 20, 21 ruth gregory caroline dos santos">
+  <a class="t" href="https://doi.org/10.1088/0264-9381/20/1/302" target="_blank" rel="noopener">Spacetime structure of the global vortex</a>
+  <span class="au">Ruth Gregory, <a class="cfp-author" href="../people/caroline-dos-santos/index.html">Caroline dos Santos</a></span>
+  <span class="j">Classical and Quantum Gravity 20, 21 (2002)</span>
+</li>
+
+<li data-areas="quantum-materials quantum-computation" data-search="spin-dependent boltzmann equation and gmr in metallic granular systems journal of magnetism and magnetic materials 242-245, 482 joão viana lopes j. m. b. lopes dos santos yu. g. pogorelov">
+  <a class="t" href="https://doi.org/10.1016/s0304-8853(01)01056-3" target="_blank" rel="noopener">Spin-dependent Boltzmann equation and GMR in metallic granular systems</a>
+  <span class="au"><b class="cfp-author">João Viana Lopes</b>, J. M. B. Lopes dos Santos, Yu. G. Pogorelov</span>
+  <span class="j">Journal of Magnetism and Magnetic Materials 242-245, 482 (2002)</span>
+</li>
+</ul>
+</section>
+
+<section class="year-block" data-year="">
+  <h2 class="year">2001</h2>
+  <ul class="pubs">
+<li data-areas="quantum-materials" data-search="charge and spin transport in the one-dimensional hubbard model journal of physics condensed matter 13, 5135 nuno m. r. peres pedro d sacramento josé manuel pereira carmelo">
+  <a class="t" href="https://doi.org/10.1088/0953-8984/13/22/310" target="_blank" rel="noopener">Charge and spin transport in the one-dimensional Hubbard model</a>
+  <span class="au">Nuno M. R. Peres, Pedro D Sacramento, <a class="cfp-author" href="../people/jose-manuel-pereira-carmelo/index.html">José Manuel Pereira Carmelo</a></span>
+  <span class="j">Journal of Physics Condensed Matter 13, 5135 (2001)</span>
+</li>
+</ul>
+</section>
+
+<p class="empty" id="none" hidden="">No papers match this filter. Choose "All" or clear the search.</p>
+<p class="note" style="margin-top:40px">A paper appears here when its CFP author is linked to the paper through ORCID and lists the centre (Centro de Física do Porto or CF-UM-UP) as affiliation. Missing a paper? Check that it is in your ORCID record with the right affiliation.</p>
+</div>
+
+<script>
+(()=>{let area="";const q=document.getElementById("q");
+ function apply(){const s=q.value.trim().toLowerCase();let total=0;
+  document.querySelectorAll("[data-year]").forEach(sec=>{let n=0;
+   sec.querySelectorAll("li[data-areas]").forEach(li=>{const hay=(li.dataset.search||li.textContent).toLowerCase();
+    const ok=(!area||li.dataset.areas.split(" ").includes(area))&&(!s||hay.includes(s));li.hidden=!ok;if(ok)n++;});
+   sec.hidden=!n;total+=n;});
+  document.getElementById("count").textContent=total+(total===1?" paper":" papers");
+  document.getElementById("none").hidden=!!total;}
+ document.getElementById("areaChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;area=b.dataset.area;
+  document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));apply();});
+ q.addEventListener("input",apply);})();
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <b>Centro de Física do Porto</b>
+      <address>Departamento de Física e Astronomia<br>Faculdade de Ciências da Universidade do Porto<br>Rua do Campo Alegre 687<br>4169-007 Porto, Portugal<br></address>
+    </div>
+    <div>
+      <div class="h">Research</div>
+      <ul><li><a href="../research/quantum-materials/index.html">Quantum Materials</a></li><li><a href="../research/qft-holography/index.html">Quantum Field Theory &amp; Holography</a></li><li><a href="../research/gravitation-cosmology/index.html">Gravitation &amp; Cosmology</a></li><li><a href="../research/quantum-computation/index.html">Quantum Computation &amp; Computational Methods</a></li><li><a href="../research/nonlinear-physics/index.html">Nonlinear Physics</a></li><li><a href="../research/physics-education/index.html">Physics Education</a></li></ul>
+    </div>
+    <div>
+      <div class="h">Centre</div>
+      <ul><li><a href="../people/index.html">People</a></li><li><a href="index.html">Publications</a></li><li><a href="../news/index.html">News &amp; Seminars</a></li><li><a href="../projects/index.html">Projects</a></li><li><a href="../contact/index.html#join">Join us</a></li><li><a href="../contact/index.html">Contact</a></li><li><a href="https://www.youtube.com/@centrodefisicadoporto" target="_blank" rel="noopener">YouTube</a></li></ul>
+      <p style="margin-top:18px">Founded 1994 · © 2026</p>
+    </div>
+  </div>
+  <div class="wrap funding">
+    <div class="h">Affiliations &amp; funding</div>
+    <div class="funding-row">
+      <a class="logo-chip" href="https://www.cf-um-up.pt/" target="_blank" rel="noopener" title="CF-UM-UP"><img src="../assets/logos/cf-um-up-white.png" alt="CF-UM-UP" height="40"></a><a class="logo-chip" href="https://www.lapmet.org/" target="_blank" rel="noopener" title="LaPMET"><span class="logo-text">LaPMET</span></a>
+      <a class="logo-chip" href="https://www.fct.pt" target="_blank" rel="noopener" title="FCT – Fundação para a Ciência e a Tecnologia"><span class="logo-text">FCT · Fundação para a Ciência e a Tecnologia</span></a>
+    </div>
+    <p class="funding-text">Funded by national funds through FCT – Fundação para a Ciência e a Tecnologia, I.P.</p>
+  </div>
+</footer>
+<script>
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
+ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1400)}).catch(()=>{});});
+</script>
+<span id="page-end" hidden=""></span>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/witten.js" defer=""></script>
+<script src="../assets/js/research-visual.js" defer=""></script>
+</body>
+</html>
