@@ -1,0 +1,3 @@
+Cópia estática do site do CFP, gerada todas as noites a partir do ramo main.
+Para publicar: copiar todo o conteúdo desta pasta para o servidor (qualquer pasta serve).
+Não editar estes ficheiros: as alterações fazem-se no ramo main (ver README.md).
